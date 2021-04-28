@@ -90,7 +90,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        if($user){
+            return view('admin.users.edit',[
+                'user'=>$user
+            ]);
+        }
+        return redirect()->route('users.index');
     }
 
     /**
