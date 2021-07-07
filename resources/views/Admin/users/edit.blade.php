@@ -56,6 +56,13 @@
                     </div>
          </div>
 
+         <div class="form-group row">            
+            <label for="nome" class="col-sm-2 col-form-label">Imagem</label>
+                <div class="col-sm-10">
+                    <input type="file"  name="image" class="form-control @error('image') is-invalid @enderror" id="image" >
+            </div>
+    </div>
+
     <div class="form-group row">  
       <button type="submit" class="btn btn-success">Salvar</button>
     </div>

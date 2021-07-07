@@ -109,10 +109,10 @@
             type:'pie',
             data:{
                 datasets:[{
-                    data:{{$pageValues}},
+                    data:{{}},
                     backgroundColor:'#0000ff'
                 }],
-                labels:{!! $pageLabels !!}
+                labels:""
     
             },
             options:{

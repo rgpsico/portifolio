@@ -52,13 +52,13 @@ class HomeController extends Controller
         ->groupBy('page')
         ->get();
         
+
         foreach($visitsAll as $visit){
             $pagePie[ $visit['page'] ] = intval($visit['c']);
-
+           
         }
-               
-          $pageLabels = json_encode(array_keys($pagePie));
-          $pageValues = json_encode(array_values($pagePie));
+         
+
         // Coontagem de Paginas
 
 
@@ -67,8 +67,8 @@ class HomeController extends Controller
             'onlineCount'=>$onlineCount,
             'pageCount'=>$pageCount,
             'userCount'=>$userCount,
-            'pageLabels'=>$pageLabels,
-            'pageValues'=> $pageValues,
+       //  'pageLabels'=>$pageLabels,
+         // 'pageValues'=> $pageValues,
             'dateInterval'=>$interval
         ]);
     }

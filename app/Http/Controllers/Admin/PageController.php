@@ -58,8 +58,7 @@ class PageController extends Controller
         
         $validator = Validator::make($data,[
             'title'=> ['required','string','max:100'],
-            'body'=> ['string'],
-            'slug'=>['required','string','max:100','unique:pages']
+            'body'=> ['string']
            
 
         ]);
@@ -120,12 +119,12 @@ class PageController extends Controller
                 'body',              
             ]);
             if($page['title'] !== $data['title']){
-                $data['slug'] = Str::slug($data['title'],'-');
+             
                 
                 $validator = Validator::make($data,[
                     'title'=>['required','string','max:100'],
-                    'body'=> ['string'],
-                    'slug'=> ['required','string','max:100','unique:pages']
+                    'body'=> ['string']
+                 
                 ]);
             } else {
                 $validator = Validator::make($data,[

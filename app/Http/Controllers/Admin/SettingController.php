@@ -36,7 +36,7 @@ class SettingController extends Controller
 
     public function save(Request $request){
         $data  = $request->only([
-            'title','subtitle','email','bgcolor','textcolor'
+            'title','subtitle','email','bgcolor','textcolor','imagemfundo'
         ]);
         $validador  = $this->validador($data);
        

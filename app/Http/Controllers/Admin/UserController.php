@@ -57,7 +57,8 @@ class UserController extends Controller
             'name',
             'email',
             'password',
-            'password_confirmation'
+            'password_confirmation',
+            'image'
         ]);
         
         $validator = Validator::make($data,[
@@ -72,10 +73,20 @@ class UserController extends Controller
             ->withErrors($validator)
             ->withInput();
         }
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->image->extension();
+            $nameFile = "{$name}.{$extension}";
+            $upload = $request->image->storeAs('users', $nameFile);
+      
+        }
         $users = new User;
         $users->name =  $data['name'];
         $users->email = $data['email'];
         $users->password = Hash::make($data['password']);
+
+        $users->cover =  $nameFile;
         $users->save();
 
         return redirect()->route('users.index');
@@ -125,6 +136,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         $user = User::find($id);
         
         if($user){
@@ -132,7 +144,8 @@ class UserController extends Controller
                 'name',
                 'email',
                 'password',
-                'password_confirmation'
+                'password_confirmation',
+                'image'
             ]);
             $validator  = Validator::make([
             'name' => $data['name'],
@@ -157,6 +170,13 @@ class UserController extends Controller
               
 
                 }
+            }
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $name = uniqid(date('HisYmd'));
+                $extension = $request->image->extension();
+                $nameFile = "{$name}.{$extension}";
+                $upload = $request->image->storeAs('users', $nameFile);
+                $data['cover'] = $nameFile;
             }
 
             if(!empty($data['password'])){

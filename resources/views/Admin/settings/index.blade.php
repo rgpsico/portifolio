@@ -57,6 +57,13 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Imagem de fundo</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imagemfundo" value="{{$settings['imagemfundo']}}" class="form-control">
+                            </div>
+                        </div>
+
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Cor fundo</label>
                             <div class="col-sm-10">
                                 <input type="color" name="bgcolor" value="{{$settings['bgcolor']}}" class="form-control">

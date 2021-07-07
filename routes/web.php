@@ -9,8 +9,13 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\PortifolioController;
+use App\Http\Controllers\Admin\CategoriaController;
+
 use App\Http\Controllers\Site\PageController as PController;
 Route::get('/', [HomeSite::class, 'index']);
+Route::get('/blog/{id}', [HomeSite::class,'singleBlog']);
 
 Route::prefix('painel')->group(function () {
     Route::get('/',    [HomeAdmin::class, 'index'])->name('admin');
@@ -28,6 +33,12 @@ Route::prefix('painel')->group(function () {
 
     Route::resource('pages', PageController::class);
 
+    Route::resource('articles', ArticleController::class);
+
+    Route::resource('portifolio', PortifolioController::class);
+
+    Route::resource('categoria', CategoriaController::class);
+    
     Route::get('profile', [ProfileController::class,'index'])->name('profile');
     Route::put('profilesave', [ProfileController::class,'save'])->name('profile.save');
 

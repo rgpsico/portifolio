@@ -39,9 +39,16 @@ class ProfileController extends Controller
             $data = $request->only([
                 'name',
                 'email',
+                'cel',
+                'description',
+                'estate',
+                'bairro',
+                'curriculum',
                 'password',
-                'password_confirmation'
+                'password_confirmation',
+                'image'
             ]);
+      
             $validator  = Validator::make([
             'name' => $data['name'],
             'email'=> $data['email']
@@ -52,6 +59,11 @@ class ProfileController extends Controller
 
          
             $user->name = $data['name'];
+            $user->description = $data['description'];
+            $user->cel = $data['cel'];
+            $user->estate = $data['estate'];
+            $user->bairro = $data['bairro'];
+            $user->curriculum = $data['curriculum'];
 
             if($user->email != $data['email']){
                 $hasEmail = User::where('email',$data['email'])->get();
@@ -91,6 +103,17 @@ class ProfileController extends Controller
              ])->withErrors($validator);
 
          }
+
+         if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->image->extension();
+            $nameFile = "{$name}.{$extension}";
+            $upload = $request->image->storeAs('users', $nameFile);
+            $user->cover  = $nameFile;      
+        }
+
+        
+       
          $user->save();
 
          return redirect()->route('profile')

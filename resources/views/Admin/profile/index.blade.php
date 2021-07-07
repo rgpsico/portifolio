@@ -31,7 +31,7 @@
 <div class="card">
   
     <div class="card-body">
-<form class="form-horizontal" action="{{route('profile.save')}}" method="POST" >
+<form class="form-horizontal" action="{{route('profile.save')}}" method="POST" enctype="multipart/form-data" >
     @csrf
     @method("PUT")
         <div class="form-group row">       
@@ -40,6 +40,7 @@
                         <input type="text"  name="name" class="form-control @error('name') is-invalid @enderror id="name"  value="{{$user->name}}">
                     </div>
             </div>
+            
    
             <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">E-mail</label>
@@ -47,6 +48,42 @@
                         <input type="text"  name="email" class="form-control  @error('email') is-invalid @enderror " id="email" value="{{$user->email}}">
                     </div>
             </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Descrição</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="description" class="form-control  @error('description') is-invalid @enderror " id="description" value="{{$user->description}}">
+                    </div>
+            </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Cel</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="cel" class="form-control  @error('cel') is-invalid @enderror " id="cel" value="{{$user->cel}}">
+                    </div>
+            </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Estado</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="estate" class="form-control  @error('estate') is-invalid @enderror " id="estate" value="{{$user->estate}}">
+                    </div>
+            </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Bairro</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="bairro" class="form-control  @error('bairro') is-invalid @enderror " id="bairro" value="{{$user->bairro}}">
+                    </div>
+            </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Curriculum</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="curriculum" class="form-control  @error('curriculum') is-invalid @enderror " id="curriculum" value="{{$user->curriculum}}">
+                    </div>
+            </div>
+
 
             <div class="form-group row">            
                     <label for="nome" class="col-sm-2 col-form-label">Nova Senha</label>
@@ -62,6 +99,12 @@
                         <input type="text"  name="password_confirmation" class="form-control" id="password_confirmation" >
                     </div>
          </div>
+
+         <div class="form-group row">            
+            <label for="nome" class="col-sm-2 col-form-label">Imagem</label>
+                <div class="col-sm-10">
+                    <input type="file"  name="image" class="" id="image" >
+            </div>
 
     <div class="form-group row">  
       <button type="submit" class="btn btn-success">Salvar</button>

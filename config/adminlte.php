@@ -238,6 +238,24 @@ return [
          
         ],
         [
+            'text'        => 'Artigos',
+            'url'         => 'painel/articles',
+            'icon'        => 'far fa-fw fa-file'
+         
+        ],
+        [
+            'text'        => 'Portifolio',
+            'url'         => 'painel/portifolio',
+            'icon'        => 'far fa-fw fa-file'
+         
+        ],
+        [
+            'text'        => 'Categoria',
+            'url'         => 'painel/categoria',
+            'icon'        => 'far fa-fw fa-file'
+         
+        ],
+        [
             'text'        => 'Meus Usuários',
             'url'         => 'painel/users',
             'icon'        => 'far fa-fw fa-file',
