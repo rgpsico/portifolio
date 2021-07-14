@@ -119,7 +119,9 @@
 
 					<!-- Banner -->
 					<div class="banner">
-  						<h1>ROGER NEVES</h1>
+  						<h1>ROGER NEVES @php
+				
+						  @endphp</h1>
 						<p class="cd-headline rotate-1">
 							<span></span>
 							<span class="cd-words-wrapper">
@@ -131,7 +133,7 @@
 						</p>
 					</div>
 
-					<!-- Language -->
+					<!-- Language --
 					<div class="lang">
                 		<ul>
                    			<li><a href="#" class="active">eng</a></li>
@@ -340,15 +342,53 @@
 						</div>
 
 						<!-- Service Item -->
-                        <?php for($i=0; $i<=5; $i++){ ?>
-						<div class="col-lg-6 col-sm-6">
-							<div class="service box-1 mb-40">
-								<i class="fas fa-desktop"></i>
-								<h4>Criação de Sites</h4>
-								<p>Uso a tecnologia para criação de sistemas que levam os clientes até você.</p>
+                 
+							<div class="row mt-100">
+
+		
+								<!-- Service Item -->
+							  
+								<div class="col-lg-6 col-sm-6">
+									<div class="service box-1 mb-40">
+										<i class="fas fa-desktop"></i>
+										<h4>Criação de Sites</h4>
+										<p>Uso a tecnologia para criação de sistemas que levam os clientes até você.</p>
+									</div>
+								</div>
+		
+								<div class="col-lg-6 col-sm-6">
+									<div class="service box-1 mb-40">
+										<i class="fas fa-desktop"></i>
+										<h4>Criação de Lojas virtuais</h4>
+										<p>Se você tem um comercio fisico ajudo você a construir sua loja 
+											virtual para alcançar mais clientes.</p>
+									</div>
+								</div>
+		
+								<div class="col-lg-6 col-sm-6">
+									<div class="service box-1 mb-40">
+										<i class="fas fa-desktop"></i>
+										<h4>Marketing Digital</h4>
+										<p>Campanhas atraves das midias sociais para atrair novos clientes.</p>
+									</div>
+								</div>
+		
+								
+								<div class="col-lg-6 col-sm-6">
+									<div class="service box-1 mb-40">
+										<i class="fas fa-desktop"></i>
+										<h4>Otimização de processos</h4>
+										<p>criamos soluções para  otimização de processos repetitivos.</p>
+									</div>
+								</div>
+						 
+		
+								
+		
+								
+		
 							</div>
-						</div>
-                        <?php } ?>
+              
 
 						
 
@@ -369,14 +409,14 @@
 						<div class="owl-carousel owl-theme">
 
 							<!-- Testimonail Item -->
-                            <?php for($i=0; $i<5; $i++): ?>
+
 							<div class="testimonial-item">
 								<div class="media">
                                
 									<img src="{{asset('assets/img/testimonials/testimonial-1.jpg')}}" alt="">
 									<div class="content">
-										<h4>John Doe</h4>
-										<p>Web Development</p>
+										<h4>Roberto Silva</h4>
+										<p>Professor de dança</p>
 									</div>
 									<ul class="rating">
 										<li><i class="far fa-star"></i></li>
@@ -388,14 +428,38 @@
 								</div>
 								<div class="comment pt-30">
 									<p>
-										Curabitur eleifend tempor gnceleris eget placeratvel phasellus eget
-										sem just metup consequat gestas facilisis eleifend posure tempor
-										metus sem just metup consequat gestas facilisis eleifend posures
-										temporureture.
+										Muito Obrigado , o numero de clientes aumentaram mais 
+										de 50% hoje meu foco e 100% nos meios digitais para alcançar novos clientes.
 									</p>
 								</div>
 							</div>
-                            <?php endfor ?>
+
+
+							<div class="testimonial-item">
+								<div class="media">
+                               
+									<img src="{{asset('assets/img/testimonials/testimonial-1.jpg')}}" alt="">
+									<div class="content">
+										<h4>Felipe Cardoso</h4>
+										<p>Babeiro Profissional</p>
+									</div>
+									<ul class="rating">
+										<li><i class="far fa-star"></i></li>
+										<li><i class="far fa-star"></i></li>
+										<li><i class="far fa-star"></i></li>
+										<li><i class="far fa-star"></i></li>
+										<li><i class="far fa-star"></i></li>
+                                 	</ul>
+								</div>
+								<div class="comment pt-30">
+									<p>
+									Hoje , minha reclamação e saber  se tenho tempo para atender todos os clientes , 
+									são muitos em vários lugares da zona sul do RJ ,
+									 muito obrigado por me convecer até um sistema online . 
+									</p>
+								</div>
+							</div>
+              
 
 					
 
@@ -558,7 +622,7 @@
 									<h4 class="progress-title">PHP</h4>
 									<div class="progress">
 										<div class="progress-bar" style="width:98%">
-											<div class="progress-value">98%</div>
+											<div class="progress-value">80%</div>
 										</div>
 									</div>
 								</div>
@@ -566,7 +630,16 @@
 									<h4 class="progress-title">Laravel</h4>
 									<div class="progress">
 										<div class="progress-bar" style="width:98%">
-											<div class="progress-value">98%</div>
+											<div class="progress-value">70%</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="skill-item">
+									<h4 class="progress-title">Mysql</h4>
+									<div class="progress">
+										<div class="progress-bar" style="width:70%">
+											<div class="progress-value">70%</div>
 										</div>
 									</div>
 								</div>
@@ -575,7 +648,7 @@
 									<h4 class="progress-title">HTML5</h4>
 									<div class="progress">
 										<div class="progress-bar" style="width:98%">
-											<div class="progress-value">98%</div>
+											<div class="progress-value">80%</div>
 										</div>
 									</div>
 								</div>
@@ -591,8 +664,26 @@
 								</div>
 
 								<!-- Skill Item -->
+
+								<div class="skill-item">
+									<h4 class="progress-title">Jquery</h4>
+									<div class="progress">
+										<div class="progress-bar" style="width:90%">
+											<div class="progress-value">90%</div>
+										</div>
+									</div>
+								</div>
 								<div class="skill-item">
 									<h4 class="progress-title">JavaScript</h4>
+									<div class="progress">
+										<div class="progress-bar" style="width:90%">
+											<div class="progress-value">90%</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="skill-item">
+									<h4 class="progress-title">Photoshop</h4>
 									<div class="progress">
 										<div class="progress-bar" style="width:90%">
 											<div class="progress-value">90%</div>
@@ -613,18 +704,34 @@
 
 									<!-- Skill Item -->
 									<div class="col-lg-6 col-sm-6">
-										<div class="chart" data-percent="70" data-bar-color="#fff"> 70% <p>Illustrator</p></div>
+										<div class="chart" data-percent="90" data-bar-color="#fff"> 90% <p>Laravel</p></div>
 									</div>
 
-									<!-- Skill Item -->
 									<div class="col-lg-6 col-sm-6">
-										<div class="chart" data-percent="60" data-bar-color="#fff"> 60% <p>Photoshop</p></div>
+										<div class="chart" data-percent="70" data-bar-color="#fff"> 70% <p>Mysql</p></div>
 									</div>
 
-									<!-- Skill Item -->
 									<div class="col-lg-6 col-sm-6">
-										<div class="chart" data-percent="90" data-bar-color="#fff"> 90% <p>AngularJS</p></div>
+										<div class="chart" data-percent="90" data-bar-color="#fff"> 90% <p>HTML5</p></div>
 									</div>
+
+									<div class="col-lg-6 col-sm-6">
+										<div class="chart" data-percent="90" data-bar-color="#fff"> 90% <p>CSS 3</p></div>
+									</div>
+
+									<div class="col-lg-6 col-sm-6">
+										<div class="chart" data-percent="90" data-bar-color="#fff"> 90% <p>Jquery</p></div>
+									</div>
+
+									<div class="col-lg-6 col-sm-6">
+										<div class="chart" data-percent="90" data-bar-color="#fff"> 90% <p>JavaScript</p></div>
+									</div>
+
+									<div class="col-lg-6 col-sm-6">
+										<div class="chart" data-percent="80" data-bar-color="#fff"> 80% <p>Photoshop</p></div>
+									</div>
+
+								
 								</div>
 							</div>
 						</div>
@@ -699,7 +806,7 @@
 
 					<!-- Section Title -->
 					<div class="header-page mt-70 mob-mt">
-						<h2>Portfolio</h2>
+						<h2>Portfolio {{ Storage::url('portifolio') }}</h2>
     					<span></span>
 					</div>
 
@@ -728,7 +835,7 @@
 								<figcaption>
 									<h3>{{$portifolio['title']}}</h3>
 									<p>{{$portifolio['categoria']}}</p><i class="fas fa-image"></i>
-									<a class="image-link" href="{{$cover}}"></a>
+									<a class="image-link" href="{{$portifolio['categoria']}}"></a>
 								</figcaption>
 							</figure>
 						</div>
@@ -835,6 +942,10 @@
 					<!-- Contact Info -->
 					<div class="box-2 contact-info">
                         @foreach($users as $user)
+						<script>
+							let wtazap = "{{$user['cel']}}";
+					
+						</script>
 						<div class="row">
 							<div class="col-lg-4 col-sm-12 info">
 								<i class="fas fa-paper-plane"></i>
@@ -852,6 +963,7 @@
           						<span>CEL</span>
 							</div>
 						</div>
+						
                         @endforeach
 					</div>
 
@@ -872,7 +984,13 @@
   		</div>
 		</div>
 		</div>
-
+		@foreach($users as $user)
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<a href="https://api.whatsapp.com/send?phone=55{{$user['cel']}}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+		  z-index:1000;" target="_blank">
+		<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+		</a>
+		@endforeach
 		<!-- All Script -->
       
 		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
