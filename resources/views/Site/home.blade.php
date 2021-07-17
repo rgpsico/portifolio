@@ -1,4 +1,4 @@
-@extends('Site.layout')
+@extends('Siste.layout')
 
 @section('title','Titulo de teste')
     
