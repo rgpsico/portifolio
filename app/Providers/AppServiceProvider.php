@@ -29,11 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $frontMenu = [
             '/' => 'Home'
         ];
-        $pages = Page::all();
-        foreach($pages as $page){
-            $frontMenu [$page['slug']] = $page['title'];
-        }
-       View::share('front_menu',$frontMenu);
+       
     
       //CONFIGURAÇÔES
       $config = [];
