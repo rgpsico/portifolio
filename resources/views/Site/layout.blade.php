@@ -179,8 +179,8 @@
 										<div class="loc">
 											<i class="fas fa-map-marked-alt"></i> Rio de janeiro, BR
 										</div>
-										<p>{{@$user['description']}}
-										</p>
+										{{$user['name']}}
+										
 										
 									</div>
                                     @endforeach
