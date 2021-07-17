@@ -62,7 +62,7 @@ class HomeController extends Controller
 
         // Coontagem de Paginas
 
-        return view('admin.home', [
+        return view('Admin.home', [
             'visitisCount' => $visitisCount,
             'onlineCount' => $onlineCount,
             'pageCount' => $pageCount,
@@ -76,13 +76,13 @@ class HomeController extends Controller
     public function home()
     {
         $articles = article::paginate(10);
-        return view('admin.home.index', ['home' => $articles]);
+        return view('Admin.home.index', ['home' => $articles]);
     }
 
     public function create()
     {
         $categorias = article::all();
-        return view('admin.home.create', ['categorias' => $categorias]);
+        return view('Admin.home.create', ['categorias' => $categorias]);
     }
 
 
