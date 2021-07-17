@@ -29,7 +29,7 @@ class ArticleController extends Controller
      $categorias = categoria::all();
    
 
-      return view('admin.articles.index',[
+      return view('Admin.articles.index',[
           'articles'=>$articles,
           'categorias'=>$categorias
 
