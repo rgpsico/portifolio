@@ -73,7 +73,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Cor Texto</label>
                                 <div class="col-sm-10">
-                                    <input type="color" name="text" value="{{$settings['textcolor']}}" class="form-control">
+                                    <input type="color" name="text" value="{{@$settings['textcolor']}}" class="form-control">
                                 </div>
                             </div>
 
