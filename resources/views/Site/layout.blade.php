@@ -179,7 +179,7 @@
 										<div class="loc">
 											<i class="fas fa-map-marked-alt"></i> Rio de janeiro, BR
 										</div>
-										{{$user['name']}}
+										{{$user['description']}}
 										
 										
 									</div>
