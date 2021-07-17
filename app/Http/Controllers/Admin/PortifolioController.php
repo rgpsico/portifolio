@@ -27,7 +27,7 @@ class PortifolioController extends Controller
      $loggedId = intval(Auth::id());
    
 
-      return view('admin.portifolio.index',[
+      return view('Admin.portifolio.index',[
           'portifolios'=>$portifolios
       ]);
     }
