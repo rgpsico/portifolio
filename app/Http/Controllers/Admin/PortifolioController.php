@@ -40,7 +40,7 @@ class PortifolioController extends Controller
     public function create()
     {
         $categorias = categoria::all();
-        return view('admin.portifolio.create',['categorias'=>$categorias]);
+        return view('Admin.portifolio.create',['categorias'=>$categorias]);
     }
 
     /**
@@ -108,7 +108,7 @@ class PortifolioController extends Controller
     {
         $page = portifolio::find($id);
         if($page){
-            return view('admin.portifolio.edit',[
+            return view('Admin.portifolio.edit',[
                 'article'=>$page
             ]);
         }
