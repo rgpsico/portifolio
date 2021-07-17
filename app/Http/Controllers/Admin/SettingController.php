@@ -22,14 +22,12 @@ class SettingController extends Controller
 
         $dbsettings = Setting::get();
 
-        foreach ($dbsettings as $dbsetting) {
-            $settings[$dbsetting['name']] = $dbsetting['content'];
-        }
+        
 
         return view(
             "Admin.settings.index",
             [
-                'settings' => $settings
+                'settings' => $dbsettings
             ]
         );
     }
