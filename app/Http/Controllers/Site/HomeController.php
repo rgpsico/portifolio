@@ -14,10 +14,10 @@ class HomeController extends Controller
     public function index(){
         $articles = article::paginate(10);    
         $portifolio = portifolio::paginate(10);        
-        $user = User::where('id',5)->get();
+        $users = User::all();
         return view('Site.home',[
             'articles'=>$articles,
-            'users'=>$user,
+            'users'=>$users,
             'portifolios'=>$portifolio
         
         ]);
