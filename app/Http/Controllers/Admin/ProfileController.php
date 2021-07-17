@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
         
         if($user){
-            return view('admin.profile.index',[
+            return view('Admin.profile.index',[
             'user' => $user
             ]);
     }
