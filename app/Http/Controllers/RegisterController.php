@@ -12,7 +12,7 @@ use Illuminate\Http\Request;;;
 class RegisterController extends Controller
 {
     public function index(){
-        return view('admin.register');
+        return view('Admin.register');
     }
 
     public function register(Request $request){
