@@ -179,16 +179,9 @@
 										<div class="loc">
 											<i class="fas fa-map-marked-alt"></i> Rio de janeiro, BR
 										</div>
-										<p>Ola! Sou Roger Neves, um Programador e desenvolvedor digital autodidata e premiado, 
-											com mais de cinco anos de experiência de trabalho. Comecei a programar como hob e o hob virou profissão, 
-											tornei-me profissional em renomeadas agências digitais aqui no Rio de janeiro. Moro  em Copacabana , Rio de Janeiro 
-											, Trabalho desenvolvendo soluções para pequenas e medias empresas.
+										<p>{{@$user['description']}}
 										</p>
-										<p>Tenho alguns hobbies , Ler , bodyboard , futebol caminhar e pedalar alem 
-											do Jiu-Jitsu que é o esporte que eu amo.	</p>
-											<p>Minha intenção é sempre melhorar a vida das pessoas usando a tecnologia, seja trazendo novos
-											 clientes para empresa delas ou otimizando algum processo.
-										</p>
+										
 									</div>
                                     @endforeach
 
@@ -197,7 +190,7 @@
                                 		<div class="info-icon">
                                      		<i class="fas fa-award"></i>
                                      		<div class="desc-icon">
-												<h6> Anos</h6>
+												<h6>8 Anos</h6>
                                             	<p>Experiência</p>
                                        		</div>
                                 		</div>
