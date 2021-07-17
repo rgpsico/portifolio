@@ -44,7 +44,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categorias = categoria::all();
-        return view('admin.articles.create',
+        return view('Admin.articles.create',
       ['categorias'=>$categorias]);
     }
 
