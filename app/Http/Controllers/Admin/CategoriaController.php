@@ -25,7 +25,7 @@ class CategoriaController extends Controller
      $loggedId = intval(Auth::id());
    
 
-      return view('admin.categoria.index',[
+      return view('Admin.categoria.index',[
           'categorias'=>$categorias
       ]);
     }
