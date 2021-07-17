@@ -237,13 +237,7 @@ return [
             'icon'        => 'far fa-fw fa-file'
          
         ],
-        [
-            'text'        => 'Sobre',
-            'url'         => 'painel/sobre',
-            'icon'        => 'far fa-fw fa-file'
-         
-        ],
-  
+          
       
        ['header' => 'Conteudo'],
         [
