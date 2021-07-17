@@ -13,13 +13,18 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\PortifolioController;
 use App\Http\Controllers\Admin\CategoriaController;
 
+
 use App\Http\Controllers\Site\PageController as PController;
 Route::get('/', [HomeSite::class, 'index']);
 Route::get('/blog/{id}', [HomeSite::class,'singleBlog']);
 
 Route::prefix('painel')->group(function () {
-    Route::get('/',    [HomeAdmin::class, 'index'])->name('admin');
+    Route::get('/',[HomeAdmin::class, 'index'])->name('admin');
 
+    Route::get('home',[HomeAdmin::class,'home']);
+    Route::get('home/create',[HomeAdmin::class,'create'])->name('homecreate');
+    Route::get('home/edit/{id}',[HomeAdmin::class,'edit'])->name('homeedit');
+    Route::get('home/destroy',[HomeAdmin::class,'edit'])->name('homedestroy');
 
     Route::get('login',  [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);

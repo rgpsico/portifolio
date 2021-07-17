@@ -46,8 +46,10 @@ class ProfileController extends Controller
                 'curriculum',
                 'password',
                 'password_confirmation',
-                'image'
+                'image',
+                'imgbg'
             ]);
+        
       
             $validator  = Validator::make([
             'name' => $data['name'],
@@ -112,7 +114,7 @@ class ProfileController extends Controller
             $user->cover  = $nameFile;      
         }
 
-        
+
        
          $user->save();
 
@@ -123,5 +125,16 @@ class ProfileController extends Controller
       
         return redirect()->route('profile');
 
+    }
+
+    public function UploadProfileimage(Request $request,$loggeid){
+            $user = User::find($loggeid);
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->image->extension();
+            $nameFile = "{$name}.{$extension}";
+            $upload = $request->image->storeAs('users', $nameFile);
+            $user->cover  = $nameFile;      
+        }
     }
 }

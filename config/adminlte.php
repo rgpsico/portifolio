@@ -232,11 +232,20 @@ return [
          
         ],
         [
-            'text'        => 'minhas Paginas',
-            'url'         => 'painel/pages',
+            'text'        => 'Home',
+            'url'         => 'painel/home',
             'icon'        => 'far fa-fw fa-file'
          
         ],
+        [
+            'text'        => 'Sobre',
+            'url'         => 'painel/sobre',
+            'icon'        => 'far fa-fw fa-file'
+         
+        ],
+  
+      
+       ['header' => 'Conteudo'],
         [
             'text'        => 'Artigos',
             'url'         => 'painel/articles',

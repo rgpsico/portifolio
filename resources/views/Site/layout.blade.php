@@ -806,7 +806,7 @@
 
 					<!-- Section Title -->
 					<div class="header-page mt-70 mob-mt">
-						<h2>Portfolio {{ Storage::url('portifolio') }}</h2>
+						<h2>Portfolio</h2>
     					<span></span>
 					</div>
 
@@ -818,7 +818,7 @@
 								<li class="active" data-filter="*">TODOS</li>
                                 @foreach ($portifolios as $portifolio)
 								  <?php  $cover = ($portifolio['cover'] == null ? "" : Storage::url($portifolio['cover'])  )  ?>
-                                <li data-filter=".{{$portifolio['categoria']}}">{{$portifolio['categoria']}}</li>
+                                <li data-filter="{{$portifolio['categoria']}}">{{$portifolio['categoria']}}</li>
                                 @endforeach
 							</ul>
 						</div>
@@ -835,7 +835,7 @@
 								<figcaption>
 									<h3>{{$portifolio['title']}}</h3>
 									<p>{{$portifolio['categoria']}}</p><i class="fas fa-image"></i>
-									<a class="image-link" href="{{$portifolio['categoria']}}"></a>
+									<a class="image-link" href="{{Storage::url($portifolio['cover'])}}"></a>
 								</figcaption>
 							</figure>
 						</div>
@@ -860,13 +860,16 @@
                     
 				
                     @foreach ($articles->all() as $article)
+					 @php 
+					 $isVideo = "11";
+					 $isVideo = ($isVideo == true ? "" : $isVideo);  @endphp
 
 						<!-- Blog Item -->
 						<div class="col-lg-4 col-sm-6">
 							<div class="blog-item">
 								<div class="thumbnail">
-									<a href="single-blog.html"><img alt="" src="{{asset('assets/img/blog/img-2.jpg')}}"></a>
-									<a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
+									<a href="single-blog.html"><img alt="" src="{{Storage::url($portifolio['cover'])}}"></a>
+									 <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
 								</div>
 								<h4><a href="single-blog.html">{{$article['title']}}</a></h4>
 								<ul>

@@ -40,6 +40,15 @@
                         <input type="text"  name="name" class="form-control @error('name') is-invalid @enderror id="name"  value="{{$user->name}}">
                     </div>
             </div>
+
+              
+
+            <div class="form-group row">       
+                <label for="nome" class="col-sm-2 col-form-label">Imagem Background - Home</label>
+                    <div class="col-sm-10">
+                        <input type="file"  name="imageBG" class="" id="imageBG" >
+                    </div>
+            </div>
             
    
             <div class="form-group row">            
