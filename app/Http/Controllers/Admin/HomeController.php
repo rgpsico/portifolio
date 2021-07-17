@@ -46,6 +46,8 @@ class HomeController extends Controller
         //contar usuarios
         $userCount    =    User::count();
 
+        $users = User::all();
+
 
         //contage para o pagepie
 
@@ -69,7 +71,8 @@ class HomeController extends Controller
             'userCount' => $userCount,
             //  'pageLabels'=>$pageLabels,
             // 'pageValues'=> $pageValues,
-            'dateInterval' => $interval
+            'dateInterval' => $interval,
+            'users'=>$users
         ]);
     }
 
