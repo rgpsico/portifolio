@@ -37,7 +37,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('admin.categoria.create');
+        return view('Admin.categoria.create');
     }
 
     /**
@@ -95,7 +95,7 @@ class CategoriaController extends Controller
     {
         $categoria = categoria::find($id);
         if($categoria){
-            return view('admin.categoria.edit',[
+            return view('Admin.categoria.edit',[
                 'categoria'=>$categoria
             ]);
         }
