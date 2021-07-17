@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Models\Page;
+use App\Models\page;
 use App\Models\Setting;
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $frontMenu = [
             '/' => 'Home'
         ];
-        $pages = Page::all();
+        $pages = page::all();
         foreach($pages as $page){
             $frontMenu [$page['slug']] = $page['title'];
         }
