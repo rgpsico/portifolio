@@ -27,7 +27,7 @@ class SettingController extends Controller
         }
 
         return view(
-            "admin.settings.index",
+            "Admin.settings.index",
             [
                 'settings' => $settings
             ]
