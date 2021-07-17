@@ -197,7 +197,7 @@
                                 		<div class="info-icon">
                                      		<i class="fas fa-award"></i>
                                      		<div class="desc-icon">
-												<h6>8 Anos</h6>
+												<h6> Anos</h6>
                                             	<p>Experiência</p>
                                        		</div>
                                 		</div>
