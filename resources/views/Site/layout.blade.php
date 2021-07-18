@@ -218,7 +218,7 @@
                                 		</div>
                                 	</div>
 									<div class="col-lg-3 col-sm-12 pt-50">
-                                		<a href="#" class="btn-st">Download CV</a>
+                                		<a href="{{Storage::url('users/'.$user['curriculum'])}}" target="_blank" class="btn-st">Download CV</a>
                                 	</div>
 								</div>
 							</div>

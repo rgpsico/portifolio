@@ -89,7 +89,7 @@
             <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">Curriculum</label>
                     <div class="col-sm-10">
-                        <input type="text"  name="curriculum" class="form-control  @error('curriculum') is-invalid @enderror " id="curriculum" value="{{$user->curriculum}}">
+                        <input type="file"  name="curriculum" id="curriculum">
                     </div>
             </div>
 

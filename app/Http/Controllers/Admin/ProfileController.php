@@ -12,6 +12,7 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
+        
         $this->middleware('auth');
         
     }
@@ -34,7 +35,7 @@ class ProfileController extends Controller
 
         $loggeid = intval(Auth::id());  
         $user = User::find($loggeid);
-        
+     
         if($user){
             $data = $request->only([
                 'name',
@@ -47,9 +48,9 @@ class ProfileController extends Controller
                 'password',
                 'password_confirmation',
                 'image',
-                'imgbg'
+                'curriculum'
             ]);
-        
+     
       
             $validator  = Validator::make([
             'name' => $data['name'],
@@ -65,7 +66,7 @@ class ProfileController extends Controller
             $user->cel = $data['cel'];
             $user->estate = $data['estate'];
             $user->bairro = $data['bairro'];
-            $user->curriculum = $data['curriculum'];
+  
 
             if($user->email != $data['email']){
                 $hasEmail = User::where('email',$data['email'])->get();
@@ -106,35 +107,46 @@ class ProfileController extends Controller
 
          }
 
-         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->image->extension();
-            $nameFile = "{$name}.{$extension}";
-            $upload = $request->image->storeAs('users', $nameFile);
-            $user->cover  = $nameFile;      
+         if ($request->hasFile('image') && $request->file('image')->isValid()) 
+         {
+             $this->Upload($request->file('image'),'users');
+         }
+
+        if ($request->hasFile('curriculum') && $request->file('curriculum')->isValid())
+        {
+            $this->Upload($request->file('curriculum'),'users');
+                      
         }
 
-
-       
          $user->save();
-
          return redirect()->route('profile')
          ->with('warning',"informações alteradas com sucesso");
     }
-
-      
+     
         return redirect()->route('profile');
 
     }
 
-    public function UploadProfileimage(Request $request,$loggeid){
-            $user = User::find($loggeid);
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->image->extension();
-            $nameFile = "{$name}.{$extension}";
-            $upload = $request->image->storeAs('users', $nameFile);
-            $user->cover  = $nameFile;      
-        }
+    public function Upload($request, $pasta = null)
+    {      
+        $loggeid = intval(Auth::id());    
+        $user = User::find($loggeid);
+     
+        $name = uniqid(date('HisYmd'));
+         
+        $extension = $request->extension();
+      
+        $nameFile = "{$name}.{$extension}";
+        $pasta = ($pasta == null ? "" : $pasta); 
+
+
+        $upload = $request->storeAs($pasta, $nameFile);
+     
+        $user->curriculum  = $nameFile;  
+        $user->save();
+
+
     }
+
+
 }
