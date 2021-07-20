@@ -5,9 +5,9 @@
 @section('content_header')
     <h1>
         Meus Artigos
-       <a href="{{route('articles.create')}}" class="btn btn-sm btn-success">Novo Artigos</a>
+       <a href="{{route('articles.create')}}" class="btn btn-sm btn-success">Novo  Artigos</a>
     </h1>
-    @include('admin.includes.alert')
+        @include('Admin.includes.alert')
 @endsection
 
 @section('content')
