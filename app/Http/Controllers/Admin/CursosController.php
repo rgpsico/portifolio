@@ -96,7 +96,7 @@ class CursosController extends Controller
     {
         $cursos = cursos::find($id);
         if($cursos){
-            return view('admin.cursos.edit',[
+            return view('Admin.cursos.edit',[
                 'cursos'=>$cursos
             ]);
         }
