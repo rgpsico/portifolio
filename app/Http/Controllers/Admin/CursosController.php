@@ -21,7 +21,7 @@ class CursosController extends Controller
      $loggedId = intval(Auth::id());
     
 
-      return view('admin.cursos.index',[
+      return view('Admin.cursos.index',[
         'cursos'=>$cursoss
       ]);
     }
