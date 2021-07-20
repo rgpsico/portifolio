@@ -38,7 +38,7 @@ $(window).on('load', function() {
 	/* -----------------------------------
 			  2. Sound Setup
 	----------------------------------- */
-	$('body').append('<audio loop autoplay volume="1" id="audio-player"><source src="https://rogerneves.com.br/assets/music.mp3" type="audio/mpeg"></audio>');
+	$('body').append('<audio loop autoplay volume="1" id="audio-player"><source src="https://www.rogerneves.com.br/assets/music.mp3" type="audio/mpeg"></audio>');
     	var audio = document.getElementById("audio-player");
     	audio.volume = 0.2;
 	
