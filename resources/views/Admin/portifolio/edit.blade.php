@@ -24,13 +24,13 @@
 <div class="card">
   
     <div class="card-body">
-<form class="form-horizontal" action="{{route('articles.update', ['article'=>$article->id])}}" method="POST" >
+<form class="form-horizontal" action="{{route('portifolio.update', ['portifolio'=>$article->id])}}" method="POST" enctype="multipart/form-data" >
     @csrf
     @method("PUT")
         <div class="form-group row">       
                 <label for="nome" class="col-sm-2 col-form-label">Titulo</label>
                     <div class="col-sm-10">
-                        <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror id="title"  value="{{$article->title}}">
+                        <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror" id="title"  value="{{$article->title}}">
                     </div>
             </div>
    
@@ -38,6 +38,20 @@
                 <label for="nome" class="col-sm-2 col-form-label">Corpo</label>
                     <div class="col-sm-10">
                         <textarea name="body" id="body" class="form-control bodyfield" >{{$article->body}}</textarea>  
+                    </div>
+            </div>
+
+            <div class="form-group row">       
+                <label for="nome" class="col-sm-2 col-form-label">Url</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="url" class="form-control @error('url') is-invalid @enderror" id="url"  value="{{$article->title}}">
+                    </div>
+            </div>
+
+            <div class="form-group row">            
+                <label for="imagem" class="col-sm-2 col-form-label">Imagem</label>
+                    <div class="col-sm-10">                         
+                        <input type="file" name="image" class="form-control"/>                   
                     </div>
             </div>
 

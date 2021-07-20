@@ -24,8 +24,8 @@
     @foreach($categorias as $categoria)
     <tr>
         <td>{{$categoria->id}}</td>
-        <td>{{$categoria->title}}</td>
-        <td>{{$categoria->body}}</td>
+        <td>{!!$categoria->title!!}</td>
+        <td>{!!$categoria->body!!}</td>
             <td>
             <a href="" class="btn btn-sm btn-success">ver</a>
             <a href="" class="btn btn-sm btn-info">Editar</a>

@@ -4,18 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\hash;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-use App\Models\portifolio;
-use App\Models\categoria;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Models\cursos;
 
-class PortifolioController extends Controller
+class CursosController extends Controller
 {
-  
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,12 +17,12 @@ class PortifolioController extends Controller
     }
     public function index()
     {
-     $portifolios = portifolio::paginate(10);
+     $cursoss = cursos::paginate(10);
      $loggedId = intval(Auth::id());
-   
+    
 
-      return view('Admin.portifolio.index',[
-          'portifolios'=>$portifolios
+      return view('admin.cursos.index',[
+        'cursos'=>$cursoss
       ]);
     }
 
@@ -39,8 +33,8 @@ class PortifolioController extends Controller
      */
     public function create()
     {
-        $categorias = categoria::all();
-        return view('Admin.portifolio.create',['categorias'=>$categorias]);
+        $cursos = cursos::all();
+        return view('admin.cursos.create',['categorias'=>$cursos]);
     }
 
     /**
@@ -52,42 +46,36 @@ class PortifolioController extends Controller
     public function store(Request $request)
     {
         $data = $request->only([
-            'title',
+            'linguagem',
             'body',
-            'categoria',
-            'url',
-            'image'
-        
+            'data',
+            'plataforma'
+       
         ]);
         
         $validator = Validator::make($data,[
-            'title'=> ['required','string','max:100'],
+            'linguagem'=> ['required','string','max:100'],
             'body'=> ['string'],
-            'categoria'=>['string','max:100'],           
-            'url'=>['string','max:100']
+      
          
            
         ]);
 
         if($validator->fails()){
-            return redirect()->route('portifolio.create')
+            return redirect()->route('cursos.create')
             ->withErrors($validator)
             ->withInput();
         }
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $upload = $request->file('image')->store('portifolio');
-      
-        }
         
-        $Page = new portifolio;
-        $Page->title =  $data['title'];
-        $Page->body = $data['body'];
-        $Page->categoria  = $data['categoria'];
-        $Page->url  = $data['url'];
-        $Page->cover  = $upload;
-        $Page->save();
+    
+        $cursos = new cursos;
+        $cursos->linguagem =  $data['linguagem'];
+        $cursos->plataforma = $data['plataforma'];
+        $cursos->body = $data['body'];
+   
+        $cursos->save();
 
-        return redirect()->route('portifolio.index');
+        return redirect()->route('cursos.index');
     }
 
     /**
@@ -106,13 +94,13 @@ class PortifolioController extends Controller
      */
     public function edit($id)
     {
-        $page = portifolio::find($id);
-        if($page){
-            return view('Admin.portifolio.edit',[
-                'article'=>$page
+        $cursos = cursos::find($id);
+        if($cursos){
+            return view('admin.cursos.edit',[
+                'cursos'=>$cursos
             ]);
         }
-        return redirect()->route('portifolio.index');
+        return redirect()->route('cursos.index');
     }
 
     /**
@@ -124,54 +112,49 @@ class PortifolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $page = portifolio::find($id);
+        $cursos = cursos::find($id);
         
-        if($page){
+        if($cursos){
             $data = $request->only([
-                'title',
+                'linguagem',
                 'body',
-                'url',
-                'image'              
+                'plataforma',
+                'ano'          
             ]);
 
            
            
-            if($page['title'] !== $data['title']){
+            if($cursos['linguagem'] !== $data['linguagem']){
            
                 
                 $validator = Validator::make($data,[
-                    'title'=>['required','string','max:100'],
+                    'linguagem'=>['required','string','max:100'],
                     'body'=> ['string']
                     
                 ]);
             } else {
                 $validator = Validator::make($data,[
-                    'title'=>['required','string','max:100'],
+                    'linguagem'=>['required','string','max:100'],
                     'body'=> ['string']
                 ]);
         }         
             if($validator->fails()){
-            return redirect()->route('portifolio.edit',[
-                'portifolio'=>$id
+            return redirect()->route('cursos.edit',[
+                'cursos'=>$id
             ])
             ->withErrors($validator)
             ->withInput();
         }
       
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
-            $upload = $request->file('image')->store('portifolio');
-            $page->cover  = $upload;
-      
-        }
        
-        $page->title = $data['title'];
-        $page->body  = $data['body'];
-        $page->url   = $data['url'];
+        $cursos->linguagem = $data['linguagem'];
+        $cursos->plataforma = $data['plataforma'];
+        $cursos->body  = $data['body'];
+        $cursos->data   = $data['ano'];
       
-        $page->save();
+        $cursos->save();
     }
-        return redirect()->route('portifolio.index');
+        return redirect()->route('cursos.index');
  
     }
 
@@ -183,8 +166,8 @@ class PortifolioController extends Controller
      */
     public function destroy($id)
     {
-            $page = portifolio::find($id);
+            $page = cursos::find($id);
             $page->delete();   
-        return redirect()->route('portifolio.index');
+            return redirect()->route('cursos.index');
     }
 }

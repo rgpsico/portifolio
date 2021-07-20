@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\PortifolioController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\CursosController;
+use App\Http\Controllers\Admin\ExperienciaController;
 
 
 use App\Http\Controllers\Site\PageController as PController;
@@ -38,6 +40,8 @@ Route::prefix('painel')->group(function () {
 
     Route::resource('pages', PageController::class);
 
+    Route::resource('experiencia', ExperienciaController::class);
+    Route::resource('cursos', CursosController::class);
     Route::resource('articles', ArticleController::class);
 
     Route::resource('portifolio', PortifolioController::class);

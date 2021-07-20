@@ -24,29 +24,39 @@
 <div class="card">
   
     <div class="card-body">
-<form class="form-horizontal" action="{{route('articles.update', ['article'=>$article->id])}}" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" action="{{route('cursos.update', $cursos->id)}}" method="POST" >
     @csrf
     @method("PUT")
-        <div class="form-group row">       
-                <label for="nome" class="col-sm-2 col-form-label">Titulo</label>
-                    <div class="col-sm-10">
-                        <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror id="title"  value="{{$article->title}}">
-                    </div>
+        <div class="form-group row">
+            <label for="nome" class="col-sm-2 col-form-label">Linguagens:</label>
+            <div class="col-sm-10">
+                <input type="text"  name="linguagem" class="form-control @error('linguagem') is-invalid @enderror " id="linguagem"  value="{{$cursos->linguagem}}">
             </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nome" class="col-sm-2 col-form-label">Plataforma:</label>
+            <div class="col-sm-10">
+                <input type="text"  name="plataforma" class="form-control @error('plataforma') is-invalid @enderror " id="title"  value="{{$cursos->plataforma}}">
+            </div>
+        </div>
+
+       
+
+        <div class="form-group row">
+            <label for="nome" class="col-sm-2 col-form-label">Ano:</label>
+            <div class="col-sm-10">
+                <input type="text"  name="ano" class="form-control @error('ano') is-invalid @enderror " id="ano"  value="{{$cursos->data}}">
+            </div>
+        </div>
    
             <div class="form-group row">            
-                <label for="nome" class="col-sm-2 col-form-label">Corpo</label>
+                <label for="nome" class="col-sm-2 col-form-label">Conteudo do curso:</label>
                     <div class="col-sm-10">
-                        <textarea name="body" id="body" class="form-control bodyfield" >{{$article->body}}</textarea>  
+                        <textarea name="body" id="body" class="form-control bodyfield" >{{$cursos->body}}</textarea>  
                     </div>
             </div>
-
-            <div class="form-group row">            
-                <label for="imagem" class="col-sm-2 col-form-label">Imagem</label>
-                    <div class="col-sm-10">                         
-                        <input type="file" name="image" class="form-control"/>                   
-                    </div>
-            </div>
+            
 
       
 

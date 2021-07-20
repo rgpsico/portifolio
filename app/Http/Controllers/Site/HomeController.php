@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\article;
+use App\Models\cursos;
+use App\Models\experiencia;
 use App\Models\User;
 use App\Models\portifolio;
+
+
 
 use Illuminate\Http\Request;
 
@@ -15,10 +19,14 @@ class HomeController extends Controller
         $articles = article::paginate(10);    
         $portifolio = portifolio::paginate(10);        
         $users = User::all();
+        $experiencia = experiencia::all();
+        $cursos = cursos::all();
         return view('Site.home',[
             'articles'=>$articles,
             'users'=>$users,
-            'portifolios'=>$portifolio
+            'portifolios'=>$portifolio,
+            'experiencias'=>$experiencia,
+            'cursos' =>$cursos
         
         ]);
     }

@@ -15,6 +15,7 @@
     <thead>
             <tr>
                 <th width="50">ID</th>
+                <th width="50">Cover</th>
                 <th>Titulo</th>
                 <th>conteudo</th>
                 <th width="200">Ações</th>
@@ -24,8 +25,9 @@
     @foreach($articles as $article)
     <tr>
         <td>{{$article->id}}</td>
+        <td><img src="{{Storage::url($article['cover'])}}" alt="" width="100px" height="100px"></td>
         <td>{{$article->title}}</td>
-        <td>{{$article->body}}</td>
+        <td>{!!$article->body!!}</td>
             <td>
             <a href="" class="btn btn-sm btn-success">ver</a>
             <a href="{{route('articles.edit',['article'=> $article->id])}}" class="btn btn-sm btn-info">Editar</a>

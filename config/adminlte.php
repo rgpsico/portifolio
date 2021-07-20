@@ -265,6 +265,22 @@ return [
             'can'         => 'edit-users'
          
         ],
+        ['header' => 'Experiências'],
+        [
+            'text' => 'Cursos',
+            'url'  => 'painel/cursos',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+        [
+            'text' => 'Trabalhos',
+            'url'  => 'painel/experiencia',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+        [
+            'text' => 'Skills',
+            'url'  => 'painel/',
+            'icon' => 'fas fa-fw fa-file',
+        ],
      
         ['header' => 'Configurações'],
         [

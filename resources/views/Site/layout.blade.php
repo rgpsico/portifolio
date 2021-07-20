@@ -482,52 +482,19 @@
 							<div class="header-box mb-50">
 								<h3>Experiências</h3>
 							</div>
-
+												
 							<div class="experience box-1">
-
-								<!-- Experience Item -->
-
+								@foreach ($experiencias as $exp)	
 								<div class="item">
 									<div class="main">
-										<h4>Programador PHP</h4>
-										<p><i class="far fa-calendar-alt">
-										</i>2011 - 2015 | Pousada Hostel Ghueto</p>
+										<h4>{{$exp['title']}}</h4>
+										<p><i class="far fa-calendar-alt"></i>{{$exp['datestart']}} - {{$exp['dateend']}} | {{$exp['place']}}</p>
 									</div>
-									<p>Criação de sites e  um mini ERP para resolver check-in e check-out dos 
-										hospedes alem de fazer email marketing e cadastrar a entrada e saída de produtos do hostel</p>
-									
+									<p>{!!$exp['body']!!}</p>
 								</div>
-								<div class="item">
-									<div class="main">
-										<h4>Programador PHP</h4>
-										<p><i class="far fa-calendar-alt">
-										</i>2016 - 2018 | HXIS-Tecnologia</p>
-									</div>
-									<p>Nessa empresa eu trabalhavara fazendo manuntenções em clientes ligado ao Sebrae , essa empresa a HXIS prestava serviço para o Sebrae.
-										Eu criava pequenos sistemas que ajudavam na captação de novos clientes , trabalhava na customização de templates Wordpress ou na criação de plugins para wordpress. 
-									 </p>
-									 <p>Deploy em Vps , Deploy em AWS , Docker.</p>
-								</div>
-
-								<!-- Experience Item -->
-								<div class="item">
-									<div class="main">
-										<h4>Programador PHP</h4>
-										<p><i class="far fa-calendar-alt"></i>2018 - 2020 | F71 Sistemas</p>
-									</div>
-									<p>trabalho de  manuntenção do ERP da empresa . Usava PHP , MYSQL , CSS , JQUERY , JAVASCRIPT , Framework próprio.</p>
-								</div>
-
-								<!-- Experience Item -->
-								<div class="item">
-									<div class="main">
-										<h4>PHP/LARAVEL</h4>
-										<p><i class="far fa-calendar-alt"></i>2020 - 2021 | FEEGOW TECNOLOGIA</p>
-									</div>
-									<p>Trabalahava com PHP e Laravel criando APIS para um ERP.</p>
-								</div>
-								
+								@endforeach
 							</div>
+							
 						</div>
 
 						<!-- Education Column Start -->
@@ -541,51 +508,19 @@
 							<div class="experience box-2">
 
 								<!-- Education Item -->
+								@foreach ($cursos as $curso)
 								<div class="item">
 									<div class="main">
-										<h4>PHP/JQUERY </h4>
-										<p><i class="far fa-calendar-alt"></i>Cooti Informatica 2011</p>
+										<h4>{!!$curso['linguagem']!!}</h4>
+										<p><i class="far fa-calendar-alt"></i>{!!$curso['plataforma']!!} | {!!$curso['data']!!}</p>
 									</div>
 									<p>
-										Curso PHP MYSQL AJAX 
+										{!!$curso['body']!!}
 									</p>
 								</div>
+								@endforeach
 
-								<!-- Education Item -->
-								<div class="item">
-									<div class="main">
-										<h4>PHP/PHP Funcional</h4>
-										<p><i class="far fa-calendar-alt"></i>2012| Upinside</p>
-									</div>
-									<p>
-									   Curso completo de PHP que abordava todos os conceitos da linguagem do básico ao avançado.
-									</p>
-								</div>
-
-								<!-- Education Item -->
-								<div class="item">
-									<div class="main">
-										<h4>PHP Orientado Objeto</h4>
-										<p><i class="far fa-calendar-alt"></i>2014 | Upinside</p>
-									</div>
-									<p>Primeiro contato com Programação orientado objeto , curso completo abordava todos os conceitos de orientação objeto.</p>
-								</div>
-
-								<div class="item">
-									<div class="main">
-										<h4>PHPUNIT/GITHUB/GITFLOW/TYPESCRIPT</h4>
-										<p><i class="far fa-calendar-alt"></i>2020 | ALURA</p>
-									</div>
-									<p>plataforma que dar uma introdução em várias linguagens</p>
-								</div>
-
-								<div class="item">
-									<div class="main">
-										<h4>PHP/JAVASCRIPT/Laravel/GIT/REACT/REACT NATIVE</h4>
-										<p><i class="far fa-calendar-alt"></i>2018 | b7WEB</p>
-									</div>
-									<p>Curso que ensianava várias linguagens de programação, ainda estudo por essa plataforma.</p>
-								</div>
+								
 
 
 
@@ -805,10 +740,12 @@
 					<div class="row mt-100">
 						<div class="col-lg-12 col-sm-12 portfolio-filter">
 							<ul>
-                          
+								@php 
+								$img = asset('assets/img/default-image.jpg');
+								@endphp 
 								<li class="active" data-filter="*">TODOS</li>
                                 @foreach ($portifolios as $portifolio)
-								  <?php  $cover = ($portifolio['cover'] == null ? "" : Storage::url($portifolio['cover'])  )  ?>
+								  <?php  $cover = ($portifolio['cover'] == null ? $img : Storage::url($portifolio['cover'])  )  ?>
                                 <li data-filter="{{$portifolio['categoria']}}">{{$portifolio['categoria']}}</li>
                                 @endforeach
 							</ul>
@@ -819,6 +756,7 @@
 					<div class="row portfolio-items mt-100 mb-100">
 					
 						<!-- Portfolio Item -->
+						
                         @foreach ($portifolios as $portifolio)
 						<div class="item col-lg-4 col-sm-6 {{$portifolio['categoria']}}">
 							<figure>
@@ -826,7 +764,7 @@
 								<figcaption>
 									<h3>{{$portifolio['title']}}</h3>
 									<p>{{$portifolio['categoria']}}</p><i class="fas fa-image"></i>
-									<a class="image-link" href="{{Storage::url($portifolio['cover'])}}"></a>
+									<a   href="{{$portifolio['url']}}" target="_blank"></a>
 								</figcaption>
 							</figure>
 						</div>

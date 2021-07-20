@@ -4,19 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\hash;
-use Illuminate\Support\Str;
+use App\Models\experiencia;
 use Illuminate\Support\Facades\Auth;
-use App\Models\article;
+use Illuminate\Support\Facades\Validator;
 use App\Models\categoria;
 
-
-
-class ArticleController extends Controller
+class ExperienciaController extends Controller
 {
-  
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,15 +18,12 @@ class ArticleController extends Controller
     }
     public function index()
     {
-     $articles = article::paginate(10);
+     $experiencias = experiencia::paginate(10);
      $loggedId = intval(Auth::id());
      $categorias = categoria::all();
-   
 
-      return view('Admin.articles.index',[
-          'articles'=>$articles,
-          'categorias'=>$categorias
-
+      return view('Admin.experiencia.index',[
+        'experiencias'=>$experiencias
       ]);
     }
 
@@ -44,8 +35,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categorias = categoria::all();
-        return view('Admin.articles.create',
-      ['categorias'=>$categorias]);
+        return view('Admin.experiencia.create',['categorias'=>$categorias]);
     }
 
     /**
@@ -59,42 +49,36 @@ class ArticleController extends Controller
         $data = $request->only([
             'title',
             'body',
-            'image',
-            'categoria'
-        
+            'datestart',
+            'dateend',
+            'place'
+       
         ]);
-
- 
         
         $validator = Validator::make($data,[
             'title'=> ['required','string','max:100'],
             'body'=> ['string'],
-            'categoria'=>['string','max:100']
+      
+         
            
-
         ]);
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->image->extension();
-            $nameFile = "{$name}.{$extension}";
-            $upload = $request->image->storeAs('portifolio', $nameFile);
-      
-        }
-
         if($validator->fails()){
-            return redirect()->route('articles.create')
+            return redirect()->route('experiencia.create')
             ->withErrors($validator)
             ->withInput();
         }
-        $Page = new article;
-        $Page->title =  $data['title'];
-        $Page->body = $data['body'];
-        $Page->categoria  = $data['categoria'];
-        $Page->cover  = $nameFile;
-        $Page->save();
+        
+    
+        $experiencia = new experiencia;
+        $experiencia->title =  $data['title'];
+        $experiencia->place = $data['place'];
+        $experiencia->body = $data['body'];
+        $experiencia->datestart = $data['datestart'];
+        $experiencia->dateend = $data['dateend'];
+        $experiencia->save();
 
-        return redirect()->route('articles.index');
+        return redirect()->route('experiencia.index');
     }
 
     /**
@@ -113,13 +97,13 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $page = article::find($id);
-        if($page){
-            return view('admin.articles.edit',[
-                'article'=>$page
+        $experiencia = experiencia::find($id);
+        if($experiencia){
+            return view('admin.experiencia.edit',[
+                'experiencia'=>$experiencia
             ]);
         }
-        return redirect()->route('articles.index');
+        return redirect()->route('experiencia.index');
     }
 
     /**
@@ -131,14 +115,20 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = article::find($id);
+        $experiencia = experiencia::find($id);
         
-        if($article){
+        if($experiencia){
             $data = $request->only([
                 'title',
-                'body',              
+                'body',
+                'datestart',
+                'dateend' ,
+                'place'             
             ]);
-            if($article['title'] !== $data['title']){
+
+           
+           
+            if($experiencia['title'] !== $data['title']){
            
                 
                 $validator = Validator::make($data,[
@@ -153,23 +143,22 @@ class ArticleController extends Controller
                 ]);
         }         
             if($validator->fails()){
-            return redirect()->route('pages.edit',[
-                'page'=>$id
+            return redirect()->route('portifolio.edit',[
+                'portifolio'=>$id
             ])
             ->withErrors($validator)
             ->withInput();
         }
-
-
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $upload = $request->file('image')->store('portifolio');
-            $article->cover  = $upload;
-        }
-            $article->title  = $data['title'];
-            $article->body  = $data['body'];
-            $article->save();
+      
+       
+        $experiencia->title = $data['title'];
+        $experiencia->place = $data['place'];
+        $experiencia->body  = $data['body'];
+        $experiencia->datestart   = $data['datestart'];
+        $experiencia->dateend   = $data['dateend'];
+        $experiencia->save();
     }
-        return redirect()->route('articles.index');
+        return redirect()->route('experiencia.index');
  
     }
 
@@ -181,8 +170,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-            $page = article::find($id);
+            $page = experiencia::find($id);
             $page->delete();   
-        return redirect()->route('pages.index');
+            return redirect()->route('experiencia.index');
     }
 }
