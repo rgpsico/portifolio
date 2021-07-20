@@ -62,7 +62,7 @@
 			<!-- Left Block -->
 			<nav class="header-main" data-simplebar>
 
-				<!-- Logo -->
+				<!-- Logo aa-->
 				<div class="logo">
               
             		<img src="{{asset('assets/img/logo.png')}}" alt="">
