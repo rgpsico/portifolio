@@ -117,7 +117,7 @@ class ArticleController extends Controller
     {
         $page = article::find($id);
         if($page){
-            return view('admin.articles.edit',[
+            return view('Admin.articles.edit',[
                 'article'=>$page
             ]);
         }
