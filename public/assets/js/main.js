@@ -36,7 +36,7 @@ $(window).on('load', function() {
 	$("#preloader").delay(1000).addClass('loaded');
 	
 	/* -----------------------------------
-			  2. Sound Setup
+			  2. Sound Setupss
 	----------------------------------- */
 	$('body').append('<audio loop autoplay volume="1" id="audio-player"><source src="https://www.rogerneves.com.br/assets/music.mp3" type="audio/mpeg"></audio>');
     	var audio = document.getElementById("audio-player");
