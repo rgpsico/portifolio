@@ -94,7 +94,9 @@ class ArticleController extends Controller
         $Page->cover  = $nameFile;
         $Page->save();
 
-        return redirect()->route('articles.index');
+        return redirect()
+        ->route('articles.index')
+        ->withSuccess("Cadastrado com Successo");
     }
 
     /**
@@ -183,6 +185,6 @@ class ArticleController extends Controller
     {
             $page = article::find($id);
             $page->delete();   
-        return redirect()->route('pages.index');
+        return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
     }
 }

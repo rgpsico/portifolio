@@ -7,6 +7,7 @@
         Meus Artigos
        <a href="{{route('articles.create')}}" class="btn btn-sm btn-success">Novo Artigos</a>
     </h1>
+    @include('admin.includes.alert')
 @endsection
 
 @section('content')

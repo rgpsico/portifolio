@@ -87,7 +87,7 @@ class PortifolioController extends Controller
         $Page->cover  = $upload;
         $Page->save();
 
-        return redirect()->route('portifolio.index');
+        return redirect()->route('portifolio.index')->withSuccess("Cadastrado com Sucesso");
     }
 
     /**
@@ -171,7 +171,7 @@ class PortifolioController extends Controller
       
         $page->save();
     }
-        return redirect()->route('portifolio.index');
+    return redirect()->route('portifolio.index')->withSuccess("Atualizado com Sucesso");
  
     }
 
@@ -185,6 +185,6 @@ class PortifolioController extends Controller
     {
             $page = portifolio::find($id);
             $page->delete();   
-        return redirect()->route('portifolio.index');
+            return redirect()->route('portifolio.index')->withSuccess("Removido com Sucesso");
     }
 }

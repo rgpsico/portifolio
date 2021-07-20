@@ -11,16 +11,7 @@
 
 @section('content')
 
-@if($errors->any())
-<div class="alert alert-danger">
-    <h5><i class="icon fas fa-ban"></i>Ocorreu um error</h5>
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{@$error}}</li>
-        @endforeach
-    </ul>
-  </div>
-@endif
+@include('admin.includes.alert')
 <div class="card">
   
     <div class="card-body">

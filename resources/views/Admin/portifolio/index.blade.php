@@ -8,7 +8,7 @@
        <a href="{{route('portifolio.create')}}" class="btn btn-sm btn-success">Novo trabalho</a>
     </h1>
 @endsection
-
+@include('admin.includes.alert')
 @section('content')
 <div class="card">   
 <table class="table table-hover">
