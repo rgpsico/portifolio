@@ -50,17 +50,14 @@ class ExperienciaController extends Controller
             'title',
             'body',
             'datestart',
-            'dateend'
-           
+            'dateend',
+            'place'
        
         ]);
         
         $validator = Validator::make($data,[
             'title'=> ['required','string','max:100'],
-            'body'=> ['string'],
-      
-         
-           
+            'body'=> ['string'], 
         ]);
 
         if($validator->fails()){
@@ -71,11 +68,11 @@ class ExperienciaController extends Controller
         
     
         $experiencia = new experiencia;
-        $experiencia->title =  $data['title'];
-       
-        $experiencia->body = $data['body'];
+        $experiencia->title     =  $data['title'];
+        $experiencia->place     = $data['place'];
+        $experiencia->body      = $data['body'];
         $experiencia->datestart = $data['datestart'];
-        $experiencia->dateend = $data['dateend'];
+        $experiencia->dateend   = $data['dateend'];
         $experiencia->save();
 
         return redirect()->route('experiencia.index');
@@ -122,14 +119,16 @@ class ExperienciaController extends Controller
                 'title',
                 'body',
                 'datestart',
-                'dateend' 
-           
+                'dateend' ,
+                'place'             
             ]);
 
            
            
-            if($experiencia['title'] !== $data['title']){          
-                    $validator = Validator::make($data,[
+            if($experiencia['title'] !== $data['title']){
+           
+                
+                $validator = Validator::make($data,[
                     'title'=>['required','string','max:100'],
                     'body'=> ['string']
                     
@@ -150,6 +149,7 @@ class ExperienciaController extends Controller
       
        
         $experiencia->title = $data['title'];
+        $experiencia->place = $data['place'];
         $experiencia->body  = $data['body'];
         $experiencia->datestart   = $data['datestart'];
         $experiencia->dateend   = $data['dateend'];
