@@ -37,7 +37,7 @@
         <div class="form-group row">
             <label for="nome" class="col-sm-2 col-form-label">Empresa:</label>
             <div class="col-sm-10">
-                <input type="text"  name="place" class="form-control @error('place') is-invalid @enderror " id="title"  value="{{$experiencia->place}}">
+                <input type="text"  name="place" class="form-control @error('place') is-invalid @enderror " id="place"  value="{{$experiencia->place}}">
             </div>
         </div>
 

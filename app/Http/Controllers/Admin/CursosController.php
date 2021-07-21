@@ -34,7 +34,7 @@ class CursosController extends Controller
     public function create()
     {
         $cursos = cursos::all();
-        return view('admin.cursos.create',['categorias'=>$cursos]);
+        return view('Admin.cursos.create',['categorias'=>$cursos]);
     }
 
     /**
