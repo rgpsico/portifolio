@@ -746,10 +746,9 @@
 								$img = asset('assets/img/default-image.jpg');
 								@endphp 
 								<li class="active" data-filter="*">TODOS</li>
-                                @foreach ($portifolios as $portifolio)
-								<li data-filter="{{$portifolio['categoria']}}">{{$portifolio['categoria']}}</li>
-								
-                              
+                                @foreach ($categorias as $cat)
+								<li data-filter="{{$cat['title']}}">{{$cat['title']}}</li>
+								                             
                                 @endforeach
 							</ul>
 						</div>

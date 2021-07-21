@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\article;
+use App\Models\categoria;
 use App\Models\cursos;
 use App\Models\experiencia;
 use App\Models\User;
@@ -25,13 +26,15 @@ class HomeController extends Controller
         $experiencia = experiencia::all();
         $cursos = cursos::all();
         $Setting = Setting::all();
+        $categorias = categoria::all();
         return view('Site.home',[
             'articles'=>$articles,
             'users'=>$users,
             'portifolios'=>$portifolio,
             'experiencias'=>$experiencia,
             'cursos' =>$cursos,
-            'settings'=>$Setting
+            'settings'=>$Setting,
+            'categorias'=>$categorias
         
         ]);
     }
