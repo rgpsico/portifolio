@@ -760,7 +760,7 @@
 						<!-- Portfolio Item -->
 						
                         @foreach ($portifolios as $portifolio)
-						<div class="item col-lg-4 col-sm-6 {{$portifolio['categoria']}}">
+						<div class="item col-lg-4 col-sm-6 .{{$portifolio['categoria']}}">
 							<?php  $cover = ($portifolio['cover'] == null ? $img : Storage::url($portifolio['cover'])  )  ?>
 							<figure>
 								<img src="{{$cover}}">
