@@ -490,7 +490,7 @@
 								<div class="item">
 									<div class="main">
 										<h4>{{$exp['title']}}</h4>
-										<p><i class="far fa-calendar-alt"></i>{{formatDateAndTime($exp['datestart'])}} - {{formatDateAndTime($exp['dateend'])}} | {{$exp['place']}}</p>
+										<p><i class="far fa-calendar-alt"></i>dê {{formatDateAndTime($exp['datestart'])}} até {{formatDateAndTime($exp['dateend'])}} | {{$exp['place']}}</p>
 									</div>
 									<p>{!!$exp['body']!!}</p>
 								</div>
