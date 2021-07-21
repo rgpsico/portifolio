@@ -18,6 +18,7 @@
                 <th>cover</th>
                 <th>Titulo</th>
                 <th>conteúdo</th>
+                <th>categoria</th>
                 <th width="200">Ações</th>
             </tr>
     </thead>
@@ -28,6 +29,7 @@
         <td><img src="{{Storage::url($portifolio['cover'])}}" alt="" width="100px" height="100px"></td>
         <td>{{$portifolio->title}}</td>
         <td>{!!$portifolio->body!!}</td>
+        <td>{!!$portifolio->categoria!!}</td>
             <td>
             <a href="" class="btn btn-sm btn-success">ver</a>
             <a href="{{route('portifolio.edit',['portifolio'=> $portifolio->id])}}" class="btn btn-sm btn-info">Editar</a>

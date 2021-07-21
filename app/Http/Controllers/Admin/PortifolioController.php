@@ -133,7 +133,8 @@ class PortifolioController extends Controller
                 'title',
                 'body',
                 'url',
-                'image'              
+                'image',
+                'categoria'            
             ]);
 
            
@@ -170,6 +171,7 @@ class PortifolioController extends Controller
         $page->title = $data['title'];
         $page->body  = $data['body'];
         $page->url   = $data['url'];
+        $page->categoria   = $data['categoria'];
       
         $page->save();
     }
