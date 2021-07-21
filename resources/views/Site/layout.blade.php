@@ -8,7 +8,10 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<!-- Title -->
-		<title>Roger Neves - Portfolio</title>
+		@foreach ($settings as $setting)
+		<title>{{$setting->content}}</title>
+		@endforeach
+
 
     <link rel="stylesheet" href="{{asset('assets/css/plugins/bootstrap.min.css')}}">
 

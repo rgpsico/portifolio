@@ -8,6 +8,9 @@ use App\Models\cursos;
 use App\Models\experiencia;
 use App\Models\User;
 use App\Models\portifolio;
+use App\Models\Setting;
+
+
 
 
 
@@ -21,12 +24,14 @@ class HomeController extends Controller
         $users = User::all();
         $experiencia = experiencia::all();
         $cursos = cursos::all();
+        $Setting = Setting::all();
         return view('Site.home',[
             'articles'=>$articles,
             'users'=>$users,
             'portifolios'=>$portifolio,
             'experiencias'=>$experiencia,
-            'cursos' =>$cursos
+            'cursos' =>$cursos,
+            'settings'=>$Setting
         
         ]);
     }
