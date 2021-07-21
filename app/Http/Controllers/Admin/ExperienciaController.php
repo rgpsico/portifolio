@@ -99,7 +99,7 @@ class ExperienciaController extends Controller
     {
         $experiencia = experiencia::find($id);
         if($experiencia){
-            return view('admin.experiencia.edit',[
+            return view('Admin.experiencia.edit',[
                 'experiencia'=>$experiencia
             ]);
         }
