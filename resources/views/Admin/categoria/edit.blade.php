@@ -24,7 +24,7 @@
 <div class="card">
   
     <div class="card-body">
-<form class="form-horizontal" action="{{route('categoria.update', ['categoria'=>$categoria->id])}}" method="POST" >
+<form class="form-horizontal" action="{{route('categoria.update',$categoria->id)}}" method="POST" >
     @csrf
     @method("PUT")
         <div class="form-group row">       

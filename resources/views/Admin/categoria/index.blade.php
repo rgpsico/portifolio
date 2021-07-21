@@ -27,10 +27,10 @@
         <td>{!!$categoria->title!!}</td>
         <td>{!!$categoria->body!!}</td>
             <td>
-            <a href="" class="btn btn-sm btn-success">ver</a>
-            <a href="" class="btn btn-sm btn-info">Editar</a>
+           
+            <a href="{{route('categoria.edit', $categoria->id)}}" class="btn btn-sm btn-info">Editar</a>
         
-            <form method="POST" action="" class="d-inline" onsubmit="return confirm('Tem certeza que deseja Excluir?')">
+            <form method="POST" action="{{route('categoria.destroy', $categoria->id)}}" class="d-inline" onsubmit="return confirm('Tem certeza que deseja Excluir?')">
             @method('DELETE')
             @csrf
                 <button class="btn btn-sm btn-danger"> Excluir</button>
