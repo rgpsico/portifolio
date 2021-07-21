@@ -8,10 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<!-- Title -->
-		@foreach ($settings as $setting)
-		<title>{{$setting->content}}</title>
-		@endforeach
-
+		
+		<title>Roger Neves - Portfólio</title>
+	
 
     <link rel="stylesheet" href="{{asset('assets/css/plugins/bootstrap.min.css')}}">
 
@@ -491,7 +490,7 @@
 								<div class="item">
 									<div class="main">
 										<h4>{{$exp['title']}}</h4>
-										<p><i class="far fa-calendar-alt"></i>{{$exp['datestart']}} - {{$exp['dateend']}} | {{$exp['place']}}</p>
+										<p><i class="far fa-calendar-alt"></i>{{formatDateAndTime($exp['datestart'])}} - {{formatDateAndTime($exp['dateend'])}} | {{$exp['place']}}</p>
 									</div>
 									<p>{!!$exp['body']!!}</p>
 								</div>
