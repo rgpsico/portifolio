@@ -17,7 +17,7 @@
                 <th width="50">ID</th>
                 <th>Titulo</th>
                 <th>conteudo</th>
-                <th>Plataforma</th>
+                <th>Empresa</th>
                 <th>Data Inicio</th>
                 <th>Data Fim</th>
                 <th width="200">Ações</th>
@@ -29,7 +29,7 @@
         <td>{{$experiencia->id}}</td>
         <td>{!!$experiencia->title!!}</td>
         <td>{!!$experiencia->body!!}</td>
-        <td>{!!$experiencia->plataforma!!}</td>
+        <td>{!!$experiencia->place!!}</td>
         <td>{!!$experiencia->datestart!!}</td>
         <td>{!!$experiencia->dateend!!}</td>
             <td>
