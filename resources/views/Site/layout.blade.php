@@ -747,7 +747,7 @@
 								@endphp 
 								<li class="active" data-filter="*">TODOS</li>
                                 @foreach ($categorias as $cat)
-								<li data-filter="{{$cat['title']}}">{{$cat['title']}}</li>
+								<li data-filter=".{{$cat['title']}}">{{$cat['title']}}</li>
 								                             
                                 @endforeach
 							</ul>
