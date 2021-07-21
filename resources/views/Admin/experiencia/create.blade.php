@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-        Criar Experiencias
+        Criar Experiências
     
     </h1>
 @endsection
@@ -32,7 +32,7 @@
             <div class="form-group row">       
                 <label for="nome" class="col-sm-2 col-form-label">Titulo da experiencia</label>
                     <div class="col-sm-10">
-                        <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror " id="name"  value="{{old('title')}}">
+                        <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror" id="name"  value="{{old('title')}}">
                     </div>
             </div>
    
