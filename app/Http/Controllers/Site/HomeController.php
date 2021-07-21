@@ -20,7 +20,7 @@ class HomeController extends Controller
 {
     public function index(){
         $articles = article::paginate(10);    
-        $portifolio = portifolio::paginate(10);        
+        $portifolio = portifolio::all();        
         $users = User::all();
         $experiencia = experiencia::all();
         $cursos = cursos::all();

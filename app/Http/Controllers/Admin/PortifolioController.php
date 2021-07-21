@@ -106,10 +106,12 @@ class PortifolioController extends Controller
      */
     public function edit($id)
     {
+        $categorias = categoria::all();
         $page = portifolio::find($id);
         if($page){
             return view('Admin.portifolio.edit',[
-                'article'=>$page
+                'article'=>$page,
+                'categorias'=>$categorias
             ]);
         }
         return redirect()->route('portifolio.index');

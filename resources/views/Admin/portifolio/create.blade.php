@@ -31,7 +31,7 @@
             <div class="col-sm-10">
                 <select  name="categoria"  class="form-control"> 
                     @foreach($categorias->all() as $cat)
-                    <option value="{{$cat['id']}}">{{$cat['title']}}</option>      
+                    <option value="{{$cat['title']}}">{{$cat['title']}}</option>       
                     @endforeach       
                 </select>
             </div>

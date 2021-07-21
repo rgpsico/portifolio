@@ -27,6 +27,17 @@
 <form class="form-horizontal" action="{{route('portifolio.update', ['portifolio'=>$article->id])}}" method="POST" enctype="multipart/form-data" >
     @csrf
     @method("PUT")
+
+    <div class="form-group row">       
+        <label for="nome" class="col-sm-2 col-form-label">Categoria</label>
+            <div class="col-sm-10">
+                <select  name="categoria"  class="form-control"> 
+                    @foreach($categorias->all() as $cat)
+                    <option value="{{$cat['title']}}">{{$cat['title']}}</option>      
+                    @endforeach       
+                </select>
+            </div>
+    </div>
         <div class="form-group row">       
                 <label for="nome" class="col-sm-2 col-form-label">Titulo</label>
                     <div class="col-sm-10">

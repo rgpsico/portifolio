@@ -17,7 +17,7 @@
                 <th width="50">ID</th>
                 <th>cover</th>
                 <th>Titulo</th>
-                <th>conteudo</th>
+                <th>conteúdo</th>
                 <th width="200">Ações</th>
             </tr>
     </thead>
