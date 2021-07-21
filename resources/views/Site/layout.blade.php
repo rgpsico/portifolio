@@ -747,8 +747,9 @@
 								@endphp 
 								<li class="active" data-filter="*">TODOS</li>
                                 @foreach ($portifolios as $portifolio)
+								<li data-filter="{{$portifolio['categoria']}}">{{$portifolio['categoria']}}</li>
 								  <?php  $cover = ($portifolio['cover'] == null ? $img : Storage::url($portifolio['cover'])  )  ?>
-                                <li data-filter="{{$portifolio['categoria']}}">{{$portifolio['categoria']}}</li>
+                              
                                 @endforeach
 							</ul>
 						</div>

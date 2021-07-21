@@ -27,7 +27,7 @@
         <td>{{$portifolio->id}}</td>
         <td><img src="{{Storage::url($portifolio['cover'])}}" alt="" width="100px" height="100px"></td>
         <td>{{$portifolio->title}}</td>
-        <td>{{$portifolio->body}}</td>
+        <td>{!!$portifolio->body!!}</td>
             <td>
             <a href="" class="btn btn-sm btn-success">ver</a>
             <a href="{{route('portifolio.edit',['portifolio'=> $portifolio->id])}}" class="btn btn-sm btn-info">Editar</a>
