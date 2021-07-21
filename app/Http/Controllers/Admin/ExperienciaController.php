@@ -122,8 +122,8 @@ class ExperienciaController extends Controller
                 'title',
                 'body',
                 'datestart',
-                'dateend' ,
-                'place'             
+                'dateend' 
+           
             ]);
 
            
@@ -150,7 +150,6 @@ class ExperienciaController extends Controller
       
        
         $experiencia->title = $data['title'];
-        $experiencia->place = $data['place'];
         $experiencia->body  = $data['body'];
         $experiencia->datestart   = $data['datestart'];
         $experiencia->dateend   = $data['dateend'];
