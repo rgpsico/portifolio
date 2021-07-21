@@ -128,10 +128,8 @@ class ExperienciaController extends Controller
 
            
            
-            if($experiencia['title'] !== $data['title']){
-           
-                
-                $validator = Validator::make($data,[
+            if($experiencia['title'] !== $data['title']){          
+                    $validator = Validator::make($data,[
                     'title'=>['required','string','max:100'],
                     'body'=> ['string']
                     
