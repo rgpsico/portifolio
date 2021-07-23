@@ -15,7 +15,8 @@ use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CursosController;
 use App\Http\Controllers\Admin\ExperienciaController;
 use App\Http\Controllers\Admin\InteressesController;
-use App\Http\Controllers\Admin\servicosController;
+use App\Http\Controllers\Admin\ServicosController;
+
 use App\Http\Controllers\Site\PageController as PController;
 Route::get('/', [HomeSite::class, 'index']);
 Route::get('/blog/{id}', [HomeSite::class,'singleBlog']);
