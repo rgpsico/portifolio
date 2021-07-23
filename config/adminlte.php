@@ -232,11 +232,26 @@ return [
          
         ],
         [
-            'text'        => 'Home',
-            'url'         => 'painel/home',
+            'text'        => 'Ver Site',
+            'url'         => '../',
             'icon'        => 'far fa-fw fa-file'
          
         ],
+        ['header' => 'Sobre'],
+        [
+            'text'        => 'Interesses',
+            'url'         => 'painel/interesses',
+            'icon'        => 'far fa-fw fa-file'
+         
+        ],
+
+        [
+            'text'        => 'Serviços',
+            'url'         => 'painel/servicos',
+            'icon'        => 'far fa-fw fa-file'
+         
+        ],
+          
           
       
        ['header' => 'Conteudo'],
@@ -274,11 +289,6 @@ return [
         [
             'text' => 'Trabalhos',
             'url'  => 'painel/experiencia',
-            'icon' => 'fas fa-fw fa-file',
-        ],
-        [
-            'text' => 'Skills',
-            'url'  => 'painel/',
             'icon' => 'fas fa-fw fa-file',
         ],
      

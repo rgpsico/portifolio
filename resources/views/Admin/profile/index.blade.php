@@ -59,6 +59,21 @@
             </div>
 
             <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Tempo de experiência</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="anosExperiencia" class="form-control  @error('anosExperiencia') is-invalid @enderror " id="anosExperiencia" value="{{$user->anosExperiencia}}">
+                    </div>
+            </div>
+
+            
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Numero de projetos</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="numeroProjetos" class="form-control  @error('numeroProjetos') is-invalid @enderror " id="numeroProjetos" value="{{$user->numeroProjetos}}">
+                    </div>
+            </div>
+
+            <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">Descrição</label>
                     <div class="col-sm-10">
                         <input type="text"  name="description" class="form-control  @error('description') is-invalid @enderror " id="description" value="{{$user->description}}">

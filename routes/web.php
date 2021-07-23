@@ -14,8 +14,8 @@ use App\Http\Controllers\Admin\PortifolioController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CursosController;
 use App\Http\Controllers\Admin\ExperienciaController;
-
-
+use App\Http\Controllers\Admin\InteressesController;
+use App\Http\Controllers\Admin\servicosController;
 use App\Http\Controllers\Site\PageController as PController;
 Route::get('/', [HomeSite::class, 'index']);
 Route::get('/blog/{id}', [HomeSite::class,'singleBlog']);
@@ -43,7 +43,8 @@ Route::prefix('painel')->group(function () {
     Route::resource('experiencia', ExperienciaController::class);
     Route::resource('cursos', CursosController::class);
     Route::resource('articles', ArticleController::class);
-
+    Route::resource('interesses', InteressesController::class);
+    Route::resource('servicos', servicosController::class);
     Route::resource('portifolio', PortifolioController::class);
 
     Route::resource('categoria', CategoriaController::class);

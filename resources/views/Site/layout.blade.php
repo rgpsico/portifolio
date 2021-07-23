@@ -192,7 +192,7 @@
                                 		<div class="info-icon">
                                      		<i class="fas fa-award"></i>
                                      		<div class="desc-icon">
-												<h6>8 Anos</h6>
+												<h6>	{!!$user['anosExperiencia']!!} Anos de</h6>
                                             	<p>Experiência</p>
                                        		</div>
                                 		</div>
@@ -203,7 +203,7 @@
                                 		<div class="info-icon">
                                      		<i class="fas fa-certificate"></i>
                                      		<div class="desc-icon">
-												<h6>28 Projetos</h6>
+												<h6>{{$user['numeroProjetos']}} Projetos</h6>
                                             	<p>Completos</p>
                                       		</div>
                                 		</div>
@@ -340,129 +340,21 @@
 
 		
 								<!-- Service Item -->
-							  
+							  @foreach ($servicos as $servico)
+								  
+							
 								<div class="col-lg-6 col-sm-6">
 									<div class="service box-1 mb-40">
-										<i class="fas fa-desktop"></i>
-										<h4>Criação de Sites</h4>
+										<i class="fas {{$servico->icon}}"></i>
+										<h4>{{$servico->nome}}</h4>
 										<p>Uso a tecnologia para criação de sistemas que levam os clientes até você.</p>
 									</div>
 								</div>
-		
-								<div class="col-lg-6 col-sm-6">
-									<div class="service box-1 mb-40">
-										<i class="fas fa-desktop"></i>
-										<h4>Criação de Lojas virtuais</h4>
-										<p>Se você tem um comercio fisico ajudo você a construir sua loja 
-											virtual para alcançar mais clientes.</p>
-									</div>
-								</div>
-		
-								<div class="col-lg-6 col-sm-6">
-									<div class="service box-1 mb-40">
-										<i class="fas fa-desktop"></i>
-										<h4>Marketing Digital</h4>
-										<p>Campanhas atraves das midias sociais para atrair novos clientes.</p>
-									</div>
-								</div>
-		
-								
-								<div class="col-lg-6 col-sm-6">
-									<div class="service box-1 mb-40">
-										<i class="fas fa-desktop"></i>
-										<h4>Otimização de processos</h4>
-										<p>criamos soluções para  otimização de processos repetitivos.</p>
-									</div>
-								</div>
-						 
-		
-								
-		
-								
-		
-							</div>
-              
-
-						
-
-						
-
+								@endforeach
+							</div>            
 					</div>
-
-					<!-- Testimonial Row Start -->
-					<div class="row testimonial mt-60">
-
-						<!-- Header Block -->
-						<div class="col-md-12">
-							<div class="header-box mb-50">
-								<h3>Depoimentos</h3>
-							</div>
-						</div>
-
-						<div class="owl-carousel owl-theme">
-
-							<!-- Testimonail Item -->
-
-							<div class="testimonial-item">
-								<div class="media">
-                               
-									<img src="{{asset('assets/img/testimonials/testimonial-1.jpg')}}" alt="">
-									<div class="content">
-										<h4>Roberto Silva</h4>
-										<p>Professor de dança</p>
-									</div>
-									<ul class="rating">
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-                                 	</ul>
-								</div>
-								<div class="comment pt-30">
-									<p>
-										Muito Obrigado , o numero de clientes aumentaram mais 
-										de 50% hoje meu foco e 100% nos meios digitais para alcançar novos clientes.
-									</p>
-								</div>
-							</div>
-
-
-							<div class="testimonial-item">
-								<div class="media">
-                               
-									<img src="{{asset('assets/img/testimonials/testimonial-1.jpg')}}" alt="">
-									<div class="content">
-										<h4>Felipe Cardoso</h4>
-										<p>Babeiro Profissional</p>
-									</div>
-									<ul class="rating">
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-										<li><i class="far fa-star"></i></li>
-                                 	</ul>
-								</div>
-								<div class="comment pt-30">
-									<p>
-									Hoje , minha reclamação e saber  se tenho tempo para atender todos os clientes , 
-									são muitos em vários lugares da zona sul do RJ ,
-									 muito obrigado por me convecer até um sistema online . 
-									</p>
-								</div>
-							</div>
-              
-
-					
-
-						</div>
-					</div>
-
-					<!-- Price Row Start -->
-					
-			  	</section>
-         	</div>
+				</div>
+				<!--	@ include('Site.pages.depoimentos')-->
 
 			<!-- Resume Section -->
           	<div class="page pt-resume" data-simplebar>

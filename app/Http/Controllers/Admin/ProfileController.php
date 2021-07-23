@@ -48,7 +48,9 @@ class ProfileController extends Controller
                 'password',
                 'password_confirmation',
                 'image',
-                'curriculum'
+                'curriculum',
+                'anosExperiencia',
+                'numeroProjetos'
             ]);
      
       
@@ -66,6 +68,8 @@ class ProfileController extends Controller
             $user->cel = $data['cel'];
             $user->estate = $data['estate'];
             $user->bairro = $data['bairro'];
+            $user->anosExperiencia = $data['anosExperiencia'];
+            $user->numeroProjetos = $data['numeroProjetos'];
   
 
             if($user->email != $data['email']){
