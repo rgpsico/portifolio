@@ -234,7 +234,8 @@ return [
         [
             'text'        => 'Ver Site',
             'url'         => '../',
-            'icon'        => 'far fa-fw fa-file'
+            'icon'        => 'far fa-fw fa-file',
+            '_target' => 'on_black'
          
         ],
         ['header' => 'Sobre'],
