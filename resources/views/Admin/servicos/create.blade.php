@@ -17,7 +17,7 @@
     <div class="card-body">
 <form class="form-horizontal" method="POST" action="{{route('servicos.store')}}">
     @csrf
-    @include('admin.servicos._partials.form')
+    @include('Admin.servicos._partials.form')
     </form>
 </div>
 </div>
