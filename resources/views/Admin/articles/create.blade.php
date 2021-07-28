@@ -35,6 +35,16 @@
                         <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror id="name"  value="{{old('title')}}">
                     </div>
             </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Tipo</label>
+                    <div class="col-sm-10">                         
+                       <select name="type" id="type" class="form-control">
+                       <option value="1">Video</option>
+                       <option value="0" selected>Artigo</option>             
+                    </select>               
+                    </div>
+            </div>
    
             <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">Corpo</label>
@@ -42,6 +52,8 @@
                         <textarea name="body" class="form-control bodyfield">{{old('body')}} </textarea>                      
                     </div>
             </div>
+
+           
 
             <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">File</label>
@@ -64,6 +76,13 @@
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="{{asset('assets/js/select2.js')}}"></script>
+  <script>
+      $('#type').change(function(){     
+        if($('#type').val() == '1' ){
+         
+       
+        }
+      });
+  </script>
 
 @endsection

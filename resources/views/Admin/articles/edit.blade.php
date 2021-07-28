@@ -33,6 +33,16 @@
                         <input type="text"  name="title" class="form-control @error('title') is-invalid @enderror id="title"  value="{{$article->title}}">
                     </div>
             </div>
+
+            <div class="form-group row">            
+                <label for="nome" class="col-sm-2 col-form-label">Tipo</label>
+                    <div class="col-sm-10">                         
+                       <select name="type" id="type" class="form-control">
+                       <option value="1">Video</option>
+                       <option value="0" selected>Artigo</option>             
+                    </select>               
+                    </div>
+            </div>
    
             <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">Corpo</label>
