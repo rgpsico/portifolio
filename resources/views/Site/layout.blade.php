@@ -184,6 +184,7 @@
 											<img alt="" src="{{asset('assets/img/cover.png')}}">
 										</div>
 									</div>
+							
                                     @foreach($users as $user)
 									<div class="col-lg-9 col-sm-8">
 										<h4>{{$user['name']}}</h4>
@@ -694,17 +695,25 @@
 				
                     @foreach ($articles->all() as $article)
 					 @php 
-					 $isVideo = "11";
-					 $isVideo = ($isVideo == true ? "" : $isVideo);  @endphp
+					 $isVideo = $article['type'];
+					 $isVideo = ($isVideo == true ?: $isVideo); 
+		
+					
+					 @endphp
 
 						<!-- Blog Item -->
 						<div class="col-lg-4 col-sm-6">
 							<div class="blog-item">
 								<div class="thumbnail">
-									<a href="single-blog.html"><img alt="" src="{{Storage::url($portifolio['cover'])}}"></a>
-									 <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
+									<a href="blog/<?=$article['id'] ?>">
+										<img alt="<?=$article['title'] ?>" src="{{Storage::url($article['cover'])}}">
+									</a>
+									@if($isVideo)
+									 <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play">
+									</a>
 								</div>
-								<h4><a href="single-blog.html">{{$article['title']}}</a></h4>
+									@endif
+								<h4><a href="blog/<?=$article['id'] ?>">{{$article['title']}}</a></h4>
 								<ul>
                             		<li><a href="#">{{ formatDateAndTime($article['date'], 'd/m/Y') }}</a></li>
                             		<li><a href="#">{{$article['categoria']}}</a></li>
@@ -721,7 +730,7 @@
 
 					<div class="row mt-100 mb-90">
 						<div class="col-lg-12 col-sm-12 text-center">
-							<a href="blog-list.html" class="btn-st">Mais</a>
+						
 						</div>
 					</div>
 

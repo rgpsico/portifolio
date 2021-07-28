@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\ServicosController;
 
 use App\Http\Controllers\Site\PageController as PController;
 Route::get('/', [HomeSite::class, 'index']);
-Route::get('/blog/{id}', [HomeSite::class,'singleBlog']);
+Route::get('/blog/{id}', [HomeSite::class,'singleBlog'])->name('blog');
 
 Route::prefix('painel')->group(function () {
     Route::get('/',[HomeAdmin::class, 'index'])->name('admin');

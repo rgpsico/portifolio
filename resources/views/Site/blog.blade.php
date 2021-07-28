@@ -77,17 +77,17 @@
 				  <!-- Heading -->
 				  <div class="blog-heading pt-70 pb-100">
 					  <h2>{{ $article['title'] }}</h2>
-					  <span><i class="fas fa-home"></i><a href="#">Brand</a></span>
-					  <span><i class="fas fa-comment"></i><a href="#">5 comments</a></span>
+					  <span><i class="fas fa-home"></i><a href="#">{{ $article['categoria'] }}</a></span>
+					  <span><i class="fas fa-comment"></i><a href="#">5 Comentarios</a></span>
 					  <span><i class="fas fa-calendar-alt"></i> <?= formatDateAndTime($article['date']) ?></span>
 				  </div>
 
 				  <!-- Content -->
-				  <div class="blog-content">
-					 <?=$article['body'] ?>
+				  <div class="blog-content" style="color:#fff;">
+					 {!! $article['body'] !!}
 				  </div>
 		
-		
+				</div>
 				  @include('Site.pages.comentarios')
 		
 		
