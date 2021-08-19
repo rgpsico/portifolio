@@ -702,9 +702,8 @@
 						@foreach ($articles->all() as $article)
 						@php 
 						$isVideo = $article['type'];
-						$isVideo = ($isVideo == true ?: $isVideo); 
-					   
-						@endphp
+						$isVideo = ($isVideo == true ?: $isVideo);
+					    @endphp
 
 						<!-- Blog Item -->
 						<div class="col-lg-4 col-sm-6">
@@ -714,10 +713,10 @@
 										<img alt="<?=$article['title'] ?>" src="{{Storage::url($article['cover'])}}">
 									</a>
 									@if($isVideo)
-									 <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play">
-									</a>
-								</div>
-									@endif
+									 <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
+									 @endif
+									</div>
+								
 								<h4><a href="blog/<?=$article['id'] ?>">{{$article['title']}}</a></h4>
 								<ul>
                             		<li><a href="#">{{ formatDateAndTime($article['date'], 'd/m/Y') }}</a></li>
@@ -727,8 +726,7 @@
 									<a href="blog/<?=$article['id'] ?>" class="btn-st">Leia Mais</a>
 								</div>
 							</div>
-						</div>
-			
+						</div>			
 						@endforeach
 					</div>
 			
