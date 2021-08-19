@@ -685,7 +685,7 @@
 
 					<!-- Section Title -->
              		<div class="header-page mt-70 mob-mt">
-						<h2>Blog</h2>
+						<h2>Blssog</h2>
     					<span></span>
 					</div>
 
