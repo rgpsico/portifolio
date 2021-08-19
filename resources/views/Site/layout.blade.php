@@ -679,29 +679,32 @@
 					</div>
 				</section>
        	   	</div>
+
+
+
 			 <!-- Blog Section -->
-          	<div class="page pt-blog" data-simplebar>
+          	<div class="page pt-blog" >
             	<section class="container">
 
 					<!-- Section Title -->
              		<div class="header-page mt-70 mob-mt">
-						<h2>Blssog</h2>
+						<h2>Blog</h2>
     					<span></span>
 					</div>
 
-					
+
+
+				
 
 					<!-- Blog Row Start -->
-					<div class="row blog-masonry mt-100 mb-50">
-                    
+					<div class="row blog-masonry mt-100 mb-50">                   
 				
-                    @foreach ($articles->all() as $article)
-					 @php 
-					 $isVideo = $article['type'];
-					 $isVideo = ($isVideo == true ?: $isVideo); 
-		
-					
-					 @endphp
+						@foreach ($articles->all() as $article)
+						@php 
+						$isVideo = $article['type'];
+						$isVideo = ($isVideo == true ?: $isVideo); 
+					   
+						@endphp
 
 						<!-- Blog Item -->
 						<div class="col-lg-4 col-sm-6">
@@ -725,15 +728,12 @@
 								</div>
 							</div>
 						</div>
-
-					    @endforeach
-				
+			
+						@endforeach
 					</div>
-
+			
 					<div class="row mt-100 mb-90">
-						<div class="col-lg-12 col-sm-12 text-center">
-						
-						</div>
+						<div class="col-lg-12 col-sm-12 text-center"></div>
 					</div>
 
             	</section>
