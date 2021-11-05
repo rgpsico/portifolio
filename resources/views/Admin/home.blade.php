@@ -3,7 +3,8 @@
 @section('plugins.Chartjs',true)
     
 @section('title','Painel')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
 @section('content_header')
 <div class="row">
     <div class="col-md-6">
@@ -86,7 +87,9 @@
                 <h3 class="card-title">Pagina mais visitadas</h3>
             </div>
             <div class="card-body">
-               <canvas id="pagePie"> </canvas>
+                <template>
+                    <monthly-income :data={....} />
+                  </template>
             </div>
         </div>
     </div>
@@ -125,6 +128,24 @@
         })
     }
     
+import VueCharts from 'vue-chartjs'
+import { Bar, Line } from 'vue-chartjs'
+
+    Vue.component('line-chart', {
+  extends: VueChartJs.Line,
+  mounted () {
+    this.renderChart({
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [40, 39, 10, 40, 39, 80, 40]
+        }
+      ]
+    }, {responsive: true, maintainAspectRatio: false})
+  }
+})
     </script>
 
 @endsection

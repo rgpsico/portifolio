@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class article extends Model
 {
     public $timestamps = false;
+    
+  
 }

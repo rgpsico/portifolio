@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CursosController;
 use App\Http\Controllers\Admin\ExperienciaController;
 use App\Http\Controllers\Admin\InteressesController;
+use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ServicosController;
 
 use App\Http\Controllers\Site\PageController as PController;
@@ -28,6 +29,8 @@ Route::prefix('painel')->group(function () {
     Route::get('home/create',[HomeAdmin::class,'create'])->name('homecreate');
     Route::get('home/edit/{id}',[HomeAdmin::class,'edit'])->name('homeedit');
     Route::get('home/destroy',[HomeAdmin::class,'edit'])->name('homedestroy');
+
+    Route::get('relatorio/mensal',[ReportsController::class,'months'])->name('reports.months');
 
     Route::get('login',  [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);

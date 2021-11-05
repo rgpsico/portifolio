@@ -692,9 +692,21 @@
     					<span></span>
 					</div>
 
+					<div class="row mt-100">
+						<div class="col-lg-12 col-sm-12 portfolio-filter">
+							<ul>
+								@php 
+								$img = asset('assets/img/default-image.jpg');
+								@endphp 
+								<li class="active" data-filter="*">TODOS</li>
+                                @foreach ($categorias as $cat)
+								<li data-filter=".{{$cat['title']}}">{{$cat['title']}}</li>
+								                             
+                                @endforeach
+							</ul>
+						</div>
+					</div>
 
-
-				
 
 					<!-- Blog Row Start -->
 					<div class="row blog-masonry mt-100 mb-50">                   
@@ -714,7 +726,7 @@
 									</a>
 									@if($isVideo)
 									 <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
-									 @endif
+									@endif
 									</div>
 								
 								<h4><a href="blog/<?=$article['id'] ?>">{{$article['title']}}</a></h4>

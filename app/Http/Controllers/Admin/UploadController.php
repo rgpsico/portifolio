@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\article;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\DB;
 
 class UploadController extends Controller
 {
+    private $article;
+    public function __construct(article $article )
+    {
+        $this->article = $article;
+    }
     public function imageupload(Request $request)
     {
         $request->validate([
@@ -21,5 +29,23 @@ class UploadController extends Controller
             'location' => asset('media/images/'.$imageName)
         ];
 
+    }
+
+    public function teste(Request $request)
+    {   $tabela = $request->tabela;
+        $campo =  $request->campo;
+        $order =  $request->ordem;
+          
+        if(!$tabela) {
+            return response('informe a tabela por favor');
+        }
+
+         return  DB::table($tabela)              
+                ->orderBy($campo, $order)            
+                ->get();
+
+       
+     
+       
     }
 }

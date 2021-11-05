@@ -223,7 +223,14 @@ return [
     |
     */
 
-    'menu' => [       
+    'menu' => [
+        [
+            'text'        => 'Ver Site',
+            'url'         => '../',
+            'icon'        => 'far fa-fw fa-file',
+            '_target' => 'on_black'
+         
+        ], 
      
         [
             'text'        => 'Dashboard',
@@ -231,13 +238,21 @@ return [
             'icon'        => 'far fa-fw fa-file'
          
         ],
+
+        
         [
-            'text'        => 'Ver Site',
-            'url'         => '../',
-            'icon'        => 'far fa-fw fa-file',
-            '_target' => 'on_black'
+            'text'        => 'Relatorios',       
+            'icon'        => 'area-chart',        
+            'submenu' => [
+                [
+                'text' => 'Meses',
+                'url' => 'painel/relatorio/mensal',
+                'icon' => 'line-chart'
+                ],
+            ]
          
         ],
+     
         ['header' => 'Sobre'],
         [
             'text'        => 'Interesses',
@@ -379,7 +394,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
