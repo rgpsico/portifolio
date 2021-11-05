@@ -14,20 +14,19 @@ use App\Models\categoria;
 
 
 class ArticleController extends Controller
-{
-  
+{ 
     
     public function __construct()
     {
-        $this->middleware('auth');
-    
+        $this->middleware('auth');    
     }
+
+
     public function index()
     {
      $articles = article::paginate(10);
      $loggedId = intval(Auth::id());
-     $categorias = categoria::all();
-   
+     $categorias = categoria::all();   
 
       return view('Admin.articles.index',[
           'articles'=>$articles,
@@ -44,8 +43,8 @@ class ArticleController extends Controller
     public function create()
     {
         $categorias = categoria::all();
-        return view('Admin.articles.create',
-      ['categorias'=>$categorias]);
+            return view('Admin.articles.create',
+                ['categorias'=>$categorias]);
     }
 
     /**
@@ -60,18 +59,13 @@ class ArticleController extends Controller
             'title',
             'body',
             'image',
-            'categoria'
-        
+            'categoria'        
         ]);
-
- 
-        
+         
         $validator = Validator::make($data,[
             'title'=> ['required','string','max:100'],
             'body'=> ['string'],
-            'categoria'=>['string','max:100']
-           
-
+            'categoria'=>['string','max:100']          
         ]);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -82,11 +76,12 @@ class ArticleController extends Controller
       
         }
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->route('articles.create')
             ->withErrors($validator)
             ->withInput();
         }
+
         $Page = new article;
         $Page->title =  $data['title'];
         $Page->body = $data['body'];
@@ -100,14 +95,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -116,11 +103,12 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $page = article::find($id);
-        if($page){
+        if ($page) {
             return view('Admin.articles.edit',[
                 'article'=>$page
             ]);
         }
+
         return redirect()->route('articles.index');
     }
 
@@ -135,44 +123,43 @@ class ArticleController extends Controller
     {
         $article = article::find($id);
         
-        if($article){
+        if ($article) {
             $data = $request->only([
                 'title',
                 'body',              
             ]);
-            if($article['title'] !== $data['title']){
-           
-                
+
+            if ($article['title'] !== $data['title']) {           
                 $validator = Validator::make($data,[
                     'title'=>['required','string','max:100'],
-                    'body'=> ['string']
-                    
+                    'body'=> ['string']                    
                 ]);
             } else {
-                $validator = Validator::make($data,[
-                    'title'=>['required','string','max:100'],
-                    'body'=> ['string']
+                    $validator = Validator::make($data,[
+                        'title'=>['required','string','max:100'],
+                        'body'=> ['string']
                 ]);
-        }         
-            if($validator->fails()){
+            }   
+
+            if ($validator->fails()) {
             return redirect()->route('pages.edit',[
                 'page'=>$id
             ])
             ->withErrors($validator)
             ->withInput();
-        }
+            }
 
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $upload = $request->file('image')->store('portifolio');
-            $article->cover  = $upload;
-        }
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $upload = $request->file('image')->store('portifolio');
+                $article->cover  = $upload;
+            }
+
             $article->title  = $data['title'];
             $article->body  = $data['body'];
             $article->save();
-    }
-        return redirect()->route('articles.index');
- 
+        }
+            return redirect()->route('articles.index'); 
     }
 
     /**
@@ -183,8 +170,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-            $page = article::find($id);
-            $page->delete();   
-        return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
+        $page = article::find($id);
+        $page->delete();   
+            return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
     }
 }
