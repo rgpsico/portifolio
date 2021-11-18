@@ -22,6 +22,9 @@ use App\Http\Controllers\Site\PageController as PController;
 Route::get('/', [HomeSite::class, 'index']);
 Route::get('/blog/{id}', [HomeSite::class,'singleBlog'])->name('blog');
 
+Route::get('/teste/{origem}/{destino}',[HomeAdmin::class, 'DirectionApi'])->name('admin');
+
+
 Route::prefix('painel')->group(function () {
     Route::get('/',[HomeAdmin::class, 'index'])->name('admin');
 

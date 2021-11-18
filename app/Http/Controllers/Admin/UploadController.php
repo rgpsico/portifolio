@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UploadRequest;
 use App\Models\article;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class UploadController extends Controller
 {
@@ -16,6 +18,7 @@ class UploadController extends Controller
     {
         $this->article = $article;
     }
+ 
     public function imageupload(Request $request)
     {
         $request->validate([
@@ -32,19 +35,23 @@ class UploadController extends Controller
 
     }
 
-    public function teste(Request $request)
-    {   
-        $tabela = $request->tabela;
-        $campo =  $request->campo;
-        $order =  $request->ordem;
-          
-        if(!$tabela) {
-            return response('informe a tabela por favor');
+    public function teste(UploadRequest $request, $cep)
+    {        
+        if (!$this->cepValidate($cep)) {
+            return "não foi";
         }
+        return "foi";
 
-         return  DB::table($tabela)              
-                ->orderBy($campo, $order)            
-                ->get();    
-           
+    }
+
+    public function cepValidate($cep)
+    {
+
+        $response = Http::get("https://viacep.com.br/ws/{$cep}/json");
+        $result = $this->data = json_decode($response->getBody()->getContents());  
+     
+        if (isset($result->cep)) {
+            return true;
+        }    
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\page;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -17,6 +17,11 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function gmail(Request $request)
+    {
+        $maps = $this->DirectionApi('Barra da tijuca','copacabana');
+            return view('Admin.gmail',compact('maps'));
     }
 
     public function index(Request $request)
@@ -198,5 +203,26 @@ class HomeController extends Controller
         $page = article::find($id);
         $page->delete();
         return redirect()->route('pages.index');
+    }
+
+    public function DirectionApi(string $origins, string $destinations)
+    {
+        dd('aaaa');
+        $tokenApi = 'AIzaSyA7qcQHcvwSSO496P_6cW0HNrnZut1Wu6Y';  
+        $url = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+        
+         $response = Http::get($url,[            
+                'origins'      => $origins,
+                'destinations' => $destinations,
+                'key'          => $tokenApi,
+                'random'       => random_int(1, 100),
+            ],
+        );       
+        
+        $responseData = json_decode($response->getBody()->getContents());
+     
+        if (isset($responseData->rows[0]->elements[0]->distance)) {
+            return $responseData->rows[0]->elements[0]->distance->value;
+        }
     }
 }

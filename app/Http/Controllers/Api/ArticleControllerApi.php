@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
+use App\Http\Resources\ArticleResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +12,7 @@ use App\Models\article;
 use App\Models\categoria;
 use App\Service\ArticleService;
 
-class ArticleController extends Controller
+class ArticleControllerApi extends Controller
 {
     private $service;
     
@@ -22,29 +24,11 @@ class ArticleController extends Controller
 
 
     public function index()
-    {        
-        $articles = article::paginate(15);
-        $loggedId = intval(Auth::id());
-        $categorias = categoria::all();   
-
-        return view('Admin.articles.index',[
-            'articles' => $articles,
-            'categorias '=> $categorias
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
-        $categorias = categoria::all();
-        return view('Admin.articles.create',[
-            'categorias'=>$categorias
-        ]);
+        $articles = $this->service->paginate(15)->get();    
+        return ArticleResource::collection($articles); 
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -52,44 +36,10 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $data = $request->only([
-            'title',
-            'body',
-            'image',
-            'categoria'        
-        ]);
-         
-        $validator = Validator::make($data,[
-            'title' => ['required', 'string', 'max:100'],
-            'body' => ['string'],
-            'categoria' => ['string', 'max:100']          
-        ]);
-
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->image->extension();
-            $nameFile = "{$name} . {$extension}";
-            $upload = $request->image->storeAs('portifolio', $nameFile);      
-        }
-
-        if ($validator->fails()) {
-            return redirect()->route('articles.create')
-            ->withErrors($validator)
-            ->withInput();
-        }
-
-        $Page = new article;
-        $Page->title =  $data['title'];
-        $Page->body = $data['body'];
-        $Page->categoria  = $data['categoria'];
-        $Page->cover  = $nameFile;
-        $Page->save();
-
-        return redirect()
-        ->route('articles.index')
-        ->withSuccess("Cadastrado com Successo");
+        $data = $request->all();
+        return $this->service->create($data);
     }
 
     /**
@@ -98,18 +48,13 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
-        $page = article::find($id);
-        if ($page) {
-            return view('Admin.articles.edit',[
-                'article' => $page
-            ]);
+        if ($result = $this->service->findById($id)){
+            return new ArticleResource($result);
         }
-
-        return redirect()->route('articles.index');
     }
-
+        
     /**
      * Update the specified resource in storage.
      *
@@ -169,8 +114,6 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $page = article::find($id);
-        $page->delete();   
-            return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
+        return $this->service->delete($id);
     }
 }
