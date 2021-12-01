@@ -38,5 +38,10 @@ class ArticleRepository  implements ArticleRepositoryInterface
     {
        return $this->model::delete($id);
     }
+        
+    public function update($data)
+    {
+       return $this->model::update($data);
+    }
     
 }

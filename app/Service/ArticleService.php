@@ -9,13 +9,17 @@ class ArticleService
 
     public function __construct(ArticleRepositoryInterface $articleRepository)
     {
-        $this->repository = $articleRepository;
-        
+        $this->repository = $articleRepository;        
+    }
+
+    public function listAll()
+    {
+      return $this->repository->listAll();
     }
 
     public function paginate($qtd)
     {
-        return $this->repository->findById($qtd);     
+        return $this->repository->paginate($qtd);     
     }
 
     public function findById($id)
@@ -47,9 +51,13 @@ class ArticleService
          return response()->json(['message' => 'Article Not Found'], 404);
     }
 
-    public function listAll()
+    public function update($data)
     {
-     
+        $result = $this->repository->update($data);
+        dd($result);
+
+         return response()->json(['message' => 'Article Not Found'], 404);
     }
-    
+
+ 
 }

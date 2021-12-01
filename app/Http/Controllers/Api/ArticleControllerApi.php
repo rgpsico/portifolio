@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\ArticleException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Resources\ArticleResource;
@@ -25,8 +26,14 @@ class ArticleControllerApi extends Controller
 
     public function index()
     {
-        $articles = $this->service->paginate(15)->get();    
-        return ArticleResource::collection($articles); 
+        try {
+            $articles = $this->service->listAll();    
+            return ArticleResource::collection($articles); 
+
+        } catch(ArticleException $e){
+            return response()->error("Article não encontrado", 404);
+        }
+      
     }
 
 

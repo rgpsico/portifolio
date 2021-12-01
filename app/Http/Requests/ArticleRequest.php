@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ArticleRequest extends FormRequest
@@ -23,10 +24,25 @@ class ArticleRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => ['required', 'string', 'max:100'],
-            'body' => ['string'],
-            'categoria' => ['string', 'max:100']    
+        $id = $this->segment(3);
+        $title = $this->title;     
+
+        $rules = [
+            'title' => "required|string|max:100|unique:articles,title,{$title}",
+            'body' => 'string',
+            'categoria' => 'string|max:100'    
         ];
+        
+        if ($this->method() == 'PUT') {
+            $rules = [
+                'title' => [
+                    'required',
+                    Rule::unique('articles', 'title')->ignore($id),
+                     
+            ]
+        ];      
+        }
+
+        return $rules;
     }
 }
