@@ -37,12 +37,21 @@ class ArticleRequest extends FormRequest
             $rules = [
                 'title' => [
                     'required',
-                    Rule::unique('articles', 'title')->ignore($id),
-                     
+                        Rule::unique('articles', 'title')->ignore($id),                     
             ]
         ];      
         }
 
         return $rules;
     }
+    public function messages()
+    {
+        return [
+            'title.unique' => 'Este titulo já existe',
+            'body.required' => 'O conteudo é obrigátorio.',
+        ];
+    
+        
+    }
+
 }
