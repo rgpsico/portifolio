@@ -103,7 +103,6 @@ class ArticleController extends Controller
         }
         
         $data = $request->all();
-
         
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $upload = $request->file('image')->store('portifolio');
