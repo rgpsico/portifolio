@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\article;
 use App\Models\categoria;
 use App\Service\ArticleService;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -42,7 +43,7 @@ class ArticleController extends Controller
     {
         $categorias =  categoria::all();
         return view('Admin.articles.create',[
-            'categorias'=>$categorias
+            'categorias' => $categorias
         ]);
     }
 
@@ -54,15 +55,21 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     { 
-        
+        $dataAtual = Carbon::now();
+        $dataNow = $dataAtual->toDateTimeString();
+
+        $data = $request->all();
+        $data['date'] = $dataNow;
+    
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $name = uniqid(date('HisYmd'));
             $extension = $request->image->extension();
             $nameFile = "{$name} . {$extension}";
+
             $upload = $request->image->storeAs('portifolio', $nameFile);      
         }
         
-        $criarArtigo = $this->service->create($request->all());     
+        $criarArtigo = $this->service->create($data);     
     
         return redirect()
             ->route('articles.index')
@@ -98,7 +105,7 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, $id)
     {
-        if(!$article = $this->service->findById($id)){
+        if (!$article = $this->service->findById($id)) {
             return redirect()->back();
         }
         
@@ -123,6 +130,6 @@ class ArticleController extends Controller
     {
         $article = $this->service->findById($id);
         $article->delete();   
-            return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
+        return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
     }
 }

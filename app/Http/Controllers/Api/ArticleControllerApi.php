@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\article;
 use App\Models\categoria;
 use App\Service\ArticleService;
+use Carbon\Carbon;
 
 class ArticleControllerApi extends Controller
 {
@@ -45,7 +46,9 @@ class ArticleControllerApi extends Controller
      */
     public function store(ArticleRequest $request)
     {
+     
         $data = $request->all();
+        $data = $data['date'] = Carbon::now();
         return $this->service->create($data);
     }
 
