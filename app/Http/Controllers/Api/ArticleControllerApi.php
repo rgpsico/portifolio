@@ -6,11 +6,7 @@ use App\Exceptions\ArticleException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Resources\ArticleResource;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 use App\Models\article;
-use App\Models\categoria;
 use App\Service\ArticleService;
 use Carbon\Carbon;
 

@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class Visitors extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+  
     public function up()
     {
         Schema::create('visitors', function (Blueprint $table) {
