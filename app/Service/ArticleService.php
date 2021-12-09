@@ -1,13 +1,15 @@
 <?php 
 
 namespace App\Service;
-use App\Repositories\Contracts\ArticleRepositoryInterface;
+
+use App\Repositories\ArticleRepository;
+
 
 class ArticleService
 {
     private $repository;
 
-    public function __construct(ArticleRepositoryInterface $articleRepository)
+    public function __construct(ArticleRepository $articleRepository)
     {
         $this->repository = $articleRepository;        
     }
@@ -17,9 +19,9 @@ class ArticleService
       return $this->repository->listAll();
     }
 
-    public function paginate($qtd)
+    public function getAll($qtd, $paginate = false)
     {
-        return $this->repository->paginate($qtd);     
+        return $this->repository->getAll($qtd, $paginate);    
     }
 
     public function findById($id)

@@ -4,8 +4,9 @@ namespace App\Repositories;
 
 use App\Models\article;
 use App\Repositories\Contracts\ArticleRepositoryInterface;
+use App\Repositories\BaseRepository;
 
-class ArticleRepository  implements ArticleRepositoryInterface
+class ArticleRepository extends  BaseRepository
 {
     private $model;
 
@@ -19,7 +20,7 @@ class ArticleRepository  implements ArticleRepositoryInterface
        return $this->model::paginate($qtd);
     }
 
-    public function findById($id)
+    public function findByID($id, $fail = true)
     {
         return $this->model::find($id);
     }

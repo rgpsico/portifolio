@@ -14,13 +14,11 @@ use App\Models\categoria;
 use App\Service\ArticleService;
 use Carbon\Carbon;
 
-class ArticleControllerApi extends Controller
-{
+class ArticleControllerApi extends Controller{
     private $service;
     
     public function __construct(ArticleService $articleService)
-    {
-        //$this->middleware('auth');    
+    {     
         $this->service = $articleService;
     }
 
@@ -28,13 +26,11 @@ class ArticleControllerApi extends Controller
     public function index()
     {
         try {
-            $articles = $this->service->listAll();    
-            return ArticleResource::collection($articles); 
-
-        } catch(ArticleException $e){
+            $articles = $this->service->listAll();
+            return ArticleResource::collection($articles);
+        } catch (ArticleException $e) {
             return response()->error("Article não encontrado", 404);
         }
-      
     }
 
 
@@ -46,7 +42,6 @@ class ArticleControllerApi extends Controller
      */
     public function store(ArticleRequest $request)
     {
-     
         $data = $request->all();
         $data = $data['date'] = Carbon::now();
         return $this->service->create($data);
@@ -60,7 +55,7 @@ class ArticleControllerApi extends Controller
      */
     public function show($id)
     {
-        if ($result = $this->service->findById($id)){
+        if ($result = $this->service->findById($id)) {
             return new ArticleResource($result);
         }
     }
@@ -72,48 +67,21 @@ class ArticleControllerApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
-        $article = article::find($id);
+        $data = $request->all();
+        dd($data);
+        if (!$article = article::find($id)) {
+            return redirect()->back();
+        }
         
-        if ($article) {
-            $data = $request->only([
-                'title',
-                'body',              
-            ]);
-
-            if ($article['title'] !== $data['title']) {           
-                $validator = Validator::make($data,[
-                    'title'=> ['required', 'string', 'max:100'],
-                    'body'=> ['string']                    
-                ]);
-            } else {
-                    $validator = Validator::make($data,[
-                        'title'=> ['required', 'string', 'max:100'],
-                        'body'=> ['string']
-                ]);
-            }   
-
-            if ($validator->fails()) {
-            return redirect()->route('pages.edit',[
-                'page'=>$id
-            ])
-            ->withErrors($validator)
-            ->withInput();
-            }
-
-
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $upload = $request->file('image')->store('portifolio');
-                $article->cover  = $upload;
-            }
-
-            $article->title  = $data['title'];
-            $article->body  = $data['body'];
-            $article->save();
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $upload = $request->file('image')->store('portifolio');
+            $article->cover  = $upload;
         }
 
-            return redirect()->route('articles.index'); 
+        $result = $this->service->update($data);
+        dd($result);
     }
 
     /**

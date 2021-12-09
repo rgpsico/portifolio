@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\hash;
@@ -12,6 +13,7 @@ use App\Models\categoria;
 
 class CategoriaController extends Controller
 {
+    
   
     
     public function __construct()
@@ -22,8 +24,7 @@ class CategoriaController extends Controller
     public function index()
     {
      $categorias = categoria::paginate(10);
-     $loggedId = intval(Auth::id());
-   
+     $loggedId = intval(Auth::id());   
 
       return view('Admin.categoria.index',[
           'categorias'=>$categorias
@@ -46,33 +47,10 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryUpdateRequest $request)
     {
-        $data = $request->only([
-            'title',
-            'body'
+        $data = $request->all();
         
-        ]);
-
- 
-        
-        $validator = Validator::make($data,[
-            'title'=> ['required','string','max:100'],
-            'body'=> ['string']
-          
-           
-
-        ]);
-
-        if($validator->fails()){
-            return redirect()->route('articles.create')
-            ->withErrors($validator)
-            ->withInput();
-        }
-        $categoria = new categoria;
-        $categoria->title =  $data['title'];
-        $categoria->body = $data['body'];
-        $categoria->save();
 
         return redirect()->route('categoria.index');
     }
