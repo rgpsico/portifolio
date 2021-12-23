@@ -25,21 +25,21 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         $id = $this->segment(3);
-        $title = $this->title;     
+        $title = $this->title;
 
         $rules = [
             'title' => "required|string|max:100|unique:articles,title,{$title}",
             'body' => 'string',
-            'categoria' => 'string|max:100'    
+            'categoria' => 'string|max:100'
         ];
         
         if ($this->method() == 'PUT') {
             $rules = [
                 'title' => [
                     'required',
-                        Rule::unique('articles', 'title')->ignore($id),                     
-            ]
-        ];      
+                        Rule::unique('articles', 'title')->ignore($id),
+                ]
+            ];
         }
 
         return $rules;
@@ -50,8 +50,5 @@ class ArticleRequest extends FormRequest
             'title.unique' => 'Este titulo já existe',
             'body.required' => 'O conteudo é obrigátorio.',
         ];
-    
-        
     }
-
 }

@@ -23,9 +23,19 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->segment(3);
+        $title = $this->title;
+
         return [
-            'title'=> ['required','string','max:100'],
-            'body'=> ['string']
+            // 'name' => ['required', 'min:3', 'max:255', "unique:categories,name,{$id},id"],
+            'title' => [
+                'required',
+                'min:3',
+                'max:255',
+                "unique:categoria,title,{$id},id"
+              
+            ],
+            'body' => ['required', 'min:3', 'max:10000'],
         ];
     }
 }

@@ -2,15 +2,12 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\{
-    ArticleRepositoryInterface,
-    BaseRepositoryInterface as ContractsBaseRepositoryInterface,
-};
-use App\Repositories\{
-    ArticleRepository,
-    BaseRepository,
-};
-
+use App\Repositories\Contracts\ArticleRepositoryInterface;
+use App\Repositories\Contracts\BaseRepositoryInterface as ContractsBaseRepositoryInterface;
+use App\Repositories\ArticleRepository;
+use App\Repositories\BaseRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -25,12 +22,17 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ArticleRepositoryInterface::class,
             ArticleRepository::class
-        );  
+        );
+
+        $this->app->bind(
+            CategoryRepositoryInterface::class,
+            CategoryRepository::class
+        );
         
         $this->app->bind(
             ContractsBaseRepositoryInterface::class,
             BaseRepository::class
-        );   
+        );
     }
 
     /**

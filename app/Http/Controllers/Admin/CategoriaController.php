@@ -6,20 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\hash;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\categoria;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 
 class CategoriaController extends Controller
 {
-    public function __construct()
+    private $repository;
+
+    public function __construct(CategoryRepositoryInterface $repository)
     {
+        $this->repository = $repository;
         $this->middleware('auth');
     }
+
     public function index()
     {
-        $categorias = categoria::paginate(10);
+        $categorias = $this->repository->paginate(10);
         $loggedId = intval(Auth::id());
 
         return view('Admin.categoria.index', [
@@ -46,9 +49,9 @@ class CategoriaController extends Controller
     public function store(CategoryUpdateRequest $request)
     {
         $data = $request->all();
-        dd($data);
-
-        return redirect()->route('categoria.index');
+        if ($this->repository->create($data)) {
+            return redirect()->route('categoria.index');
+        }
     }
 
     /**
@@ -57,7 +60,12 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+    public function show($id)
+    {
+        if ($this->repository->findById($id)) {
+            return redirect()->route('categoria.index');
+        }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -67,12 +75,15 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categoria = categoria::find($id);
+        $categoria = $this->repository->findById($id);
+
         if ($categoria) {
-            return view('Admin.categoria.edit', [
-                'categoria'=>$categoria
-            ]);
+            return view(
+                'Admin.categoria.edit',
+                compact('categoria')
+            );
         }
+
         return redirect()->route('categoria.index');
     }
 
@@ -83,42 +94,14 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryUpdateRequest $request, $id)
     {
-        $page = categoria::find($id);
-        
-        if ($page) {
-            $data = $request->only([
-                'title',
-                'body',
-            ]);
-            if ($page['title'] !== $data['title']) {
-                $validator = Validator::make($data, [
-                    'title'=>['required','string','max:100'],
-                    'body'=> ['string']
-                    
-                ]);
-            } else {
-                $validator = Validator::make($data, [
-                    'title'=>['required','string','max:100'],
-                    'body'=> ['string']
-                ]);
-            }
-            if ($validator->fails()) {
-                return redirect()->route('categoria.edit', [
-                'categoria'=>$id
-            ])
-            ->withErrors($validator)
-            ->withInput();
-            }
-            $page->title  = $data['title'];
-            $page->body  = $data['body'];
-
-       
-       
-
-            $page->save();
+        if (!$categoria = $this->repository->findById($id)) {
+            return redirect()->back();
         }
+        
+        $categoria->update($request->all());
+        
         return redirect()->route('categoria.index');
     }
 
@@ -130,8 +113,11 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $page = categoria::find($id);
-        $page->delete();
+        if (!$categoria = $this->repository->findById($id)) {
+            return redirect()->back();
+        }
+        
+        $categoria->delete();
         return redirect()->route('categoria.index');
     }
 }
