@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
@@ -6,18 +6,18 @@ use App\Models\article;
 use App\Repositories\Contracts\ArticleRepositoryInterface;
 use App\Repositories\BaseRepository;
 
-class ArticleRepository extends  BaseRepository
+class ArticleRepository
 {
     private $model;
 
     public function __construct(Article $model)
     {
-        $this->model = $model;        
+        $this->model = $model;
     }
 
     public function paginate($qtd)
     {
-       return $this->model::paginate($qtd);
+        return $this->model::paginate($qtd);
     }
 
     public function findByID($id, $fail = true)
@@ -27,22 +27,21 @@ class ArticleRepository extends  BaseRepository
 
     public function create(array $data)
     {
-       return $this->model::create($data);
+        return $this->model::create($data);
     }
 
     public function listAll()
     {
-       return $this->model::all();
+        return $this->model::all();
     }
 
     public function delete($id)
     {
-       return $this->model::delete($id);
+        return $this->model::delete($id);
     }
         
     public function update($data)
     {
-       return $this->model::update($data);
+        return $this->model::update($data);
     }
-    
 }

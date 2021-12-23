@@ -18,17 +18,17 @@ class ArticleController extends Controller
     
     public function __construct(ArticleService $articleService)
     {
-        //$this->middleware('auth');    
+        //$this->middleware('auth');
         $this->service = $articleService;
     }
 
     public function index()
-    {        
-        $articles = $this->service->paginate(10);      
+    {
+        $articles = $this->service->getAll(10);
         $loggedId = intval(Auth::id());
-        $categorias = categoria::all();   
+        $categorias = categoria::all();
 
-        return view('Admin.articles.index',[
+        return view('Admin.articles.index', [
             'articles' => $articles,
             'categorias '=> $categorias
         ]);
@@ -42,7 +42,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categorias =  categoria::all();
-        return view('Admin.articles.create',[
+        return view('Admin.articles.create', [
             'categorias' => $categorias
         ]);
     }
@@ -54,7 +54,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ArticleRequest $request)
-    { 
+    {
         $dataAtual = Carbon::now();
         $dataNow = $dataAtual->toDateTimeString();
 
@@ -66,15 +66,14 @@ class ArticleController extends Controller
             $extension = $request->image->extension();
             $nameFile = "{$name} . {$extension}";
 
-            $upload = $request->image->storeAs('portifolio', $nameFile);      
+            $upload = $request->image->storeAs('portifolio', $nameFile);
         }
         
-        $criarArtigo = $this->service->create($data);     
+        $criarArtigo = $this->service->create($data);
     
         return redirect()
             ->route('articles.index')
             ->withSuccess("Cadastrado com Successo");
-      
     }
 
     /**
@@ -88,7 +87,7 @@ class ArticleController extends Controller
         $article = $this->service->findById($id);
 
         if ($article) {
-            return view('Admin.articles.edit',[
+            return view('Admin.articles.edit', [
                 'article' => $article
             ]);
         }
@@ -116,8 +115,8 @@ class ArticleController extends Controller
             $article->cover  = $upload;
         }
      
-        $article->update($data);      
-        return redirect()->route('articles.index'); 
+        $article->update($data);
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -129,7 +128,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article = $this->service->findById($id);
-        $article->delete();   
+        $article->delete();
         return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
     }
 }

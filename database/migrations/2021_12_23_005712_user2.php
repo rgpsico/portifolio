@@ -19,7 +19,7 @@ class User2 extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('cel')->nullable();
             ;
             $table->string('estate')->nullable();

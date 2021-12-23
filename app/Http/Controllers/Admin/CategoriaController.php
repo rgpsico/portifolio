@@ -13,20 +13,16 @@ use App\Models\categoria;
 
 class CategoriaController extends Controller
 {
-    
-  
-    
     public function __construct()
     {
         $this->middleware('auth');
-    
     }
     public function index()
     {
-     $categorias = categoria::paginate(10);
-     $loggedId = intval(Auth::id());   
+        $categorias = categoria::paginate(10);
+        $loggedId = intval(Auth::id());
 
-      return view('Admin.categoria.index',[
+        return view('Admin.categoria.index', [
           'categorias'=>$categorias
       ]);
     }
@@ -50,7 +46,7 @@ class CategoriaController extends Controller
     public function store(CategoryUpdateRequest $request)
     {
         $data = $request->all();
-        
+        dd($data);
 
         return redirect()->route('categoria.index');
     }
@@ -72,8 +68,8 @@ class CategoriaController extends Controller
     public function edit($id)
     {
         $categoria = categoria::find($id);
-        if($categoria){
-            return view('Admin.categoria.edit',[
+        if ($categoria) {
+            return view('Admin.categoria.edit', [
                 'categoria'=>$categoria
             ]);
         }
@@ -91,31 +87,30 @@ class CategoriaController extends Controller
     {
         $page = categoria::find($id);
         
-        if($page){
+        if ($page) {
             $data = $request->only([
                 'title',
-                'body',              
+                'body',
             ]);
-            if($page['title'] !== $data['title']){           
-                
-                $validator = Validator::make($data,[
+            if ($page['title'] !== $data['title']) {
+                $validator = Validator::make($data, [
                     'title'=>['required','string','max:100'],
                     'body'=> ['string']
                     
                 ]);
             } else {
-                $validator = Validator::make($data,[
+                $validator = Validator::make($data, [
                     'title'=>['required','string','max:100'],
                     'body'=> ['string']
                 ]);
-        }         
-            if($validator->fails()){
-            return redirect()->route('categoria.edit',[
+            }
+            if ($validator->fails()) {
+                return redirect()->route('categoria.edit', [
                 'categoria'=>$id
             ])
             ->withErrors($validator)
             ->withInput();
-        }
+            }
             $page->title  = $data['title'];
             $page->body  = $data['body'];
 
@@ -123,9 +118,8 @@ class CategoriaController extends Controller
        
 
             $page->save();
-    }
+        }
         return redirect()->route('categoria.index');
- 
     }
 
     /**
@@ -136,8 +130,8 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-            $page = categoria::find($id);
-            $page->delete();   
+        $page = categoria::find($id);
+        $page->delete();
         return redirect()->route('categoria.index');
     }
 }
