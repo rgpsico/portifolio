@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! $this->app->runningInConsole()) {
+            // not running in console
+      
         //Menu
         $frontMenu = [
             '/' => 'Home'
@@ -55,4 +58,5 @@ class AppServiceProvider extends ServiceProvider
     );
     
     }
+}
 }

@@ -4,21 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Categoria extends Migration
+class Category extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+      * Run the migrations.
+      *
+      * @return void
+      */
     public function up()
     {
         Schema::create('categoria', function (Blueprint $table) {
-            $table->bigIncrements('id');         
+            $table->bigIncrements('id');
             $table->string('title');
-            $table->text('body'); 
-            $table->timestamps();           
-         
+            $table->text('body');
+            $table->timestamps();
         });
     }
 

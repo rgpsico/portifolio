@@ -4,17 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Pages extends Migration
+class Pages2 extends Migration
 {
-  
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
-            $table->bigIncrements('id');         
+        Schema::create('page', function ($table) {
+            $table->bigIncrements('id');
             $table->string('title');
-            $table->string('body'); 
-            $table->text('slug');     
-            $table->timestamps();          
+            $table->string('body');
+            $table->text('slug');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +24,6 @@ class Pages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('page');
     }
 }

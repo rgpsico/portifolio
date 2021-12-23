@@ -14,10 +14,10 @@ class Interesses extends Migration
     public function up()
     {
         Schema::create('interesses', function (Blueprint $table) {
-            $table->bigIncrements('id');         
-            $table->string('nome'); 
-            $table->text('icon');     
-            $table->timestamps();          
+            $table->bigIncrements('id');
+            $table->string('nome');
+            $table->text('icon');
+            $table->timestamps();
         });
     }
 

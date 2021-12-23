@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Settings extends Migration
+class Plans extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Settings extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
-            $table->bigIncrements('id');         
+        Schema::create('plans', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->text('content');                
-            $table->timestamps();          
+            $table->string('url');
+            $table->string('stripe_id');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class Settings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('plans');
     }
 }

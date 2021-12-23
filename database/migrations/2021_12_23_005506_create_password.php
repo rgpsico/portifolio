@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Servicos extends Migration
+class CreatePassword extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Servicos extends Migration
      */
     public function up()
     {
-        Schema::create('servicos', function (Blueprint $table) {
-            $table->bigIncrements('id');         
-            $table->string('nome');
-            $table->string('descricao'); 
-            $table->string('icon');              
-            $table->timestamps();          
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class Servicos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicos');
+        Schema::dropIfExists('password_resets');
     }
 }

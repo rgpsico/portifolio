@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class page extends Model
 {
    public $timestamps = false;
+   protected $table = 'pages';
+   
 }

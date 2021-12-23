@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Article extends Migration
+class Experiencia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class Article extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->bigIncrements('id');         
+        Schema::create('experiencias', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('title');
             $table->text('body');
-            $table->string('type',10);
-            $table->string('cover',100);
+            $table->string('place');
             $table->timestamps();
-           
-            $table->foreign('id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
         });
     }
 
@@ -35,6 +29,6 @@ class Article extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('experiencias');
     }
 }
