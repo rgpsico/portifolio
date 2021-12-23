@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class User2 extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrationsss.
      *
      * @return void
      */
