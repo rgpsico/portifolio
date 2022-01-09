@@ -19,15 +19,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $articles = article::paginate(10);    
-        $portifolio = portifolio::all();        
+    public function index()
+    {
+        $articles = article::paginate();
+        $portifolio = portifolio::all();
         $users = User::all();
         $experiencia = experiencia::all();
         $cursos = cursos::all();
         $Setting = Setting::all();
         $categorias = categoria::all();
-        return view('Site.home',[
+        return view('Site.home', [
             'articles'=>$articles,
             'users'=>$users,
             'portifolios'=>$portifolio,
@@ -39,9 +40,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function singleBlog($id){
+    public function singleBlog($id)
+    {
         $articles = article::where('id', $id)->get();
-        return view('Site.blog',[
+        return view('Site.blog', [
             'articles'=>$articles
               
         ]);
