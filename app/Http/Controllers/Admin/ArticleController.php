@@ -135,10 +135,10 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-        $filters = $request->only('filter');
+        //$filters = $request->only('filter');
 
-        $articles = $this->service->search($filters);
+    //    $articles = $this->service->search($filters);
 
-        return view('articles.index', compact('articles', 'filters'));
+        //  return view('articles.index', compact('articles', 'filters'));
     }
 }

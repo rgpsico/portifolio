@@ -8,17 +8,10 @@
        <a href="{{route('articles.create')}}" class="btn btn-sm btn-success">Novo  Artigos</a>
     </h1>
         @include('Admin.includes.alert')
-
 @endsection
 
 @section('content')
 <div class="card">   
-    
-    <form action="{{ route('articles.search') }}" method="POST" class="form form-inline">
-        @csrf
-        <input type="text" name="filter" placeholder="Filtrar:" class="form-control" value="{{ $filters['filter'] ?? '' }}">
-        <button type="submit" class="btn btn-dark">Filtrar</button>
-    </form>
 <table class="table table-hover">
     <thead>
             <tr>

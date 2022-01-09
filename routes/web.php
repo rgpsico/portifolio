@@ -51,7 +51,6 @@ Route::prefix('painel')->group(function () {
     Route::resource('experiencia', ExperienciaController::class);
     Route::resource('cursos', CursosController::class);
     Route::resource('articles', ArticleController::class);
-    Route::get('articles', [ArticleController::class,'search'])->name('articles.search');
     Route::resource('interesses', InteressesController::class);
     Route::resource('servicos', servicosController::class);
     Route::resource('portifolio', PortifolioController::class);
