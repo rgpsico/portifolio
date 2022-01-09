@@ -8,10 +8,16 @@
        <a href="{{route('articles.create')}}" class="btn btn-sm btn-success">Novo  Artigos</a>
     </h1>
         @include('Admin.includes.alert')
+
 @endsection
 
 @section('content')
 <div class="card">   
+    
+    <form action="">
+        <input type="text" class="form-controll" >
+        <button class="btn">Buscar</button>
+    </form>
 <table class="table table-hover">
     <thead>
             <tr>
