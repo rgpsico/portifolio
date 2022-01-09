@@ -92,7 +92,7 @@ class ArticleController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -116,7 +116,7 @@ class ArticleController extends Controller
         }
      
         $article->update($data);
-        return redirect()->route('articles.index');
+        return redirect()->back();
     }
 
     /**
