@@ -25,7 +25,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = $this->service->getAll(10);
+        $articles = $this->service->getAll(90);
         $loggedId = intval(Auth::id());
         $categorias = categoria::all();
 
