@@ -18,6 +18,7 @@ class Articles extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('type', 10);
+            $table->string('categoria', 200);
             $table->string('cover', 100);
             $table->timestamps();
         });
