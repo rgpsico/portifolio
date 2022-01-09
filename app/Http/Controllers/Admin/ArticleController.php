@@ -15,6 +15,7 @@ use Carbon\Carbon;
 class ArticleController extends Controller
 {
     private $service;
+    private $repository;
     
     public function __construct(ArticleService $articleService)
     {
@@ -130,5 +131,14 @@ class ArticleController extends Controller
         $article = $this->service->findById($id);
         $article->delete();
         return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->only('filter');
+
+        $articles = $this->service->search($filters);
+
+        return view('articles.index', compact('articles', 'filters'));
     }
 }

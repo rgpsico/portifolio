@@ -55,8 +55,18 @@ class ArticleService
     public function update($data)
     {
         $result = $this->repository->update($data);
-        dd($result);
-
         return response()->json(['message' => 'Article Not Found'], 404);
+    }
+
+    public function search($request)
+    {
+        $this->repository->where(function ($query) use ($request) {
+            if ($request->filter) {
+                $query->orWhere('body', 'LIKE', "%{$request->filter}%");
+                $query->orWhere('title', $request->filter);
+            }
+        })
+        ->latest()
+        ->paginate();
     }
 }

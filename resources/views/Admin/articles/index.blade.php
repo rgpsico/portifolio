@@ -14,9 +14,10 @@
 @section('content')
 <div class="card">   
     
-    <form action="">
-        <input type="text" class="form-controll" >
-        <button class="btn">Buscar</button>
+    <form action="{{ route('articles.search') }}" method="POST" class="form form-inline">
+        @csrf
+        <input type="text" name="filter" placeholder="Filtrar:" class="form-control" value="{{ $filters['filter'] ?? '' }}">
+        <button type="submit" class="btn btn-dark">Filtrar</button>
     </form>
 <table class="table table-hover">
     <thead>

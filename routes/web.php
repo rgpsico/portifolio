@@ -19,23 +19,24 @@ use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ServicosController;
 
 use App\Http\Controllers\Site\PageController as PController;
+
 Route::get('/', [HomeSite::class, 'index']);
 Route::get('/blog/{id}', [HomeSite::class,'singleBlog'])->name('blog');
 
-Route::get('/teste/{origem}/{destino}',[HomeAdmin::class, 'DirectionApi'])->name('admin');
+Route::get('/teste/{origem}/{destino}', [HomeAdmin::class, 'DirectionApi'])->name('admin');
 
 
 Route::prefix('painel')->group(function () {
-    Route::get('/',[HomeAdmin::class, 'index'])->name('admin');
+    Route::get('/', [HomeAdmin::class, 'index'])->name('admin');
 
-    Route::get('home',[HomeAdmin::class,'home']);
-    Route::get('home/create',[HomeAdmin::class,'create'])->name('homecreate');
-    Route::get('home/edit/{id}',[HomeAdmin::class,'edit'])->name('homeedit');
-    Route::get('home/destroy',[HomeAdmin::class,'edit'])->name('homedestroy');
+    Route::get('home', [HomeAdmin::class,'home']);
+    Route::get('home/create', [HomeAdmin::class,'create'])->name('homecreate');
+    Route::get('home/edit/{id}', [HomeAdmin::class,'edit'])->name('homeedit');
+    Route::get('home/destroy', [HomeAdmin::class,'edit'])->name('homedestroy');
 
-    Route::get('relatorio/mensal',[ReportsController::class,'months'])->name('reports.months');
+    Route::get('relatorio/mensal', [ReportsController::class,'months'])->name('reports.months');
 
-    Route::get('login',  [LoginController::class, 'index'])->name('login');
+    Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'authenticate']);
 
     Route::get('register', [RegisterController::class, 'index'])->name('register');
@@ -50,6 +51,7 @@ Route::prefix('painel')->group(function () {
     Route::resource('experiencia', ExperienciaController::class);
     Route::resource('cursos', CursosController::class);
     Route::resource('articles', ArticleController::class);
+    Route::get('articles', [ArticleController::class,'search'])->name('articles.search');
     Route::resource('interesses', InteressesController::class);
     Route::resource('servicos', servicosController::class);
     Route::resource('portifolio', PortifolioController::class);
