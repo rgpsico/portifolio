@@ -44,4 +44,16 @@ class ArticleRepository
     {
         return $this->model::update($data);
     }
+
+    public function search($request)
+    {
+        $this->model->where(function ($query) use ($request) {
+            if ($request->filter) {
+                $query->orWhere('body', 'LIKE', "%{$request->filter}%");
+                $query->orWhere('title', $request->filter);
+            }
+        })
+        ->latest()
+        ->paginate();
+    }
 }

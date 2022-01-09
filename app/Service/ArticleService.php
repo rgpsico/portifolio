@@ -60,13 +60,6 @@ class ArticleService
 
     public function search($request)
     {
-        $this->repository->where(function ($query) use ($request) {
-            if ($request->filter) {
-                $query->orWhere('body', 'LIKE', "%{$request->filter}%");
-                $query->orWhere('title', $request->filter);
-            }
-        })
-        ->latest()
-        ->paginate();
+        $this->repository->search($request);
     }
 }
