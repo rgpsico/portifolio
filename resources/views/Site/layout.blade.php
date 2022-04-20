@@ -693,14 +693,14 @@
 					</div>
 
 					<div class="row mt-100">
-						<div class="col-lg-12 col-sm-12 portfolio-filter">
-							<ul>
+						<div class="col-lg-12 col-sm-12 blog-filter">
+							<ul style="display: inline-flex;">
 								@php 
 								$img = asset('assets/img/default-image.jpg');
 								@endphp 
 								<li class="active" data-filter="*">TODOS</li>
                                 @foreach ($categorias as $cat)
-								<li data-filter=".{{$cat['title']}}">{{$cat['title']}}</li>
+								<li style="margin-left: 10px" data-filter=".{{$cat['title']}}">{{$cat['title']}}</li>
 								                             
                                 @endforeach
 							</ul>

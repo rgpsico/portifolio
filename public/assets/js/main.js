@@ -90,6 +90,32 @@ $(window).on('load', function() {
 			4. Blogs Masonry Setup
 	----------------------------------- */
     $('.blog-masonry').isotope({ layoutMode: 'moduloColumns' });
+   
+    if( $('.blog-items').length ) {
+        var $elements = $(".blog-items"),
+            $filters = $('.blog-filter ul li');
+        $elements.isotope();
+
+        $filters.on('click', function(){
+            $filters.removeClass('active');
+            $(this).addClass('active');
+            var selector = $(this).data('filter');
+            $(".blog-items").isotope({
+                filter: selector,
+                hiddenStyle: {
+                    transform: 'scale(.2) skew(30deg)',
+                    opacity: 0
+                },
+                visibleStyle: {
+                    transform: 'scale(1) skew(0deg)',
+                    opacity: 1,
+                },
+                transitionDuration: '.5s'
+            });
+        });
+    }
+
+
 	
 });
 
