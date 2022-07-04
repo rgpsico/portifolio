@@ -18,7 +18,7 @@
 
 		<!-- Title -->
 		
-		<title>Roger Neves - Portfólio</title>
+		<title>Roger Neves -10 Portfólio</title>
 	
 
     <link rel="stylesheet" href="{{asset('assets/css/plugins/bootstrap.min.css')}}">
