@@ -2,14 +2,9 @@
 pipeline{
     agent none
     stages{
-        stage('Build'){
-            agent{
-                docker { image 'maven' }
-            }
-            steps {
-                sh "mvn package -Dmaven.test.skip=true"
-
-            }
-        }
+         stage('Pull request') {
+        sh 'git checkout -b master  origin/master'
+        sh 'hub pull-request -b origin/master'
+    }
     }
 }
