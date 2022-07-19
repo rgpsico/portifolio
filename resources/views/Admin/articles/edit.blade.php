@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-        Editar Paginas
+        Editar artigosssss
     
     </h1>
 @endsection
