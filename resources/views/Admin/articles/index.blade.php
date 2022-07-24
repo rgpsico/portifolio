@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-        VAI AGORA YYY
+        artigo
        <a href="{{route('articles.create')}}" class="btn btn-sm btn-success">Novo  Artigos</a>
     </h1>
         @include('Admin.includes.alert')
