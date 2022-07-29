@@ -5,6 +5,7 @@
 @section('title','Painel')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/twxm2c36o1xzxedn12eloly7xttt3qpyqii8vz02394gtz15/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @section('content_header')
 <div class="row">
     <div class="col-md-6">
