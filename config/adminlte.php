@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -189,7 +188,7 @@ return [
     'use_route_url' => false,
     'dashboard_url' => 'painel',
     'logout_url' => 'painel/logout',
-    'login_url' =>  'painel/login',
+    'login_url' => 'painel/login',
     'register_url' => 'painel/register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
@@ -225,103 +224,89 @@ return [
 
     'menu' => [
         [
-            'text'        => 'Ver Site',
-            'url'         => '../',
-            'icon'        => 'far fa-fw fa-file',
-            '_target' => 'on_black'
-         
-        ], 
-     
-        [
-            'text'        => 'Dashboard',
-            'url'         => 'painel',
-            'icon'        => 'far fa-fw fa-file'
-         
+            'text' => 'Ver Site',
+            'url' => '../',
+            'icon' => 'far fa-fw fa-file',
+            '_target' => 'on_black',
         ],
 
-        
         [
-            'text'        => 'Relatorios',       
-            'icon'        => 'area-chart',        
+            'text' => 'Dashboard',
+            'url' => 'painel',
+            'icon' => 'far fa-fw fa-file',
+        ],
+
+        [
+            'text' => 'Relatorios',
+            'icon' => 'area-chart',
             'submenu' => [
                 [
                 'text' => 'Meses',
                 'url' => 'painel/relatorio/mensal',
-                'icon' => 'line-chart'
+                'icon' => 'line-chart',
                 ],
-            ]
-         
+            ],
         ],
-     
+
         ['header' => 'Sobre'],
         [
-            'text'        => 'Interesses',
-            'url'         => 'painel/interesses',
-            'icon'        => 'far fa-fw fa-file'
-         
+            'text' => 'Interesses',
+            'url' => 'painel/interesses',
+            'icon' => 'far fa-fw fa-file',
         ],
 
         [
-            'text'        => 'Serviços',
-            'url'         => 'painel/servicos',
-            'icon'        => 'far fa-fw fa-file'
-         
+            'text' => 'Serviços',
+            'url' => 'painel/servicos',
+            'icon' => 'far fa-fw fa-file',
         ],
-          
-          
-      
+
        ['header' => 'Conteudo'],
         [
-            'text'        => 'Artigos',
-            'url'         => 'painel/articles',
-            'icon'        => 'far fa-fw fa-file'
-         
+            'text' => 'Artigos',
+            'url' => 'painel/articles',
+            'icon' => 'far fa-fw fa-file',
         ],
         [
-            'text'        => 'Portifolio',
-            'url'         => 'painel/portifolio',
-            'icon'        => 'far fa-fw fa-file'
-         
+            'text' => 'Portifolio',
+            'url' => 'painel/portifolio',
+            'icon' => 'far fa-fw fa-file',
         ],
         [
-            'text'        => 'Categoria',
-            'url'         => 'painel/categoria',
-            'icon'        => 'far fa-fw fa-file'
-         
+            'text' => 'Categoria',
+            'url' => 'painel/categoria',
+            'icon' => 'far fa-fw fa-file',
         ],
         [
-            'text'        => 'Meus Usuários',
-            'url'         => 'painel/users',
-            'icon'        => 'far fa-fw fa-file',
-            'can'         => 'edit-users'
-         
+            'text' => 'Meus Usuários',
+            'url' => 'painel/users',
+            'icon' => 'far fa-fw fa-file',
+            'can' => 'edit-users',
         ],
         ['header' => 'Experiências'],
         [
             'text' => 'Cursos',
-            'url'  => 'painel/cursos',
+            'url' => 'painel/cursos',
             'icon' => 'fas fa-fw fa-file',
         ],
         [
             'text' => 'Trabalhos',
-            'url'  => 'painel/experiencia',
+            'url' => 'painel/experiencia',
             'icon' => 'fas fa-fw fa-file',
         ],
-     
+
         ['header' => 'Configurações'],
         [
             'text' => 'Configurações do Site',
-            'url'  => 'painel/settings',
+            'url' => 'painel/settings',
             'icon' => 'fas fa-fw fa-file',
         ],
         [
             'text' => 'Meu Perfil',
-            'url'  => 'painel/profile',
+            'url' => 'painel/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-      
     ],
-        
 
     /*
     |--------------------------------------------------------------------------
@@ -370,6 +355,12 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.tiny.cloud/1/twxm2c36o1xzxedn12eloly7xttt3qpyqii8vz02394gtz15/tinymce/6/tinymce.min.js',
                 ],
                 [
                     'type' => 'css',
