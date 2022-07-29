@@ -358,11 +358,6 @@ return [
                 ],
 
                 [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => '//cdn.tiny.cloud/1/twxm2c36o1xzxedn12eloly7xttt3qpyqii8vz02394gtz15/tinymce/6/tinymce.min.js',
-                ],
-                [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
@@ -391,6 +386,15 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                ],
+            ],
+        ], 'tynynce' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.tiny.cloud/1/twxm2c36o1xzxedn12eloly7xttt3qpyqii8vz02394gtz15/tinymce/6/tinymce.min.js',
                 ],
             ],
         ],
