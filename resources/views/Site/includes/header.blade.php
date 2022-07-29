@@ -30,6 +30,6 @@
 		<link rel="stylesheet" href="{{asset('assets/css/settings/box/circle.css')}}" />
 		<link rel="stylesheet" href="{{asset('assets/css/settings/title/title.css')}}">
 		<link rel="stylesheet" href="{{asset('assets/css/settings/color/green-color.css')}}" />
-
+		<script src="https://cdn.tiny.cloud/1/twxm2c36o1xzxedn12eloly7xttt3qpyqii8vz02394gtz15/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     </head>
