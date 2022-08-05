@@ -5,6 +5,6 @@ pipeline{
          stage('Pull request') {
         sh 'git checkout -b master  origin/master'
         sh 'hub pull-request -b origin/master'
-    }
+      }
     }
 }
