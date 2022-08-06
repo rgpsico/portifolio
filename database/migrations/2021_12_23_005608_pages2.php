@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class Pages2 extends Migration
 {
     public function up()
     {
-        Schema::create('page', function ($table) {
+        Schema::create('pages', function ($table) {
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('body');

@@ -18,7 +18,7 @@
 
 		<!-- Title -->
 		
-		<title>Roger Neves -10 Portfólio</title>
+		<title>Roger Neves  Portfólio</title>
 	
 
     <link rel="stylesheet" href="{{asset('assets/css/plugins/bootstrap.min.css')}}">
@@ -130,7 +130,7 @@
 
 					<!-- Banner -->
 					<div class="banner">
-  						<h1>ROGER NEVES teste  </h1>
+  						<h1>ROGER NEVES</h1>
 						<p class="cd-headline rotate-1">
 							<span></span>
 							<span class="cd-words-wrapper">
