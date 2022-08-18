@@ -1,9 +1,8 @@
 @extends('adminlte::page')
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 @section('title','Nova Pagina')
 
 @section('content_header')
-
     <h1>
         Novo POST
     
@@ -50,7 +49,7 @@
             <div class="form-group row">            
                 <label for="nome" class="col-sm-2 col-form-label">Corpo</label>
                     <div class="col-sm-10">                         
-                        <textarea name="body" class="form-control bodyfield">{{old('body')}} </textarea>                      
+                        <textarea name="body" id="body_article" class="form-control bodyfield">{{old('body')}} </textarea>                      
                     </div>
             </div>
 
@@ -74,16 +73,21 @@
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"  crossorigin="anonymous"></script>
-
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <script>
-      $('#type').change(function(){     
-        if($('#type').val() == '1' ){
-         
-       
-        }
-      });
-  </script>
+    <script>
+        tinymce.init({
+          selector: '#body_article',
+          plugins: [
+            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+            'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+          ],
+          toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+            'alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+        });
+      </script>
 
 @endsection
