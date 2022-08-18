@@ -24,11 +24,12 @@
     </thead>
     <tbody>
     @foreach($articles as $article)
+ 
     <tr>
         <td>{{$article->id}}</td>
         <td><img src="{{Storage::url($article['cover'])}}" alt="" width="100px" height="100px"></td>
         <td>{{ $article->title}}</td>
-        <td>{{ $article->categoria}}</td>
+        <td>{{ $article->Categoria->title}}</td>
 
             <td>
             <a href="" class="btn btn-sm btn-success">ver</a>
@@ -48,5 +49,5 @@
 </table>
 </div>
 
-{{ $articles->links('pagination::bootstrap-4') }}
+{{-- {{ $articles->links('pagination::bootstrap-4') }} --}}
 @endsection

@@ -4,19 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use App\Models\article;
 use App\Models\categoria;
 use App\Service\ArticleService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
     private $service;
     private $repository;
-    
+
     public function __construct(ArticleService $articleService)
     {
         //$this->middleware('auth');
@@ -25,13 +23,13 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = $this->service->getAll(90);
+        $articles = $this->service->get();
         $loggedId = intval(Auth::id());
         $categorias = categoria::all();
 
         return view('Admin.articles.index', [
             'articles' => $articles,
-            'categorias '=> $categorias
+            'categorias ' => $categorias,
         ]);
     }
 
@@ -42,16 +40,18 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categorias =  categoria::all();
+        $categorias = categoria::all();
+
         return view('Admin.articles.create', [
-            'categorias' => $categorias
+            'categorias' => $categorias,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(ArticleRequest $request)
@@ -61,7 +61,7 @@ class ArticleController extends Controller
 
         $data = $request->all();
         $data['date'] = $dataNow;
-    
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $name = uniqid(date('HisYmd'));
             $extension = $request->image->extension();
@@ -69,18 +69,19 @@ class ArticleController extends Controller
 
             $upload = $request->image->storeAs('portifolio', $nameFile);
         }
-        
+
         $criarArtigo = $this->service->create($data);
-    
+
         return redirect()
             ->route('articles.index')
-            ->withSuccess("Cadastrado com Successo");
+            ->withSuccess('Cadastrado com Successo');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -89,7 +90,7 @@ class ArticleController extends Controller
 
         if ($article) {
             return view('Admin.articles.edit', [
-                'article' => $article
+                'article' => $article,
             ]);
         }
 
@@ -99,8 +100,9 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(ArticleRequest $request, $id)
@@ -108,29 +110,32 @@ class ArticleController extends Controller
         if (!$article = $this->service->findById($id)) {
             return redirect()->back();
         }
-        
+
         $data = $request->all();
-        
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $upload = $request->file('image')->store('portifolio');
-            $article->cover  = $upload;
+            $article->cover = $upload;
         }
-     
+
         $article->update($data);
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminatse\Http\Response
      */
     public function destroy($id)
     {
         $article = $this->service->findById($id);
         $article->delete();
-        return redirect()->route('articles.index')->withSuccess("Excluido Com Successo");
+
+        return redirect()->route('articles.index')->withSuccess('Excluido Com Successo');
     }
 
     public function search(Request $request)

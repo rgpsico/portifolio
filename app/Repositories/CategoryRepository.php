@@ -19,6 +19,11 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $this->model::paginate($qtd);
     }
 
+    public function get()
+    {
+        return $this->model::get();
+    }
+
     public function findByID($id, $fail = true)
     {
         return $this->model::find($id);
@@ -38,7 +43,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return $this->model::delete($id);
     }
-        
+
     public function update($data)
     {
         return $this->model::update($data);

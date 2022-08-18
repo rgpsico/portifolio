@@ -2,25 +2,18 @@
 
 namespace App\Service;
 
-use App\Repositories\ArticleRepository;
-
-class ArticleService
+class CategoryService
 {
     private $repository;
 
-    public function __construct(ArticleRepository $articleRepository)
+    public function __construct(CategoryService $categoryRepository)
     {
-        $this->repository = $articleRepository;
+        $this->repository = $categoryRepository;
     }
 
     public function listAll()
     {
         return $this->repository->listAll();
-    }
-
-    public function getAll($qtd, $paginate = false)
-    {
-        return $this->repository->paginate($qtd, $paginate);
     }
 
     public function get()

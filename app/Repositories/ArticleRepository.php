@@ -3,8 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\article;
-use App\Repositories\Contracts\ArticleRepositoryInterface;
-use App\Repositories\BaseRepository;
 
 class ArticleRepository
 {
@@ -17,7 +15,12 @@ class ArticleRepository
 
     public function paginate($qtd)
     {
-        return $this->model::paginate($qtd);
+        return $this->model::with('categoria')->paginate($qtd);
+    }
+
+    public function get()
+    {
+        return $this->model::with('categoria')->get();
     }
 
     public function findByID($id, $fail = true)
@@ -32,14 +35,14 @@ class ArticleRepository
 
     public function listAll()
     {
-        return $this->model::all();
+        return $this->model::with('categoria')->all();
     }
 
     public function delete($id)
     {
         return $this->model::delete($id);
     }
-        
+
     public function update($data)
     {
         return $this->model::update($data);
