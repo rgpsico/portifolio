@@ -94,7 +94,7 @@
                                         <p> Sound </p>
                                     </a>
                                 </nav>
-									{{ dd('aqui 97') }}
+								
                                 <!-- Home Section -->
                                 <div class="pt-home" style="background-image: url({{asset('assets/img/slider/arpoador.png')}}">
                                     <div class="bg-lines">
@@ -286,7 +286,7 @@
                                         </div>
                                     </section>
                                 </div>
-							
+								{{ dd('aqui 289') }}
                                 <!-- Resume Section -->
                                 <div class="page pt-resume" data-simplebar>
                                     <section class="container">
