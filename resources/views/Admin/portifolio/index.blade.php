@@ -360,6 +360,7 @@
             </tr>
         </thead>
         <tbody>
+            {{ dd('aaaa') }}
             @foreach($portifolios as $portifolio)
             <tr class="portfolio-row">
                 <td>
