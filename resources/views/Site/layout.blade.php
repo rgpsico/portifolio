@@ -137,7 +137,7 @@
                                             <h2>Sobre</h2>
                                             <span></span>
                                         </div>
-											{{ dd('aqui 140') }}
+										
                                         <!-- Personal Info Start -->
                                         <div class="row mt-100">
                                             <div class="col-lg-12 col-sm-12">
@@ -190,6 +190,7 @@
                                                 </div>
                                             </div>
                                         </div>
+											{{ dd('aqui 193') }}
                                         <!-- Interests Row Start -->
                                         <div class="row mt-100">
                                             <div class="col-md-12">
