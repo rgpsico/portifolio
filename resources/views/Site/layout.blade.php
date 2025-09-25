@@ -137,6 +137,7 @@
                                             <h2>Sobre</h2>
                                             <span></span>
                                         </div>
+											{{ dd('aqui 140') }}
                                         <!-- Personal Info Start -->
                                         <div class="row mt-100">
                                             <div class="col-lg-12 col-sm-12">
@@ -286,7 +287,7 @@
                                         </div>
                                     </section>
                                 </div>
-								{{ dd('aqui 289') }}
+							
                                 <!-- Resume Section -->
                                 <div class="page pt-resume" data-simplebar>
                                     <section class="container">
