@@ -20,19 +20,19 @@ class HomeController extends Controller
 
         $portifolio = portifolio::all();
         $users = User::all();
-        $experiencia = experiencia::all();
-        $cursos = cursos::all();
-        $Setting = Setting::all();
-        $categorias = categoria::all();
+        // $experiencia = experiencia::all();
+        // $cursos = cursos::all();
+        // $Setting = Setting::all();
+        // $categorias = categoria::all();
 
         return view('Site.home', [
             'articles' => $articles,
             'users' => $users,
             'portifolios' => $portifolio,
-            'experiencias' => $experiencia,
-            'cursos' => $cursos,
-            'settings' => $Setting,
-            'categorias' => $categorias,
+            // 'experiencias' => $experiencia,
+            // 'cursos' => $cursos,
+            // 'settings' => $Setting,
+            // 'categorias' => $categorias,
         ]);
     }
 
