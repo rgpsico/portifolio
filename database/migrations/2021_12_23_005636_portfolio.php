@@ -16,7 +16,7 @@ class Portfolio extends Migration
         Schema::create('portifolio', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('body');
+            $table->text('body');
             $table->string('url');
             $table->string('categoria');
             $table->string('cover');
