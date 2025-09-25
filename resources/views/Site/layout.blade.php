@@ -35,7 +35,7 @@
     </head>
     <body>
 
-			{{ dd('aqui') }}
+		
         <!-- Preloader -->
         <div id="preloader">
             <div class="loading-area">
@@ -94,6 +94,7 @@
                                         <p> Sound </p>
                                     </a>
                                 </nav>
+									{{ dd('aqui') }}
                                 <!-- Home Section -->
                                 <div class="pt-home" style="background-image: url({{asset('assets/img/slider/arpoador.png')}}">
                                     <div class="bg-lines">
