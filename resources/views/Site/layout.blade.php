@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	{{ dd('aaa') }}
+
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203133373-1"></script>
@@ -34,6 +34,8 @@
         <link rel="stylesheet" href="{{asset('assets/css/settings/color/green-color.css')}}" />
     </head>
     <body>
+
+			{{ dd('aqui') }}
         <!-- Preloader -->
         <div id="preloader">
             <div class="loading-area">
