@@ -313,7 +313,7 @@
 
 @section('content')
 <!-- Stats Row -->
-<div class="row stats-row">
+{{-- <div class="row stats-row">
     <div class="col-md-3">
         <div class="stat-card">
             <div class="stat-number">{{ count($portifolios) }}</div>
@@ -338,7 +338,7 @@
             <div class="stat-label">Total de Páginas</div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Loading Spinner -->
 <div class="loading-spinner">
