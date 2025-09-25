@@ -39,7 +39,7 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/googlemaps.js') }}" defer></script>
+
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7qcQHcvwSSO496P_6cW0HNrnZut1Wu6Y&callback=initMap" async defer></script>
 
 @endsection
