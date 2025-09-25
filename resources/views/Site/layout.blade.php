@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	{{ dd('aaa') }}
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203133373-1"></script>
@@ -282,7 +283,7 @@
                                         </div>
                                     </section>
                                 </div>
-								{{ dd('AAA') }}
+							
                                 <!-- Resume Section -->
                                 <div class="page pt-resume" data-simplebar>
                                     <section class="container">
