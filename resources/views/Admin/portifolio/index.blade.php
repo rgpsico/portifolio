@@ -16,8 +16,7 @@
             <tr>
                 <th width="50">ID</th>
                 <th>cover</th>
-                <th>Titulo</th>
-                <th>conteúdo</th>
+                <th>Titulo</th> 
                 <th>categoria</th>
                 <th width="200">Ações</th>
             </tr>
@@ -28,7 +27,7 @@
         <td>{{$portifolio->id}}</td>
         <td><img src="{{Storage::url($portifolio['cover'])}}" alt="" width="100px" height="100px"></td>
         <td>{{$portifolio->title}}</td>
-     <td>{!! Str::limit(strip_tags($portifolio->body), 200) !!}</td>
+
         <td>{!!$portifolio->categoria!!}</td>
             <td>
             <a href="" class="btn btn-sm btn-success">ver</a>
