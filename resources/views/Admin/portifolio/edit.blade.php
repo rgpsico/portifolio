@@ -79,6 +79,7 @@
 
 
 <script>
+      $(document).ready(function() {
     tinymce.init({
         selector:'textarea.bodyfield',
         height:300,
@@ -92,5 +93,6 @@
         images_upload_credentials:true,
         convert_urls:false
     });
+      });
     </script>
 @endsection
