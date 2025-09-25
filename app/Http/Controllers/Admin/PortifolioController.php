@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-use App\Models\portifolio;
+use App\Models\Portifolio;
 use App\Models\categoria;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,8 +22,8 @@ class PortifolioController extends Controller
     }
     public function index()
     {
-        dd('aaa');
-        $portifolios = portifolio::paginate(10);
+
+        $portifolios = Portifolio::paginate(10);
         $loggedId = intval(Auth::id());
 
 
