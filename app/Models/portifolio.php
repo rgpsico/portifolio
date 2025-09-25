@@ -16,6 +16,7 @@ class Portifolio extends Model
         'body',
         'url',
         'categoria',
+
         'cover',
     ];
 }
