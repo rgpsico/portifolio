@@ -282,6 +282,7 @@
                                         </div>
                                     </section>
                                 </div>
+								{{ dd('AAA') }}
                                 <!-- Resume Section -->
                                 <div class="page pt-resume" data-simplebar>
                                     <section class="container">
