@@ -24,7 +24,7 @@ class HomeController extends Controller
         $cursos = cursos::all();
         $Setting = Setting::all();
         $categorias = categoria::all();
-        dd('aaa');
+
         return view('Site.home', [
             'articles' => $articles,
             'users' => $users,
