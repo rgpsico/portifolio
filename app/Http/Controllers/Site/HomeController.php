@@ -25,7 +25,7 @@ class HomeController extends Controller
         // $Setting = Setting::all();
         // $categorias = categoria::all();
 
-        return view('Site.home', [
+        return view('Site.teste_temp', [
             // 'articles' => $articles,
             // 'users' => $users,
             // 'portifolios' => $portifolio,
