@@ -5,8 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class portifolio extends Model
+class Portifolio extends Model
 {
-    public $timestamps = false;
+    use HasFactory;
+
     protected $table = 'portifolio';
+
+    protected $fillable = [
+        'title',
+        'body',
+        'url',
+        'categoria',
+        'cover',
+    ];
 }
