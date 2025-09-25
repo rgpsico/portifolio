@@ -148,9 +148,10 @@
                                                                 <img alt="" src="{{asset('assets/img/cover.png')}}">
                                                             </div>
                                                         </div>
-														{{ dd('aaa') }}
+													
                                                         <div class="col-lg-9 col-sm-8">
                                                             <h4>{{$user['name']}}</h4>
+																{{ dd('aaa') }}
                                                             <div class="loc">
                                                                 <i class="fas fa-map-marked-alt"></i> Rio de Janeiro, BR
                                                             </div>
