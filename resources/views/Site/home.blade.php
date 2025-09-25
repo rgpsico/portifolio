@@ -2,7 +2,7 @@
 
 @section('title','Titulo de teste')
     
-{{ dd('qqqqqq') }}
+
 
 @section('content')
    <!-- slider_area_start -->
@@ -13,7 +13,7 @@
                 <div class="col-xl-7 col-md-6">
                     <div class="slider_text ">
                         <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >
-                        
+                        {{ dd('qqqqqq') }}
                             {{@$front_config['title']}}</h3>
                         <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">{{@$front_config['subtitle']}}</p>
                         <div class="video_service_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
