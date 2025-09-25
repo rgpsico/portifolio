@@ -15,24 +15,24 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // $articles = article::paginate();
+        $articles = article::paginate();
 
 
-        // $portifolio = portifolio::all();
+        $portifolio = portifolio::all();
         $users = User::all();
-        // $experiencia = experiencia::all();
-        // $cursos = cursos::all();
-        // $Setting = Setting::all();
-        // $categorias = categoria::all();
-
-        return view('Site.teste_temp', [
-            // 'articles' => $articles,
-            // 'users' => $users,
-            // 'portifolios' => $portifolio,
-            // 'experiencias' => $experiencia,
-            // 'cursos' => $cursos,
-            // 'settings' => $Setting,
-            // 'categorias' => $categorias,
+        $experiencia = experiencia::all();
+        $cursos = cursos::all();
+        $Setting = Setting::all();
+        $categorias = categoria::all();
+        dd('aaa');
+        return view('Site.home', [
+            'articles' => $articles,
+            'users' => $users,
+            'portifolios' => $portifolio,
+            'experiencias' => $experiencia,
+            'cursos' => $cursos,
+            'settings' => $Setting,
+            'categorias' => $categorias,
         ]);
     }
 
