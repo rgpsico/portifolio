@@ -23,12 +23,9 @@ class PortifolioController extends Controller
     public function index()
     {
 
-        $portifolios = Portifolio::paginate(10);
-        $loggedId = intval(Auth::id());
-
-
-        return view('Admin.portifolio.index', [
-            'portifolios' => $portifolios
+        $portfolios = Portifolio::paginate(10);
+        return view('Admin.portfolio.index', [
+            'portfolios' => $portfolios
         ]);
     }
 
