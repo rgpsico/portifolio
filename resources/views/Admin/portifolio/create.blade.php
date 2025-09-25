@@ -125,11 +125,11 @@
 
         // Select2
        
-            $('.select2').select2({
-                placeholder: "Selecione uma categoria",
-                allowClear: true,
-                width: '100%'
-            });
+            // $('.select2').select2({
+            //     placeholder: "Selecione uma categoria",
+            //     allowClear: true,
+            //     width: '100%'
+            // });
         });
     </script>
 
