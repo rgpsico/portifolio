@@ -148,6 +148,7 @@
                                                                 <img alt="" src="{{asset('assets/img/cover.png')}}">
                                                             </div>
                                                         </div>
+														{{ dd('aaa') }}
                                                         <div class="col-lg-9 col-sm-8">
                                                             <h4>{{$user['name']}}</h4>
                                                             <div class="loc">
@@ -190,7 +191,7 @@
                                                 </div>
                                             </div>
                                         </div>
-											{{ dd('aqui 193') }}
+										
                                         <!-- Interests Row Start -->
                                         <div class="row mt-100">
                                             <div class="col-md-12">
