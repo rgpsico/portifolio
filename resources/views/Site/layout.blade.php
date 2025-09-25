@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203133373-1"></script>
@@ -34,8 +33,6 @@
         <link rel="stylesheet" href="{{asset('assets/css/settings/color/green-color.css')}}" />
     </head>
     <body>
-
-		
         <!-- Preloader -->
         <div id="preloader">
             <div class="loading-area">
@@ -94,7 +91,6 @@
                                         <p> Sound </p>
                                     </a>
                                 </nav>
-								
                                 <!-- Home Section -->
                                 <div class="pt-home" style="background-image: url({{asset('assets/img/slider/arpoador.png')}}">
                                     <div class="bg-lines">
@@ -137,7 +133,6 @@
                                             <h2>Sobre</h2>
                                             <span></span>
                                         </div>
-										
                                         <!-- Personal Info Start -->
                                         <div class="row mt-100">
                                             <div class="col-lg-12 col-sm-12">
@@ -148,51 +143,54 @@
                                                                 <img alt="" src="{{asset('assets/img/cover.png')}}">
                                                             </div>
                                                         </div>
-													
-                                                        <div class="col-lg-9 col-sm-8">
-                                                            <h4>{{$user['name'] ?? ''}}</h4>
-															
-                                                            <div class="loc">
-                                                                <i class="fas fa-map-marked-alt"></i> Rio de Janeiro, BR
+                                                        @if($user)
+                                                            <div class="col-lg-9 col-sm-8">
+                                                                <h4>{{$user->name}}</h4>
+                                                                <div class="loc">
+                                                                    <i class="fas fa-map-marked-alt"></i> Rio de Janeiro, BR
+                                                                </div>
+                                                                {!! $user->description !!}
                                                             </div>
-                                                            {!!$user['description'] ?? ''!!}
-                                                        </div>
-                                                        <!-- Icon Info -->
-                                                        <div class="col-lg-3 col-sm-4">
-                                                            <div class="info-icon">
-                                                                <i class="fas fa-award"></i>
-                                                                <div class="desc-icon">
-                                                                    <h6>{!!$user['anosExperiencia'] ?? ''!!} Anos de</h6>
-                                                                    <p>Experiência</p>
+                                                            <!-- Icon Info -->
+                                                            <div class="col-lg-3 col-sm-4">
+                                                                <div class="info-icon">
+                                                                    <i class="fas fa-award"></i>
+                                                                    <div class="desc-icon">
+                                                                        <h6>{!! $user->anosExperiencia !!} Anos de</h6>
+                                                                        <p>Experiência</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-3 col-sm-4">
-                                                            <div class="info-icon">
-                                                                <i class="fas fa-certificate"></i>
-                                                                <div class="desc-icon">
-                                                                    <h6>{{$user['numeroProjetos'] ?? ''}} Projetos</h6>
-                                                                    <p>Completos</p>
+                                                            <div class="col-lg-3 col-sm-4">
+                                                                <div class="info-icon">
+                                                                    <i class="fas fa-certificate"></i>
+                                                                    <div class="desc-icon">
+                                                                        <h6>{{$user->numeroProjetos}} Projetos</h6>
+                                                                        <p>Completos</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-3 col-sm-4">
-                                                            <div class="info-icon">
-                                                                <i class="fas fa-user-astronaut"></i>
-                                                                <div class="desc-icon">
-                                                                    <h6>Freelance</h6>
-                                                                    <p>Available</p>
+                                                            <div class="col-lg-3 col-sm-4">
+                                                                <div class="info-icon">
+                                                                    <i class="fas fa-user-astronaut"></i>
+                                                                    <div class="desc-icon">
+                                                                        <h6>Freelance</h6>
+                                                                        <p>Available</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-3 col-sm-12 pt-50">
-                                                            <a href="{{Storage::url('users/'.$user['curriculum'] ?? '')}}" target="_blank" class="btn-st">Download CV</a>
-                                                        </div>
+                                                            <div class="col-lg-3 col-sm-12 pt-50">
+                                                                <a href="{{Storage::url('users/'.$user->curriculum)}}" target="_blank" class="btn-st">Download CV</a>
+                                                            </div>
+                                                        @else
+                                                            <div class="col-lg-9 col-sm-8">
+                                                                <p>No user data available.</p>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-										
                                         <!-- Interests Row Start -->
                                         <div class="row mt-100">
                                             <div class="col-md-12">
@@ -279,18 +277,19 @@
                                                 </div>
                                             </div>
                                             <div class="row mt-100">
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <div class="service box-1 mb-40">
-                                                        <i class="fas fa-code"></i>
-                                                        <h4>Desenvolvimento Web</h4>
-                                                        <p>Uso a tecnologia para criação de sistemas que levam os clientes até você.</p>
+                                                @foreach ($servicos as $servico)
+                                                    <div class="col-lg-6 col-sm-6">
+                                                        <div class="service box-1 mb-40">
+                                                            <i class="fas {{$servico->icon}}"></i>
+                                                            <h4>{{$servico->nome}}</h4>
+                                                            <p>Uso a tecnologia para criação de sistemas que levam os clientes até você.</p>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </section>
                                 </div>
-							
                                 <!-- Resume Section -->
                                 <div class="page pt-resume" data-simplebar>
                                     <section class="container">
@@ -304,13 +303,15 @@
                                                     <h3>Experiências</h3>
                                                 </div>
                                                 <div class="experience box-1">
-                                                    <div class="item">
-                                                        <div class="main">
-                                                            <h4>Desenvolvedor Full Stack</h4>
-                                                            <p><i class="far fa-calendar-alt"></i>dê {{formatDateAndTime($experiencia['datestart'] ?? '')}} até {{formatDateAndTime($experiencia['dateend'] ?? '')}} | Empresa XYZ</p>
+                                                    @foreach ($experiencias as $exp)
+                                                        <div class="item">
+                                                            <div class="main">
+                                                                <h4>{{$exp->title}}</h4>
+                                                                <p><i class="far fa-calendar-alt"></i>dê {{formatDateAndTime($exp->datestart)}} até {{formatDateAndTime($exp->dateend)}} | {{$exp->place}}</p>
+                                                            </div>
+                                                            <p>{!!$exp->body!!}</p>
                                                         </div>
-                                                        <p>{!!$experiencia['body']!!}</p>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-12">
@@ -318,13 +319,15 @@
                                                     <h3>Cursos</h3>
                                                 </div>
                                                 <div class="experience box-2">
-                                                    <div class="item">
-                                                        <div class="main">
-                                                            <h4>{!!$curso['linguagem']!!}</h4>
-                                                            <p><i class="far fa-calendar-alt"></i>{!!$curso['plataforma']!!} | {!!$curso['data']!!}</p>
+                                                    @foreach ($cursos as $curso)
+                                                        <div class="item">
+                                                            <div class="main">
+                                                                <h4>{!!$curso->linguagem!!}</h4>
+                                                                <p><i class="far fa-calendar-alt"></i>{!!$curso->plataforma!!} | {!!$curso->data!!}</p>
+                                                            </div>
+                                                            <p>{!!$curso->body!!}</p>
                                                         </div>
-                                                        <p>{!!$curso['body']!!}</p>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -445,23 +448,30 @@
                                         <div class="row mt-100">
                                             <div class="col-lg-12 col-sm-12 portfolio-filter">
                                                 <ul>
+                                                    @php 
+                                                        $img = asset('assets/img/default-image.jpg');
+                                                    @endphp 
                                                     <li class="active" data-filter="*">TODOS</li>
-                                                    <li data-filter=".web">Web</li>
+                                                    @foreach ($categorias as $cat)
+                                                        <li data-filter=".{{$cat->title}}">{{$cat->title}}</li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="row portfolio-items mt-100 mb-100">
-                                            <div class="item col-lg-4 col-sm-6 web">
-                                                <?php $cover = ($portifolio['cover'] == null ? asset('assets/img/default-image.jpg') : Storage::url($portifolio['cover'])); ?>
-                                                <figure>
-                                                    <img src="{{$cover}}">
-                                                    <figcaption>
-                                                        <h3>{{$portifolio['title']}}</h3>
-                                                        <p>{{$portifolio['categoria']}}</p><i class="fas fa-image"></i>
-                                                        <a href="{{$portifolio['url']}}" target="_blank"></a>
-                                                    </figcaption>
-                                                </figure>
-                                            </div>
+                                            @foreach ($portifolios as $portifolio)
+                                                <div class="item col-lg-4 col-sm-6 {{$portifolio->categoria}}">
+                                                    <?php $cover = ($portifolio->cover == null ? $img : Storage::url($portifolio->cover)); ?>
+                                                    <figure>
+                                                        <img src="{{$cover}}">
+                                                        <figcaption>
+                                                            <h3>{{$portifolio->title}}</h3>
+                                                            <p>{{$portifolio->categoria}}</p><i class="fas fa-image"></i>
+                                                            <a href="{{$portifolio->url}}" target="_blank"></a>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </section>
                                 </div>
@@ -475,32 +485,43 @@
                                         <div class="row mt-100">
                                             <div class="col-lg-12 col-sm-12 blog-filter">
                                                 <ul style="display: inline-flex;">
+                                                    @php 
+                                                        $img = asset('assets/img/default-image.jpg');
+                                                    @endphp 
                                                     <li class="active" data-filter="*">TODOS</li>
-                                                    <li style="margin-left: 10px" data-filter=".tech">Tech</li>
+                                                    @foreach ($categorias as $cat)
+                                                        <li style="margin-left: 10px" data-filter=".{{$cat->title}}">{{$cat->title}}</li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="row blog-masonry mt-100 mb-50">
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="blog-item">
-                                                    <div class="thumbnail">
-                                                        <a href="blog/{{$article['id']}}">
-                                                            <img alt="{{$article['title']}}" src="{{Storage::url($article['cover'])}}">
-                                                        </a>
-                                                        @if($article['type'])
-                                                            <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
-                                                        @endif
-                                                    </div>
-                                                    <h4><a href="blog/{{$article['id']}}">{{$article['title']}}</a></h4>
-                                                    <ul>
-                                                        <li><a href="#">{{ formatDateAndTime($article['date'], 'd/m/Y') }}</a></li>
-                                                        <li><a href="#">{{$article['categoria']}}</a></li>
-                                                    </ul>
-                                                    <div class="blog-btn">
-                                                        <a href="blog/{{$article['id']}}" class="btn-st">Leia Mais</a>
+                                            @foreach ($articles as $article)
+                                                @php 
+                                                    $isVideo = $article->type;
+                                                    $isVideo = ($isVideo == true ?: $isVideo);
+                                                @endphp
+                                                <div class="col-lg-4 col-sm-6">
+                                                    <div class="blog-item">
+                                                        <div class="thumbnail">
+                                                            <a href="blog/{{$article->id}}">
+                                                                <img alt="{{$article->title}}" src="{{Storage::url($article->cover)}}">
+                                                            </a>
+                                                            @if($isVideo)
+                                                                <a href="https://www.youtube.com/watch?v=k_okcNVZqqI" class="btn-play"></a>
+                                                            @endif
+                                                        </div>
+                                                        <h4><a href="blog/{{$article->id}}">{{$article->title}}</a></h4>
+                                                        <ul>
+                                                            <li><a href="#">{{ formatDateAndTime($article->date, 'd/m/Y') }}</a></li>
+                                                            <li><a href="#">{{$article->categoria}}</a></li>
+                                                        </ul>
+                                                        <div class="blog-btn">
+                                                            <a href="blog/{{$article->id}}" class="btn-st">Leia Mais</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                         <div class="row mt-100 mb-90">
                                             <div class="col-lg-12 col-sm-12 text-center"></div>
@@ -518,6 +539,7 @@
                                             <div class="col-lg-12 col-sm-12">
                                                 <div class="contact-form">
                                                     <form method="post" class="box-1 contact-valid" id="contact-form">
+                                                        @csrf
                                                         <div class="row">
                                                             <div class="col-lg-6 col-sm-12">
                                                                 <input type="text" name="name" id="name" class="form-control" placeholder="Nome *">
@@ -550,26 +572,28 @@
                                             </div>
                                         </div>
                                         <div class="box-2 contact-info">
-                                            <script>
-                                                let wtazap = "{{$user['cel']}}";
-                                            </script>
-                                            <div class="row">
-                                                <div class="col-lg-4 col-sm-12 info">
-                                                    <i class="fas fa-paper-plane"></i>
-                                                    <p>{{$user['email']}}</p>
-                                                    <span>Email</span>
+                                            @if($user)
+                                                <script>
+                                                    let wtazap = "{{$user->cel}}";
+                                                </script>
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-sm-12 info">
+                                                        <i class="fas fa-paper-plane"></i>
+                                                        <p>{{$user->email}}</p>
+                                                        <span>Email</span>
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-12 info">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <p>{{$user->estate}}, {{$user->bairro}}</p>
+                                                        <span>Endereço</span>
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-12 info">
+                                                        <i class="fas fa-phone"></i>
+                                                        <p>{{$user->cel}}</p>
+                                                        <span>CEL</span>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-4 col-sm-12 info">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <p>{{$user['estate']}}, {{$user['bairro']}}</p>
-                                                    <span>Endereço</span>
-                                                </div>
-                                                <div class="col-lg-4 col-sm-12 info">
-                                                    <i class="fas fa-phone"></i>
-                                                    <p>{{$user['cel']}}</p>
-                                                    <span>CEL</span>
-                                                </div>
-                                            </div>
+                                            @endif
                                         </div>
                                         <div class="google-map box-1 mt-100 mb-100">
                                             <div class="row">
@@ -586,10 +610,12 @@
                 </div>
             </div>
         </div>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <a href="https://api.whatsapp.com/send?phone=55{{$user['cel']}}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:1000;" target="_blank">
-            <i style="margin-top:16px" class="fa fa-whatsapp"></i>
-        </a>
+        @if($user)
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+            <a href="https://api.whatsapp.com/send?phone=55{{$user->cel}}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:1000;" target="_blank">
+                <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+            </a>
+        @endif
         <!-- All Script -->
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
