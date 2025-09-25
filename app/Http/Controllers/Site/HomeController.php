@@ -10,6 +10,7 @@ use App\Models\experiencia;
 use App\Models\portifolio;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\servicos;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,7 @@ class HomeController extends Controller
         $portifolios = Portifolio::all();
         $experiencias = Experiencia::all();
         $cursos = Cursos::all();
-        $servicos = Service::all(); // Assuming a Service model exists
+        $servicos = servicos::all(); // Assuming a Service model exists
         $settings = Setting::all();
         $categorias = Categoria::all();
 
