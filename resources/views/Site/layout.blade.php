@@ -151,18 +151,18 @@
 													
                                                         <div class="col-lg-9 col-sm-8">
                                                             <h4>{{$user['name'] ?? ''}}</h4>
-																{{ dd('aaa') }}
+															
                                                             <div class="loc">
                                                                 <i class="fas fa-map-marked-alt"></i> Rio de Janeiro, BR
                                                             </div>
-                                                            {!!$user['description']!!}
+                                                            {!!$user['description'] ?? ''!!}
                                                         </div>
                                                         <!-- Icon Info -->
                                                         <div class="col-lg-3 col-sm-4">
                                                             <div class="info-icon">
                                                                 <i class="fas fa-award"></i>
                                                                 <div class="desc-icon">
-                                                                    <h6>{!!$user['anosExperiencia']!!} Anos de</h6>
+                                                                    <h6>{!!$user['anosExperiencia'] ?? ''!!} Anos de</h6>
                                                                     <p>Experiência</p>
                                                                 </div>
                                                             </div>
@@ -171,7 +171,7 @@
                                                             <div class="info-icon">
                                                                 <i class="fas fa-certificate"></i>
                                                                 <div class="desc-icon">
-                                                                    <h6>{{$user['numeroProjetos']}} Projetos</h6>
+                                                                    <h6>{{$user['numeroProjetos'] ?? ''}} Projetos</h6>
                                                                     <p>Completos</p>
                                                                 </div>
                                                             </div>
@@ -186,7 +186,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-12 pt-50">
-                                                            <a href="{{Storage::url('users/'.$user['curriculum'])}}" target="_blank" class="btn-st">Download CV</a>
+                                                            <a href="{{Storage::url('users/'.$user['curriculum'] ?? '')}}" target="_blank" class="btn-st">Download CV</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -307,7 +307,7 @@
                                                     <div class="item">
                                                         <div class="main">
                                                             <h4>Desenvolvedor Full Stack</h4>
-                                                            <p><i class="far fa-calendar-alt"></i>dê {{formatDateAndTime($experiencia['datestart'])}} até {{formatDateAndTime($experiencia['dateend'])}} | Empresa XYZ</p>
+                                                            <p><i class="far fa-calendar-alt"></i>dê {{formatDateAndTime($experiencia['datestart'] ?? '')}} até {{formatDateAndTime($experiencia['dateend'] ?? '')}} | Empresa XYZ</p>
                                                         </div>
                                                         <p>{!!$experiencia['body']!!}</p>
                                                     </div>

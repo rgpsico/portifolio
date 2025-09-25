@@ -15,23 +15,23 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = article::paginate();
-
-
-        $portifolio = portifolio::all();
-        $users = User::all();
-        $experiencia = experiencia::all();
-        $cursos = cursos::all();
-        $Setting = Setting::all();
-        $categorias = categoria::all();
+        $user = User::first(); // Get the first user instead of all users
+        $articles = Article::paginate();
+        $portifolios = Portifolio::all();
+        $experiencias = Experiencia::all();
+        $cursos = Cursos::all();
+        $servicos = Service::all(); // Assuming a Service model exists
+        $settings = Setting::all();
+        $categorias = Categoria::all();
 
         return view('Site.home', [
+            'user' => $user, // Single user record
             'articles' => $articles,
-            'users' => $users,
-            'portifolios' => $portifolio,
-            'experiencias' => $experiencia,
+            'portifolios' => $portifolios,
+            'experiencias' => $experiencias,
             'cursos' => $cursos,
-            'settings' => $Setting,
+            'servicos' => $servicos,
+            'settings' => $settings,
             'categorias' => $categorias,
         ]);
     }
