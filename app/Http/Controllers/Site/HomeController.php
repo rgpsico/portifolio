@@ -15,8 +15,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd("aaaa");
         $articles = article::paginate();
+        dd($articles);
         $portifolio = portifolio::all();
         $users = User::all();
         $experiencia = experiencia::all();
