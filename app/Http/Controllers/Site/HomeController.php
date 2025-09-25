@@ -15,10 +15,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = article::paginate();
+        // $articles = article::paginate();
 
 
-        $portifolio = portifolio::all();
+        // $portifolio = portifolio::all();
         $users = User::all();
         // $experiencia = experiencia::all();
         // $cursos = cursos::all();
@@ -26,9 +26,9 @@ class HomeController extends Controller
         // $categorias = categoria::all();
 
         return view('Site.home', [
-            'articles' => $articles,
-            'users' => $users,
-            'portifolios' => $portifolio,
+            // 'articles' => $articles,
+            // 'users' => $users,
+            // 'portifolios' => $portifolio,
             // 'experiencias' => $experiencia,
             // 'cursos' => $cursos,
             // 'settings' => $Setting,
