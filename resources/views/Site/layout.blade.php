@@ -94,7 +94,7 @@
                                         <p> Sound </p>
                                     </a>
                                 </nav>
-									{{ dd('aqui') }}
+								
                                 <!-- Home Section -->
                                 <div class="pt-home" style="background-image: url({{asset('assets/img/slider/arpoador.png')}}">
                                     <div class="bg-lines">
@@ -446,6 +446,7 @@
                                                 </ul>
                                             </div>
                                         </div>
+											{{ dd('aqui') }}
                                         <div class="row portfolio-items mt-100 mb-100">
                                             <div class="item col-lg-4 col-sm-6 web">
                                                 <?php $cover = ($portifolio['cover'] == null ? asset('assets/img/default-image.jpg') : Storage::url($portifolio['cover'])); ?>
