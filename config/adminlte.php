@@ -241,9 +241,9 @@ return [
             'icon' => 'area-chart',
             'submenu' => [
                 [
-                'text' => 'Meses',
-                'url' => 'painel/relatorio/mensal',
-                'icon' => 'line-chart',
+                    'text' => 'Meses',
+                    'url' => 'painel/relatorio/mensal',
+                    'icon' => 'line-chart',
                 ],
             ],
         ],
@@ -261,7 +261,7 @@ return [
             'icon' => 'far fa-fw fa-file',
         ],
 
-       ['header' => 'Conteudo'],
+        ['header' => 'Conteudo'],
         [
             'text' => 'Artigos',
             'url' => 'painel/articles',
@@ -321,13 +321,13 @@ return [
     */
 
     'filters' => [
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
     ],
 
     /*
@@ -379,16 +379,17 @@ return [
                 ],
             ],
         ],
-        // 'Chartjs' => [
-        //     'active' => true,
-        //     'files' => [
-        //         [
-        //             'type' => 'js',
-        //             'asset' => false,
-        //             'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
-        //         ],
-        //     ],
-        // ], 'tynynce' => [
+        'Chartjs' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                ],
+            ],
+        ],
+        'tynynce' => [
             'active' => true,
             'files' => [
                 [
