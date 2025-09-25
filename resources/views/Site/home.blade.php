@@ -2,7 +2,7 @@
 
 @section('title','Titulo de teste')
     
-{{ dd('aaa') }}
+{{ dd('qqqqqq') }}
 
 @section('content')
    <!-- slider_area_start -->
