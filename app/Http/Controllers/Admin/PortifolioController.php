@@ -23,9 +23,12 @@ class PortifolioController extends Controller
     public function index()
     {
 
-        $portfolios = Portifolio::paginate(10);
-        return view('Admin.portfolio.index', [
-            'portfolios' => $portfolios
+        $portifolios = Portifolio::paginate(10);
+
+
+
+        return view('Admin.portifolio.index', [
+            'portifolios' => $portifolios
         ]);
     }
 
