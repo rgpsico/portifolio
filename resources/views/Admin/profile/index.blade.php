@@ -67,7 +67,7 @@
 
             
             <div class="form-group row">            
-                <label for="nome" class="col-sm-2 col-form-label">Numero de projetos</label>
+                <label for="nome" class="col-sm-2 col-form-label">Numero de projetos   </label>
                     <div class="col-sm-10">
                         <input type="text"  name="numeroProjetos" class="form-control  @error('numeroProjetos') is-invalid @enderror " id="numeroProjetos" value="{{$user->numeroProjetos}}">
                     </div>
