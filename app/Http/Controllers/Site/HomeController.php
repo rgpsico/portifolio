@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\article;
 use App\Models\categoria;
-use App\Models\cursos;
+use App\Models\Cursos;
 use App\Models\experiencia;
 use App\Models\portifolio;
 use App\Models\Setting;
