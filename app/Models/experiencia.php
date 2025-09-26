@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class experiencia extends Model
+class Experiencia extends Model
 {
-    public $timestamps = false;
+    protected $fillable = [
+        'title',
+        'body',
+        'place',
+        'datestart',
+        'dateend',
+    ];
 }

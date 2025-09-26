@@ -74,10 +74,10 @@
             </div>
 
             <div class="form-group row">            
-                <label for="nome" class="col-sm-2 col-form-label">Descrição</label>
-                    <div class="col-sm-10">
-                        <input type="text"  name="description" class="form-control  @error('description') is-invalid @enderror " id="description" value="{{$user->description}}">
-                    </div>
+                <label for="description" class="col-sm-2 col-form-label">Descrição</label>
+                <div class="col-sm-10">
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="4">{{$user->description}}</textarea>
+                </div>
             </div>
 
             <div class="form-group row">            

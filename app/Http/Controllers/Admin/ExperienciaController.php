@@ -14,17 +14,16 @@ class ExperienciaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    
     }
     public function index()
     {
-     $experiencias = experiencia::paginate(10);
-     $loggedId = intval(Auth::id());
-     $categorias = categoria::all();
+        $experiencias = experiencia::paginate(10);
+        $loggedId = intval(Auth::id());
+        $categorias = categoria::all();
 
-      return view('Admin.experiencia.index',[
-        'experiencias'=>$experiencias
-      ]);
+        return view('Admin.experiencia.index', [
+            'experiencias' => $experiencias
+        ]);
     }
 
     /**
@@ -35,7 +34,7 @@ class ExperienciaController extends Controller
     public function create()
     {
         $categorias = categoria::all();
-        return view('Admin.experiencia.create',['categorias'=>$categorias]);
+        return view('Admin.experiencia.create', ['categorias' => $categorias]);
     }
 
     /**
@@ -46,37 +45,22 @@ class ExperienciaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only([
-            'title',
-            'body',
-            'datestart',
-            'dateend',
-            'place'
-       
-        ]);
-        
-        $validator = Validator::make($data,[
-            'title'=> ['required','string','max:100'],
-            'body'=> ['string'], 
+        // Validação direta no request
+        $validated = $request->validate([
+            'title'     => ['required', 'string', 'max:100'],
+            'body'      => ['nullable', 'string'],
+            'place'     => ['nullable', 'string'],
+            'datestart' => ['nullable', 'date'],
+            'dateend'   => ['nullable', 'date'],
         ]);
 
-        if($validator->fails()){
-            return redirect()->route('experiencia.create')
-            ->withErrors($validator)
-            ->withInput();
-        }
-        
-    
-        $experiencia = new experiencia;
-        $experiencia->title     =  $data['title'];
-        $experiencia->place     = $data['place'];
-        $experiencia->body      = $data['body'];
-        $experiencia->datestart = $data['datestart'];
-        $experiencia->dateend   = $data['dateend'];
-        $experiencia->save();
+        // Cria a experiência direto com mass assignment
+        Experiencia::create($validated);
 
-        return redirect()->route('experiencia.index');
+        return redirect()->route('experiencia.index')
+            ->with('success', 'Experiência cadastrada com sucesso!');
     }
+
 
     /**
      * Display the specified resource.
@@ -84,7 +68,7 @@ class ExperienciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -95,9 +79,9 @@ class ExperienciaController extends Controller
     public function edit($id)
     {
         $experiencia = experiencia::find($id);
-        if($experiencia){
-            return view('Admin.experiencia.edit',[
-                'experiencia'=>$experiencia
+        if ($experiencia) {
+            return view('Admin.experiencia.edit', [
+                'experiencia' => $experiencia
             ]);
         }
         return redirect()->route('experiencia.index');
@@ -113,50 +97,49 @@ class ExperienciaController extends Controller
     public function update(Request $request, $id)
     {
         $experiencia = experiencia::find($id);
-        
-        if($experiencia){
+
+        if ($experiencia) {
             $data = $request->only([
                 'title',
                 'body',
                 'datestart',
-                'dateend' ,
-                'place'             
+                'dateend',
+                'place'
             ]);
 
-           
-           
-            if($experiencia['title'] !== $data['title']){
-           
-                
-                $validator = Validator::make($data,[
-                    'title'=>['required','string','max:100'],
-                    'body'=> ['string']
-                    
+
+
+            if ($experiencia['title'] !== $data['title']) {
+
+
+                $validator = Validator::make($data, [
+                    'title' => ['required', 'string', 'max:100'],
+                    'body' => ['string']
+
                 ]);
             } else {
-                $validator = Validator::make($data,[
-                    'title'=>['required','string','max:100'],
-                    'body'=> ['string']
+                $validator = Validator::make($data, [
+                    'title' => ['required', 'string', 'max:100'],
+                    'body' => ['string']
                 ]);
-        }         
-            if($validator->fails()){
-            return redirect()->route('portifolio.edit',[
-                'portifolio'=>$id
-            ])
-            ->withErrors($validator)
-            ->withInput();
+            }
+            if ($validator->fails()) {
+                return redirect()->route('portifolio.edit', [
+                    'portifolio' => $id
+                ])
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+
+            $experiencia->title = $data['title'];
+            $experiencia->place = $data['place'];
+            $experiencia->body  = $data['body'];
+            $experiencia->datestart   = $data['datestart'];
+            $experiencia->dateend   = $data['dateend'];
+            $experiencia->save();
         }
-      
-       
-        $experiencia->title = $data['title'];
-        $experiencia->place = $data['place'];
-        $experiencia->body  = $data['body'];
-        $experiencia->datestart   = $data['datestart'];
-        $experiencia->dateend   = $data['dateend'];
-        $experiencia->save();
-    }
         return redirect()->route('experiencia.index');
- 
     }
 
     /**
@@ -167,8 +150,8 @@ class ExperienciaController extends Controller
      */
     public function destroy($id)
     {
-            $page = experiencia::find($id);
-            $page->delete();   
-            return redirect()->route('experiencia.index');
+        $page = experiencia::find($id);
+        $page->delete();
+        return redirect()->route('experiencia.index');
     }
 }
