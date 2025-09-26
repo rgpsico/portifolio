@@ -72,7 +72,7 @@
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="{{asset('assets/js/select2.js')}}"></script>
+ 
 <script>
     tinymce.init({
         selector:'textarea.bodyfield',
@@ -89,7 +89,13 @@
     });
 
 
-
+$('.selectjs').select2({   
+    escapeMarkup: function (markup) {
+     return markup;
+ }
+        
+   
+});
 
 
 
