@@ -89,13 +89,7 @@
     });
 
 
-$('.selectjs').select2({   
-    escapeMarkup: function (markup) {
-     return markup;
- }
-        
-   
-});
+
 
 
 
