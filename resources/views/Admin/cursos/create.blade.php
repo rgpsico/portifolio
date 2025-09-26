@@ -70,68 +70,6 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
  
-<script>
-    tinymce.init({
-        selector:'textarea.bodyfield',
-        height:300,
-        menubar:false,
-        plugins:['link', 'table', 'image', 'autoresize', 'lists'],
-        toolbar:'undor redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist',
-        content_css:[
-            '{{asset('assets/css/content.css')}}'
-        ],
-        images_upload_url:'{{route('imageupload')}}',
-        images_upload_credentials:true,
-        convert_urls:false
-    });
-
-
-$('.selectjs').select2({   
-    escapeMarkup: function (markup) {
-     return markup;
- }
-        
-   
-});
-
-
-
-$(document).on('click', '.inserir', function() {
-  alert(1);
-});
-
-ListarProfissionais();
-function ListarProfissionais(){ 
-    let token = localStorage.getItem('tk');
-    $.ajax({
-    url : "https://jsonplaceholder.typicode.com/users",
-    headers: {  
-            'Content-Type':'json',             
-            'x-access-token':token,
-    },
-    type : 'get',  
-    success : function(data){
-        console.log(data)
-        $('#ProfissionalID').val();
-    try {    
-        qtd = data.length;
-        for(i=0; i<=qtd; i++){           
-            $('#mySelect2').append('<option  value="'+ data[i].id +'" data-sysuser="'+data[i].nome+'">'+data[i].nome +'</option>');
-        }
-    }   catch (error) {
-
-    }
-    }, "noResults": function(){
-        return "Que cadastrar Esse paciente <a href='#' class='btn btn-success cadastrar'>UCadastrar</a>";
-    },
-    escapeMarkup: function (markup) {
-     return markup;
- }
-})
-}
-  
-    </script>
 @endsection
